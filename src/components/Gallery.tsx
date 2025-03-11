@@ -1,0 +1,41 @@
+const Gallery = () => (
+  <section id="work" className="main style3 primary bg-gray-700 text-white p-8">
+    <div className="content text-center">
+      <header>
+        <h2 className="text-3xl mb-4">My Work</h2>
+        <p className="mb-8">
+          Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore
+          condimentum. Fusce blandit ultrices sapien, in accumsan orci rhoncus
+          eu. Sed sodales venenatis arcu, id varius justo euismod in. Curabitur
+          egestas consectetur magna vitae.
+        </p>
+      </header>
+      <div className="gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { src: "01.jpg", title: "The Anonymous Red" },
+          { src: "02.jpg", title: "Airchitecture II" },
+          { src: "03.jpg", title: "Air Lounge" },
+          { src: "04.jpg", title: "Carry on" },
+          { src: "05.jpg", title: "The sparkling shell" },
+          { src: "06.jpg", title: "Bent IX" },
+        ].map((image, index) => (
+          <article
+            key={index}
+            className={index % 2 === 0 ? "from-left" : "from-right"}
+          >
+            <a href={`images/fulls/${image.src}`} className="image fit">
+              <img
+                src={`images/thumbs/${image.src}`}
+                title={image.title}
+                alt=""
+                className="w-full h-auto"
+              />
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)
+
+export default Gallery
