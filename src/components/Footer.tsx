@@ -44,11 +44,11 @@ const Footer = () => (
       </li>
     </ul>
     <ul className="menu flex justify-center space-x-4">
-      <li>&copy; Untitled</li>
+      <li>&copy; Barra Coronado</li>
       <li>
         Design:{" "}
-        <a href="https://html5up.net" className="underline">
-          HTML5 UP
+        <a href="#" className="underline">
+          Katja Hollaar
         </a>
       </li>
     </ul>
