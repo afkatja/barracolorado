@@ -17,29 +17,27 @@ export default function Home() {
           content="width=device-width, initial-scale=1, user-scalable=no"
         />
       </Head>
-      <div className="is-preload">
-        <Header />
-        <Intro />
-        <Section
-          id="one"
-          title="What I Do"
-          content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+      <Header />
+      <Intro />
+      <Section
+        id="one"
+        title="One"
+        content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
                   Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
                   id varius justo euismod in. Curabitur egestas consectetur magna."
-          nextSection="two"
-        />
-        <Section
-          id="two"
-          title="Who I Am"
-          content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+        nextSection="two"
+      />
+      <Section
+        id="two"
+        title="Two"
+        content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
                   Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
                   id varius justo euismod in. Curabitur egestas consectetur magna."
-          nextSection="work"
-        />
-        <Gallery />
-        <Contact />
-        <Footer />
-      </div>
+        nextSection="work"
+      />
+      <Gallery />
+      <Contact />
+      <Footer />
     </>
   )
 }

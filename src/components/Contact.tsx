@@ -1,8 +1,5 @@
 const Contact = () => (
-  <section
-    id="contact"
-    className="main style3 secondary bg-gray-800 text-white p-8"
-  >
+  <section id="contact" className="main style3 bg-gray-800 text-white p-8">
     <div className="content text-center">
       <header>
         <h2 className="text-3xl mb-4">Say Hello.</h2>

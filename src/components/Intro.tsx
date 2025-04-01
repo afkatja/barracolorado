@@ -10,27 +10,7 @@ const Intro = () => (
         <h2 className="text-4xl mb-4">Hey.</h2>
       </header>
       <p className="mb-4">
-        Welcome to <strong>Big Picture</strong> a responsive site template
-        designed by{" "}
-        <a
-          href="https://html5up.net"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          HTML5 UP
-        </a>
-        <br />
-        and released for free under the{" "}
-        <a
-          href="https://html5up.net/license"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          Creative Commons Attribution license
-        </a>
-        .
+        Welcome to <strong>Barra Coronado</strong>
       </p>
       <footer>
         <Link

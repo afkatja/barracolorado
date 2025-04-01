@@ -1,8 +1,8 @@
 const Gallery = () => (
-  <section id="work" className="main style3 primary bg-gray-700 text-white p-8">
+  <section id="work" className="main style3 bg-gray-700 text-white p-8">
     <div className="content text-center">
       <header>
-        <h2 className="text-3xl mb-4">My Work</h2>
+        <h2 className="text-3xl mb-4">Gallery</h2>
         <p className="mb-8">
           Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore
           condimentum. Fusce blandit ultrices sapien, in accumsan orci rhoncus

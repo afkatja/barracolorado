@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const Header = () => (
-  <header id="header" className="bg-gray-800 text-white p-4">
+  <header id="header" className="bg-gray-800  p-4">
     <h1 className="text-3xl">Big Picture</h1>
     <nav>
       <ul className="flex space-x-4">
@@ -9,13 +9,13 @@ const Header = () => (
           <Link href="#intro">Intro</Link>
         </li>
         <li>
-          <Link href="#one">What I Do</Link>
+          <Link href="#one">One</Link>
         </li>
         <li>
-          <Link href="#two">Who I Am</Link>
+          <Link href="#two">Two</Link>
         </li>
         <li>
-          <Link href="#work">My Work</Link>
+          <Link href="#work">Gallery</Link>
         </li>
         <li>
           <Link href="#contact">Contact</Link>
