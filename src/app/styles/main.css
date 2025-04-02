@@ -83,7 +83,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  /* font: inherit; */
   vertical-align: baseline;
 }
 
@@ -1971,22 +1971,19 @@ body {
 /* Main */
 
 .main {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
   display: flex;
   position: relative;
   margin: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
-.main > .content {
+.main .content {
   width: 45em;
   max-width: calc(100% - 4em);
   margin: 0 auto;
 }
 
-.main > .content > :last-child {
+.main .content > :last-child {
   margin-bottom: 0;
 }
 
@@ -1994,55 +1991,37 @@ body {
   min-height: 100%;
 }
 
-.main.style1 {
-  -moz-align-items: center;
-  -webkit-align-items: center;
-  -ms-align-items: center;
+.main .style1 {
   align-items: center;
-  -moz-justify-content: center;
-  -webkit-justify-content: center;
-  -ms-justify-content: center;
   justify-content: center;
   text-align: center;
   padding: 3em 0 3em 0;
 }
 
-.main.style1 h2 {
+.main .style1 h2 {
   font-size: 4.25em;
   line-height: 1em;
 }
 
-.main.style1 > .content {
-  -moz-transition: opacity 1s ease;
-  -webkit-transition: opacity 1s ease;
-  -ms-transition: opacity 1s ease;
+.main .style1 .content {
   transition: opacity 1s ease;
-  -moz-transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
   transform: translateZ(0);
   opacity: 1;
   margin: 0;
 }
 
-.main.style1.inactive > .content {
+.main .style1.inactive .content {
   opacity: 0;
 }
 
-.main.style2 {
-  -moz-align-items: center;
-  -webkit-align-items: center;
-  -ms-align-items: center;
+.main .style2 {
   align-items: center;
-  -moz-justify-content: center;
-  -webkit-justify-content: center;
-  -ms-justify-content: center;
   justify-content: center;
   padding: 3em 0 3em 0;
   overflow: hidden;
 }
 
-.main.style2 > .content {
+.main .style2 > .content {
   -moz-transition: -moz-transform 1s ease;
   -webkit-transition: -webkit-transform 1s ease;
   -ms-transition: -ms-transform 1s ease;
@@ -2056,72 +2035,72 @@ body {
   margin: 0;
 }
 
-.main.style2.left {
+.main .style2.left {
   -moz-justify-content: -moz-flex-start;
   -webkit-justify-content: -webkit-flex-start;
   -ms-justify-content: -ms-flex-start;
   justify-content: flex-start;
 }
 
-.main.style2.right {
+.main .style2.right {
   -moz-justify-content: -moz-flex-end;
   -webkit-justify-content: -webkit-flex-end;
   -ms-justify-content: -ms-flex-end;
   justify-content: flex-end;
 }
 
-.main.style2.inactive.left > .content {
+.main .style2.inactive.left > .content {
   -moz-transform: translateX(-100%);
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
   transform: translateX(-100%);
 }
 
-.main.style2.inactive.right > .content {
+.main .style2.inactive.right > .content {
   -moz-transform: translateX(100%);
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   transform: translateX(100%);
 }
 
-.main.style3 {
+.main .style3 {
   text-align: center;
   padding: 6em 0 6em 0;
 }
 
-.main.style3 .content > header {
+.main .style3 .content > header {
   margin-bottom: 2em;
 }
 
-.main.style3.primary {
+.main .style3.primary {
   background: #ffffff;
 }
 
-.main.style3.secondary {
+.main .style3.secondary {
   background: #f5f6f7;
 }
 
-.main.dark {
+.main .dark {
   color: #ffffff;
 }
 
-.main.dark a {
+.main .dark a {
   color: inherit;
 }
 
-.main.dark .button.style2 {
+.main .dark .button.style2 {
   border-color: #ffffff;
 }
 
-.main.dark .button.style2:hover {
+.main .dark .button.style2:hover {
   background-color: rgba(255, 255, 255, 0.125);
 }
 
-.main.dark .button.style2:active {
+.main .dark .button.style2:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-.main.dark .button.style2.down {
+.main .dark .button.style2.down {
   background-image: url("/images/dark-arrow.svg");
 }
 
@@ -2130,25 +2109,25 @@ body.is-touch .main {
 }
 
 @media screen and (max-width: 1920px) {
-  .main.style2 .content {
+  .main .style2 .content {
     width: 40%;
   }
 }
 
 @media screen and (max-width: 1280px) {
-  .main.style2 .content {
+  .main .style2 .content {
     width: 50%;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .main.style2 .content {
+  .main .style2 .content {
     width: 60%;
   }
 }
 
 @media screen and (max-width: 736px) {
-  .main > .content br {
+  .main .content br {
     display: none;
   }
 
@@ -2156,28 +2135,28 @@ body.is-touch .main {
     height: auto !important;
   }
 
-  .main.style1 {
+  .main .style1 {
     padding: 4em 15px 4em 15px;
   }
 
-  .main.style1 h2 {
+  .main .style1 h2 {
     font-size: 3em;
   }
 
-  .main.style2 {
+  .main .style2 {
     padding: 6em 15px 6em 15px;
   }
 
-  .main.style2:before,
-  .main.style2:after {
+  .main .style2:before,
+  .main .style2:after {
     display: none !important;
   }
 
-  .main.style2 .button.anchored {
+  .main .style2 .button.anchored {
     display: none;
   }
 
-  .main.style2 .content {
+  .main .style2 .content {
     width: 100%;
     max-width: 100%;
     text-align: center;
@@ -2187,14 +2166,14 @@ body.is-touch .main {
     transform: none;
   }
 
-  .main.style3 {
+  .main .style3 {
     text-align: center;
     padding: 3em 10px 3em 10px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .main > .content {
+  .main .content {
     max-width: calc(100% - 1.5em);
   }
 }
