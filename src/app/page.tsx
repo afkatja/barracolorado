@@ -5,8 +5,23 @@ import Section from "../components/Section"
 import Gallery from "../components/Gallery"
 import Contact from "../components/Contact"
 import Footer from "../components/Footer"
+import { sanityFetch } from "../sanity/lib/client"
+import { PAGES_QUERY } from "../sanity/lib/queries"
 
-export default function Home() {
+const Home = async () => {
+  const content = await sanityFetch<
+    {
+      _id: string
+      slug: { current: string }
+      title: string
+      body: any
+    }[]
+  >({
+    query: PAGES_QUERY,
+    revalidate: 0,
+  })
+  console.log({ content })
+
   return (
     <>
       <Head>
@@ -19,6 +34,15 @@ export default function Home() {
       </Head>
       <Header />
       <Intro />
+      {content.map(item => (
+        <Section
+          key={item._id}
+          id={item._id}
+          title={item.title}
+          content={item.body}
+          nextSection="gallery"
+        />
+      ))}
       <Section
         id="one"
         title="One"
@@ -41,3 +65,4 @@ export default function Home() {
     </>
   )
 }
+export default Home
