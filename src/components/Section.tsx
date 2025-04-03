@@ -1,10 +1,12 @@
 "use client"
 import { Link, Element } from "react-scroll"
+import RichText from "./RichText"
+import { SanityDocument } from "sanity"
 
 interface SectionProps {
   id: string
   title: string
-  content: string
+  content: SanityDocument
   nextSection: string
 }
 
@@ -21,11 +23,11 @@ const Section: React.FC<SectionProps> = ({
         id === "one" ? "right" : "left"
       } dark bg-gray-800 text-white flex justify-center items-center p-8 flex-1`}
     >
-      <div className="content box style2 text-center">
+      <div className="content box style2">
         <header>
-          <h2 className="text-3xl mb-4">{title}</h2>
+          <h2 className="text-3xl mb-4 text-center">{title}</h2>
         </header>
-        <p className="mb-4">{content}</p>
+        <RichText body={content} />
       </div>
       <Link
         to={nextSection}
