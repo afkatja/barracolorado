@@ -1,13 +1,14 @@
 "use client"
 import { Link, Element } from "react-scroll"
 import RichText from "./RichText"
-import { SanityDocument } from "sanity"
+import { isSanityDocument, SanityDocument } from "sanity"
 
 interface SectionProps {
   id: string
   title: string
-  content: SanityDocument
+  content: SanityDocument | string
   nextSection?: string
+  children?: React.ReactNode
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -15,6 +16,7 @@ const Section: React.FC<SectionProps> = ({
   title,
   content,
   nextSection,
+  children,
 }) => (
   <Element name={id} className="main fullscreen">
     <section
@@ -23,11 +25,16 @@ const Section: React.FC<SectionProps> = ({
         id === "one" ? "right" : "left"
       } dark bg-gray-800 text-white flex justify-center items-center p-8 flex-1`}
     >
-      <div className="content box style2">
+      <div className="content flex flex-col box p-2.5 style2">
         <header>
           <h2 className="text-3xl mb-4 text-center">{title}</h2>
         </header>
-        <RichText body={content} />
+        {isSanityDocument(content) ? (
+          <RichText body={content} />
+        ) : (
+          <p>{content}</p>
+        )}
+        {children}
       </div>
       {nextSection && (
         <Link
