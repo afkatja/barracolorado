@@ -65,6 +65,11 @@ export const pageType = defineType({
       type: "boolean",
       initialValue: true,
     }),
+    defineField({
+      name: "route",
+      type: "boolean",
+      description: "Does the page has its own route?",
+    }),
   ],
   initialValue: {
     isPublished: true,
