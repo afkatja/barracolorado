@@ -1,6 +1,7 @@
 import Link from "next/link"
 import navigation from "../lib/navigation"
 import NavItem from "./NavItem"
+import Image from "next/image"
 
 const Header = async () => {
   const { main: mainNav, routeNavItems: routeNav } = await navigation()
@@ -8,7 +9,12 @@ const Header = async () => {
   return (
     <header id="header" className="bg-gray-800">
       <Link href="/" className="text-3xl text-slate-900 font-black">
-        Barra del Colorado
+        <Image
+          src="/images/logo.png"
+          alt="Barra del Colorado"
+          width={100}
+          height={100}
+        />
       </Link>
       <nav>
         <ul className="flex space-x-4">
