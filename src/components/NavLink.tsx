@@ -15,8 +15,8 @@ const NavLink = ({
       smooth
       duration={500}
       offset={-50}
-      className="cursor-pointer hover:font-bold"
-      activeClass="font-bold"
+      className="cursor-pointer hover:text-shadow-lg"
+      activeClass="text-shadow-lg"
     >
       {children}
     </Link>
