@@ -32,15 +32,16 @@ const RichText = ({ body }: { body: any }) => {
     },
 
     marks: {
-      internalLink: ({ value, children }) => (
-        <Link
-          href={value.slug.current}
-          className="fancy-underline dark:text-zinc-100"
-        >
-          {children}
-        </Link>
-      ),
-      strong: ({ value, children }) => (
+      internalLink: ({ value, children }) => {
+        return (
+          value?.slug && (
+            <Link href={value.slug.current} className="dark:text-zinc-100">
+              {children}
+            </Link>
+          )
+        )
+      },
+      strong: ({ children }) => (
         <strong className="dark:text-zinc-100 font-bold">{children}</strong>
       ),
     },
