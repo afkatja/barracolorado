@@ -1,12 +1,11 @@
-import Head from "next/head"
-import Header from "../components/Header"
 import Intro from "../components/Intro"
 import Section from "../components/Section"
 import Gallery from "../components/Gallery"
 import Contact from "../components/Contact"
-import Footer from "../components/Footer"
 import { sanityFetch } from "../sanity/lib/client"
 import { PAGES_QUERY } from "../sanity/lib/queries"
+import { SanityDocument } from "next-sanity"
+import PagesLayout from "./(pages)/layout"
 
 const Home = async () => {
   const content = await sanityFetch<
@@ -14,25 +13,18 @@ const Home = async () => {
       _id: string
       slug: { current: string }
       title: string
-      body: any
+      body: SanityDocument
     }[]
   >({
     query: PAGES_QUERY,
     revalidate: 0,
+    params: {
+      category: "Pages",
+    },
   })
-  console.log({ content })
 
   return (
-    <>
-      <Head>
-        <title>Big Picture by HTML5 UP</title>
-        <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no"
-        />
-      </Head>
-      <Header />
+    <PagesLayout>
       <Intro />
       {content.map(item => (
         <Section
@@ -43,26 +35,9 @@ const Home = async () => {
           nextSection="gallery"
         />
       ))}
-      <Section
-        id="one"
-        title="One"
-        content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-                  Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-                  id varius justo euismod in. Curabitur egestas consectetur magna."
-        nextSection="two"
-      />
-      <Section
-        id="two"
-        title="Two"
-        content="Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-                  Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-                  id varius justo euismod in. Curabitur egestas consectetur magna."
-        nextSection="gallery"
-      />
       <Gallery />
       <Contact />
-      <Footer />
-    </>
+    </PagesLayout>
   )
 }
 export default Home
