@@ -7,7 +7,7 @@ interface SectionProps {
   id: string
   title: string
   content: SanityDocument
-  nextSection: string
+  nextSection?: string
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -29,15 +29,17 @@ const Section: React.FC<SectionProps> = ({
         </header>
         <RichText body={content} />
       </div>
-      <Link
-        to={nextSection}
-        duration={500}
-        smooth
-        offset={-50}
-        className="button style2 down anchored bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Next
-      </Link>
+      {nextSection && (
+        <Link
+          to={nextSection}
+          duration={500}
+          smooth
+          offset={-50}
+          className="button style2 down anchored bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Next
+        </Link>
+      )}
     </section>
   </Element>
 )
