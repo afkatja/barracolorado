@@ -21,8 +21,6 @@ const Page = async ({
     params: { slug },
   })
 
-  console.log({ slug })
-
   return (
     <>
       <Section
