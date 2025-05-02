@@ -27,7 +27,7 @@ const Page = async ({
     params: { slug },
   })
 
-  const image = urlFor(content?.mainImage)
+  const image = content?.mainImage ? urlFor(content?.mainImage) : null
 
   return (
     <>
@@ -36,7 +36,7 @@ const Page = async ({
           <h1 className="text-5xl text-center p-5">{content.title}</h1>
           {content?.subtitle && <p>{content.subtitle}</p>}
         </header>
-        {content?.mainImage && (
+        {image && (
           <div className="image main">
             <Image src={image.url()} alt="test" />
           </div>

@@ -3,7 +3,7 @@ import Section from "../components/Section"
 import Gallery from "../components/Gallery"
 import Contact from "../components/Contact"
 import { sanityFetch } from "../sanity/lib/client"
-import { PAGES_QUERY } from "../sanity/lib/queries"
+import { ALL_PAGES_QUERY } from "../sanity/lib/queries"
 import { SanityDocument } from "next-sanity"
 import PagesLayout from "./(pages)/layout"
 
@@ -16,7 +16,7 @@ const Home = async () => {
       body: SanityDocument
     }[]
   >({
-    query: PAGES_QUERY,
+    query: ALL_PAGES_QUERY,
     revalidate: 0,
     params: {
       category: "Pages",

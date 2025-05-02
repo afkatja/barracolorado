@@ -1,23 +1,29 @@
 import { groq } from "next-sanity"
 
-export const ALL_PAGES_QUERY = groq`*[_type == "page" && defined(slug.current)][0...12]{
+export const ALL_PAGES_QUERY = groq`*[_type == "page" && defined(slug.current) && $category in categories[] -> title][0...12]{
   _id, title, slug, subtitle, body, _createdAt, _updatedAt, isPublished
 }`
 
-export const PAGES_QUERY = groq`
-  *[_type == 'page' && $category in categories[] -> title] {
-    _id, title, subtitle, body, slug, isPublished
+export const SUB_PAGES_QUERY = groq`
+  *[_type == 'page' && defined(parent) && parent->slug.current == $parent][] {
+    _id, title, subtitle, body, slug, isPublished, mainImage
   }
 `
 
 export const PAGE_QUERY = groq`
   *[_type == 'page' && slug.current == $slug][0] {
     _id, title, subtitle, description, mainImage, body, isPublished
-    }`
+}`
 
 export const NAV_QUERY = groq`
-  *[_type == 'page' && $category in categories[] -> title && route == false] {
-    _id, title, slug, isPublished, route
+  *[_type == 'navigation'][0] {
+    _id, title, 'slug': navId, 
+    items[] {
+      _id, title, 
+      navItemUrl {
+        internalLink -> {_id, slug, title}
+      }
+    }
   }
 `
 export const NAV_ROUTE_QUERY = groq`
@@ -25,3 +31,17 @@ export const NAV_ROUTE_QUERY = groq`
     _id, title, slug, isPublished, route
   }
 `
+
+export const NAVIGATION_QUERY = groq`*[_type == "navigation"] | order(order asc) {
+  _id,
+  title,
+  slug,
+  isMainNavItem,
+  parent->{
+    _id,
+    title,
+    slug
+  },
+  order,
+  description
+}`
