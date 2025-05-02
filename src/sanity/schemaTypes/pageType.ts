@@ -66,9 +66,11 @@ export const pageType = defineType({
       initialValue: true,
     }),
     defineField({
-      name: "route",
-      type: "boolean",
-      description: "Does the page has its own route?",
+      name: "parent",
+      title: "Parent Page",
+      type: "reference",
+      to: [{ type: "page" }],
+      description: "Reference to the parent page. Leave empty for main items.",
     }),
   ],
   initialValue: {
