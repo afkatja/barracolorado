@@ -482,64 +482,6 @@ body.is-preload:after {
 
 /* Type */
 
-body,
-input,
-textarea,
-select {
-  font-family: "Source Sans Pro", "sans-serif";
-  font-weight: 300;
-  font-size: 18pt;
-  line-height: 1.75em;
-  color: #39454b;
-  letter-spacing: 0.025em;
-}
-
-@media screen and (max-width: 1920px) {
-  body,
-  input,
-  textarea,
-  select {
-    font-size: 17pt;
-  }
-}
-
-@media screen and (max-width: 1680px) {
-  body,
-  input,
-  textarea,
-  select {
-    font-size: 15pt;
-  }
-}
-
-@media screen and (max-width: 1280px) {
-  body,
-  input,
-  textarea,
-  select {
-    font-size: 13pt;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  body,
-  input,
-  textarea,
-  select {
-    font-size: 13pt;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  body,
-  input,
-  textarea,
-  select {
-    font-size: 12pt;
-    line-height: 1.5em;
-  }
-}
-
 h1,
 h2,
 h3,
@@ -651,25 +593,10 @@ input[type="submit"],
 input[type="reset"],
 .button,
 button {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
   appearance: none;
-  -moz-transition: background-color 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
-  background-color: #98c593;
   border: 0;
-  border-radius: 3.5em;
-  color: #ffffff;
   cursor: pointer;
-  display: inline-block;
-  height: 3.5em;
-  line-height: 3.5em;
   outline: 0;
-  padding: 0 2em 0 2em;
-  position: relative;
   text-align: center;
   text-decoration: none;
 }
@@ -709,22 +636,6 @@ input[type="reset"].anchored,
 button.anchored {
   position: absolute;
   left: 50%;
-}
-
-input[type="button"]:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-.button:hover,
-button:hover {
-  background-color: #a8cea4;
-}
-
-input[type="button"]:active,
-input[type="submit"]:active,
-input[type="reset"]:active,
-.button:active,
-button:active {
-  background-color: #88bc82;
 }
 
 input[type="button"].style2,
@@ -1199,9 +1110,6 @@ table.default tfoot {
 /* Poptrox */
 
 .poptrox-popup {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  -ms-box-sizing: content-box;
   box-sizing: content-box;
   background: #fff;
   padding-bottom: 3em;
@@ -1790,7 +1698,7 @@ body.is-touch .poptrox-popup .closer {
   margin-bottom: 0;
   align-items: center;
 }
-
+/* 
 #header nav {
   margin-left: auto;
   display: flex;
@@ -1832,10 +1740,7 @@ body.is-touch .poptrox-popup .closer {
     font-size: 1em;
   }
 
-  #header nav {
-    display: none;
-  }
-}
+} */
 
 /* Main */
 

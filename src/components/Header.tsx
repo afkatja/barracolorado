@@ -9,7 +9,7 @@ const Header = async () => {
 
   return (
     <header id="header" className="bg-linear-to-bl from-teal-800 to-cyan-900">
-      <div className="mx-auto w-11/12 flex items-center">
+      <div className="mx-auto w-11/12 flex items-center p-2">
         <Link href="/" className="text-3xl text-slate-900">
           <Image
             src="/images/logo.svg"
