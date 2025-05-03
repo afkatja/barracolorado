@@ -5,8 +5,19 @@ import {
   categoryType,
   pageType,
   postType,
+  linkType,
+  navItemType,
+  navigationType,
 } from "./schemaTypes"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, categoryType, pageType, postType],
+  types: [
+    blockContentType,
+    categoryType,
+    pageType,
+    postType,
+    linkType,
+    navItemType,
+    navigationType,
+  ],
 }
