@@ -1,29 +1,31 @@
 import Link from "next/link"
-import navigation from "../lib/navigation"
-import NavItem from "./NavItem"
+// import navigation from "../lib/navigation"
+// import NavItem from "./NavItem"
 import Image from "next/image"
+import Navigation from "./Navigation"
 
 const Header = async () => {
-  const { main: mainNav, routeNavItems: routeNav } = await navigation()
+  // const { main: mainNav } = await navigation()
 
   return (
-    <header id="header" className="bg-gray-800">
+    <header id="header" className="bg-linear-to-bl from-teal-800 to-cyan-900">
       <div className="mx-auto w-11/12 flex items-center">
-        <Link href="/" className="text-3xl text-slate-900 font-black">
+        <Link href="/" className="text-3xl text-slate-900">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.svg"
             alt="Barra del Colorado"
             width={100}
             height={100}
           />
         </Link>
-        <nav className="ml-auto">
+        <Navigation />
+        {/* <nav className="ml-auto">
           <ul className="flex space-x-4">
-            {[...mainNav, ...routeNav].map(item => (
+            {[...mainNav].map(item => (
               <NavItem key={item.id} item={item} />
             ))}
           </ul>
-        </nav>
+        </nav> */}
       </div>
     </header>
   )
