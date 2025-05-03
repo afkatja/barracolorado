@@ -1,7 +1,7 @@
 "use client"
 import { Link, Element } from "react-scroll"
 import RichText from "./RichText"
-import { isSanityDocument, SanityDocument } from "sanity"
+import { SanityDocument } from "sanity"
 
 interface SectionProps {
   id: string
