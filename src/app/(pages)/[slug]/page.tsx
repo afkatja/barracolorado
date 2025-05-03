@@ -30,7 +30,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       description?: string
     }[]
   >({ query: SUB_PAGES_QUERY, params: { parent: slug } })
-  console.log({ pages })
 
   return (
     <>
