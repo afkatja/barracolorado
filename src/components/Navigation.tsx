@@ -1,30 +1,27 @@
+import * as React from "react"
+import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import { sanityFetch } from "../sanity/lib/client"
 import { NAV_QUERY } from "../sanity/lib/queries"
 import NavigationItem from "./NavigationItem"
-
-interface NavigationItem {
+import MobileNavigation from "./MobileNavigation"
+export interface INavigationItem {
   _id: string
   title: string
   slug: { current: string }
-  isMainNavItem: boolean
-  parent: NavigationItem | null
+  parent: INavigationItem | null
   order: number
-  description?: string
 }
-
-export default async function Navigation() {
-  const { items: navigationItems } = await sanityFetch<{
-    items: NavigationItem[]
-  }>({
+const Navigation = async () => {
+  const { items } = await sanityFetch<{ items: INavigationItem[] }>({
     query: NAV_QUERY,
   })
 
   // Group items by parent
-  const mainItems = navigationItems.filter(item => !item.parent)
-  const subItems = navigationItems.filter(item => item.parent)
+  const mainItems = items.filter(item => !item.parent)
+  const subItems = items.filter(item => item.parent)
 
   // Create a map of parent items to their children
-  const navigationMap = new Map<string, NavigationItem[]>()
+  const navigationMap = new Map<string, INavigationItem[]>()
   subItems.forEach(item => {
     if (item.parent) {
       const parentId = item.parent._id
@@ -35,17 +32,22 @@ export default async function Navigation() {
     }
   })
 
-  console.log({ navigationMap })
-
   return (
-    <nav className="flex items-center gap-1.5">
-      {mainItems.map(item => (
-        <NavigationItem
-          key={item._id}
-          item={item}
-          navigationMap={navigationMap}
-        />
-      ))}
-    </nav>
+    <>
+      <NavigationMenu.Root className="hidden md:block">
+        <NavigationMenu.List className="flex items-center gap-1.5">
+          {mainItems.map(item => (
+            <NavigationItem
+              key={item._id}
+              item={item}
+              navigationMap={navigationMap}
+            />
+          ))}
+        </NavigationMenu.List>
+      </NavigationMenu.Root>
+      <MobileNavigation mainItems={mainItems} navigationMap={navigationMap} />
+    </>
   )
 }
+
+export default Navigation
