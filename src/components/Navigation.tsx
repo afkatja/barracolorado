@@ -34,8 +34,8 @@ const Navigation = async () => {
 
   return (
     <>
-      <NavigationMenu.Root className="hidden md:block">
-        <NavigationMenu.List className="flex items-center gap-1.5">
+      <NavigationMenu.Root className="hidden md:block ml-auto">
+        <NavigationMenu.List className="flex items-center gap-1.5 m-0">
           {mainItems.map(item => (
             <NavigationItem
               key={item._id}

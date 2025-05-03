@@ -18,7 +18,7 @@ const Section: React.FC<SectionProps> = ({
   nextSection,
   children,
 }) => (
-  <Element name={id} className="main fullscreen">
+  <Element name={id} className="main md:fullscreen">
     <section
       id={id}
       className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center p-8 flex-1`}
