@@ -9,6 +9,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { urlFor } from "../../../sanity/lib/image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params
@@ -39,25 +40,38 @@ const Page = async ({ params }: { params: { slug: string } }) => {
         title={page.title}
         content={page.body}
       />
-      <div className="main fullscreen bg-linear-to-br from-teal-800 to-cyan-900">
-        <section className={` p-4 w-11/12 mx-auto`}>
-          <div className="grid grid-cols-4 gap-4">
+      <div className="main md:fullscreen bg-linear-to-br from-teal-800 to-cyan-900 py-2">
+        <section className={`md:p-4 w-11/12 mx-auto`}>
+          <div className="grid md:grid-cols-4 gap-1 md:gap-4">
             {pages.map(page => (
               <Link
                 key={page._id}
                 href={`/${slug}/${page.slug.current}`}
-                className="bg-gray-100 p-2 md:col-span-2 rounded-md md:flex gap-1.5 items-start"
+                className="group bg-white p-2 md:col-span-2 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-1 flex flex-col gap-3"
               >
                 {page?.mainImage && (
-                  <Image
-                    src={urlFor(page.mainImage).url()}
-                    width={100}
-                    height={100}
-                    alt={page.description ?? ""}
-                  />
+                  <div className="relative w-full aspect-video overflow-hidden rounded-md">
+                    <Image
+                      src={urlFor(page.mainImage).url()}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      alt={page.description ?? ""}
+                    />
+                  </div>
                 )}
-                {page?.description ??
-                  truncateString(blockToText(page.body), 100)}
+                <div className="flex flex-col gap-2 flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {page.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {page?.description ??
+                      truncateString(blockToText(page.body), 100)}
+                  </p>
+                  <div className="flex items-center justify-end text-teal-600 group-hover:text-teal-700 mt-auto">
+                    <span className="text-sm font-medium">Read more</span>
+                    <ArrowRightIcon className="w-1.5 h-1.5 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
