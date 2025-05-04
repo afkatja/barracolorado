@@ -51,5 +51,4 @@ const NavigationItem = ({
     </NavigationMenu.Item>
   )
 }
-
 export default NavigationItem

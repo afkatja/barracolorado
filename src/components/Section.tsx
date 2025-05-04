@@ -18,10 +18,10 @@ const Section: React.FC<SectionProps> = ({
   nextSection,
   children,
 }) => (
-  <Element name={id} className="main md:fullscreen">
+  <Element name={id} className="main md:h-screen">
     <section
       id={id}
-      className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center p-8 flex-1`}
+      className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center py-4 md:py-8 flex-1`}
     >
       <div className="content flex flex-col box p-2.5">
         <header>
@@ -40,7 +40,7 @@ const Section: React.FC<SectionProps> = ({
           duration={500}
           smooth
           offset={-50}
-          className="button style2 down anchored  hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+          className="button style2 down anchored  hover:bg-teal-700 text-white font-bold py-2 px-1 rounded-4xl animate-pulse"
         >
           Next
         </Link>

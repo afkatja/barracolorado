@@ -523,11 +523,6 @@ i {
   font-style: italic;
 }
 
-a {
-  transition: color 0.2s ease-in-out;
-  /* color: var(--color-link); */
-}
-
 sub {
   position: relative;
   top: 0.5em;
@@ -601,11 +596,11 @@ button.down {
   width: 5em;
   height: 5em;
   line-height: 4.5em;
-  padding: 0;
   background-image: url("/images/dark-arrow.svg");
   background-position: center center;
   background-repeat: no-repeat;
-  text-indent: -10em;
+  text-indent: -10rem;
+  white-space: nowrap;
   overflow: hidden;
 }
 
@@ -1776,7 +1771,6 @@ body.is-touch .poptrox-popup .closer {
 .main .style2 {
   align-items: center;
   justify-content: center;
-  padding: 3em 0 3em 0;
   /* overflow: hidden; */
 }
 
