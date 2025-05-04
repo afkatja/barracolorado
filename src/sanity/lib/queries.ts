@@ -38,3 +38,24 @@ export const NAV_ROUTE_QUERY = groq`
     _id, title, slug, isPublished, route
   }
 `
+
+export const BLOG_POSTS_QUERY = groq`*[_type == "post" && isPublished == true] | order(_createdAt desc) {
+  _id,
+  title,
+  slug,
+  mainImage,
+  body,
+  description,
+  _createdAt
+}`
+
+export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title,
+  subtitle,
+  slug,
+  mainImage,
+  body,
+  description,
+  _createdAt
+}`
