@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./styles/globals.css"
 import "./styles/main.css"
@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Barra del Colorado",
   description: "Wildlife Refuge in Costa Rica",
+  metadataBase: new URL("https://barradelcolorado.com"),
   keywords: [
     "Barra del Colorado",
     "Costa Rica",
@@ -82,11 +83,13 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/favicon/site.webmanifest",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    userScalable: false,
-  },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
