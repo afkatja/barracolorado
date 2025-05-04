@@ -14,13 +14,13 @@ const Intro = () => (
         <p className="mb-4">
           Welcome to <strong>Barra Coronado</strong>
         </p>
-        <footer>
+        <footer className="relative py-4">
           <Link
             to="one"
             smooth
             duration={500}
             offset={-50}
-            className="button style2 down bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="button style2 down text-gray-50 font-bold py-2 px-1 rounded-4xl motion-safe:animate-bounce hover:animate-bounce absolute bottom-0 left-1/2 -translate-x-1/2"
           >
             More
           </Link>
