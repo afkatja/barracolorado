@@ -17,7 +17,7 @@ const NavItem = ({
       {item.route ? (
         <Link
           href={`/${item.href}`}
-          className={`cursor-pointer hover:text-shadow-lg ${pathname.includes(item.slug.current) ? "text-shadow-lg text-amber-700" : ""}`}
+          className={`cursor-pointer hover:text-shadow-lg text-gray-50 ${pathname.includes(item.slug.current) ? "text-shadow-lg text-amber-700" : ""}`}
         >
           {item.name}
         </Link>
