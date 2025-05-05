@@ -59,3 +59,14 @@ export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug][
   description,
   _createdAt
 }`
+
+export const GALLERY_QUERY = groq`*[_type == "gallery"][0]{
+  title,
+  description,
+  images[]{
+    _key,
+    asset->,
+    alt,
+    caption
+  }
+}`

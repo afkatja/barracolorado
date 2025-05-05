@@ -1,11 +1,11 @@
 import Intro from "../components/Intro"
 import Section from "../components/Section"
-import Gallery from "../components/Gallery"
 import Contact from "../components/Contact"
 import { sanityFetch } from "../sanity/lib/client"
-import { ALL_PAGES_QUERY } from "../sanity/lib/queries"
+import { ALL_PAGES_QUERY, GALLERY_QUERY } from "../sanity/lib/queries"
 import { SanityDocument } from "next-sanity"
 import PagesLayout from "./(pages)/layout"
+import GalleryClient from "./gallery/GalleryClient"
 
 const Home = async () => {
   const content = await sanityFetch<
@@ -23,6 +23,19 @@ const Home = async () => {
     },
   })
 
+  const gallery = await sanityFetch<{
+    title: string
+    description?: string
+    images: Array<{
+      _key: string
+      asset: {
+        _ref: string
+      }
+      alt: string
+      caption?: string
+    }>
+  }>({ query: GALLERY_QUERY })
+
   return (
     <PagesLayout>
       <Intro />
@@ -35,7 +48,12 @@ const Home = async () => {
           nextSection="gallery"
         />
       ))}
-      <Gallery />
+      <section
+        id="gallery"
+        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center py-4 md:py-8 flex-1`}
+      >
+        <GalleryClient gallery={gallery} />
+      </section>
       <Contact />
     </PagesLayout>
   )

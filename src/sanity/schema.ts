@@ -8,6 +8,7 @@ import {
   linkType,
   navItemType,
   navigationType,
+  galleryType,
 } from "./schemaTypes"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     linkType,
     navItemType,
     navigationType,
+    galleryType,
   ],
 }
