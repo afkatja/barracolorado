@@ -7,7 +7,15 @@ const PagesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <RootLayout>
       <Header />
-      {children}
+      <main
+        className="min-h-screen"
+        style={{
+          viewTimelineName: "--scroll-timeline",
+          scrollTimelineName: "--scroll-timeline",
+        }}
+      >
+        {children}
+      </main>
       <Footer />
     </RootLayout>
   )
