@@ -1,0 +1,54 @@
+"use client"
+import React, { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { cn } from "@/lib/utils"
+
+interface GalleryAnimationProps {
+  children: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+}
+
+const GalleryAnimation: React.FC<GalleryAnimationProps> = ({
+  children,
+  className = "",
+  style = {},
+}) => {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!ref.current) return
+
+    // Random initial position and opacity
+    const randomX = (Math.random() - 0.5) * 200 // Random value between -100 and 100
+    const randomY = (Math.random() - 0.5) * 200 // Random value between -100 and 100
+    const randomRotation = (Math.random() - 0.5) * 20 // Random rotation between -10 and 10 degrees
+
+    // Set initial state
+    gsap.set(ref.current, {
+      x: randomX,
+      y: randomY,
+      rotation: randomRotation,
+      opacity: 0,
+    })
+
+    // Animate to final position
+    gsap.to(ref.current, {
+      x: 0,
+      y: 0,
+      rotation: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      delay: Math.random() * 1.5, // Random delay between 0 and 0.5 seconds
+    })
+  }, [])
+
+  return (
+    <div ref={ref} className={cn(className)} style={style}>
+      {children}
+    </div>
+  )
+}
+
+export default GalleryAnimation
