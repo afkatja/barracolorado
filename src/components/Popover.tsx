@@ -4,16 +4,16 @@ import { urlFor } from "../sanity/lib/image"
 import Image from "next/image"
 const Popover = ({
   selectedImage,
-  onImageClick,
+  onClose,
 }: {
   selectedImage: SanityImageObject & { caption?: string; alt: string }
-  onImageClick: () => void
+  onClose: () => void
 }) => {
   return (
     <div className="fixed inset-0 bg-gray-900/90 bg-opacity-75 flex items-center justify-center p-4 z-50">
       <button
         className="absolute top-4 right-4 text-white text-2xl"
-        onClick={onImageClick}
+        onClick={onClose}
       >
         ×
       </button>
