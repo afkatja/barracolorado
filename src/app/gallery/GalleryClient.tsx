@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState, useRef, useEffect, useMemo } from "react"
-import { urlFor } from "../../sanity/lib/image"
 import Image from "next/image"
 import Popover from "@/components/Popover"
 import GalleryAnimation from "@/components/GalleryAnimation"
 import gsap from "gsap"
+import { urlFor } from "../../sanity/lib/image"
 
 interface GalleryClientProps {
   gallery: {
@@ -21,15 +21,6 @@ interface GalleryClientProps {
     }>
   }
 }
-
-// Fisher-Yates shuffle algorithm
-// const shuffle = (array: any[]) => {
-//   const arr = array
-//     .map(value => ({ value, sort: Math.random() }))
-//     .sort((a, b) => a.sort - b.sort)
-//     .map(({ value }) => value)
-//   return arr
-// }
 
 const GalleryClient = ({ gallery }: GalleryClientProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
