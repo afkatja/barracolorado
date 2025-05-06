@@ -1,11 +1,18 @@
 import React from "react"
 import RootLayout from "../layout"
-import Header from "../../components/Header"
-import Footer from "../../components/Footer"
+import Header from "../../../components/Header"
+import Footer from "../../../components/Footer"
 
-const PagesLayout = ({ children }: { children: React.ReactNode }) => {
+const PagesLayout = async ({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: { lang: string }
+}) => {
+  const { lang } = await params
   return (
-    <RootLayout>
+    <RootLayout params={{ lang }}>
       <Header />
       <main
         className="min-h-screen"

@@ -293,7 +293,6 @@ input[type="reset"],
 button {
   appearance: none;
   border: 0;
-  cursor: pointer;
   outline: 0;
   text-align: center;
   text-decoration: none;
@@ -859,9 +858,6 @@ table.default tfoot {
 
 .poptrox-popup .nav-next,
 .poptrox-popup .nav-previous {
-  -moz-transition: opacity 0.2s ease-in-out;
-  -webkit-transition: opacity 0.2s ease-in-out;
-  -ms-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
   position: absolute;
   top: 0;

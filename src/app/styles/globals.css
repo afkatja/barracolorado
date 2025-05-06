@@ -38,6 +38,16 @@
       opacity: 1;
     }
   }
+
+  /* Scale utilities */
+  --scale-0: 0;
+
+  /* Margin utilities */
+  --margin-negative-2: -0.5rem;
+
+  /* Transition properties */
+  --transition-transform: transform;
+  --transition-opacity: opacity;
 }
 
 /* @media (prefers-color-scheme: dark) {
