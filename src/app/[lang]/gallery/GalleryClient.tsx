@@ -5,7 +5,7 @@ import Image from "next/image"
 import Popover from "@/components/Popover"
 import GalleryAnimation from "@/components/GalleryAnimation"
 import gsap from "gsap"
-import { urlFor } from "../../sanity/lib/image"
+import { urlFor } from "@/sanity/lib/image"
 
 interface GalleryClientProps {
   gallery: {

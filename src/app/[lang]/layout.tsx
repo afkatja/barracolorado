@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import "./styles/globals.css"
-import "./styles/main.css"
 import Head from "next/head"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
+import { locales } from "@/i18n"
+import "../styles/globals.css"
+import "../styles/main.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
+const inter = Inter({ subsets: ["latin"] })
+
 export const metadata: Metadata = {
-  title: "Barra del Colorado",
-  description: "Wildlife Refuge in Costa Rica",
+  title: "Vara Colorado",
+  description: "Vara Colorado - Your trusted partner in Colorado",
   metadataBase: new URL("https://barradelcolorado.com"),
   keywords: [
     "Barra del Colorado",
@@ -92,13 +96,22 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map(locale => ({
+    lang: locale.id,
+  }))
+}
+
+const RootLayout = async ({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode
-}>) {
+  params: { lang: string }
+}) => {
+  const { lang } = await params
   return (
-    <html lang="en">
+    <html lang={lang}>
       <Head>
         <title>Barra del Colorado</title>
         <meta charSet="utf-8" />
@@ -108,10 +121,12 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen ${inter.className}`}
       >
         {children}
       </body>
     </html>
   )
 }
+
+export default RootLayout

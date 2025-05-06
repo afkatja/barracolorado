@@ -1,12 +1,11 @@
 import React from "react"
-import { sanityFetch } from "../../../../sanity/lib/client"
-import { PAGE_QUERY } from "../../../../sanity/lib/queries"
+import { PAGE_QUERY } from "@/sanity/lib/queries"
 import { SanityDocument } from "next-sanity"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import Image from "next/image"
-import { urlFor } from "../../../../sanity/lib/image"
-import RichText from "../../../../components/RichText"
-
+import { urlFor } from "@/sanity/lib/image"
+import RichText from "@/components/RichText"
+import { sanityFetch } from "@/sanity/lib/client"
 const Page = async ({
   params,
 }: {

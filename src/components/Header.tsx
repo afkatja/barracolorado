@@ -1,12 +1,9 @@
 import Link from "next/link"
-// import navigation from "../lib/navigation"
-// import NavItem from "./NavItem"
 import Navigation from "./Navigation"
 import { Logo } from "./icons"
+import LanguageSelector from "./LanguageSelector"
 
 const Header = async () => {
-  // const { main: mainNav } = await navigation()
-
   return (
     <header
       id="header"
@@ -17,13 +14,7 @@ const Header = async () => {
           <Logo className="fill-gray-50" />
         </Link>
         <Navigation />
-        {/* <nav className="ml-auto">
-          <ul className="flex space-x-4">
-            {[...mainNav].map(item => (
-              <NavItem key={item.id} item={item} />
-            ))}
-          </ul>
-        </nav> */}
+        <LanguageSelector />
       </div>
     </header>
   )

@@ -1,13 +1,14 @@
-import Intro from "../components/Intro"
-import Section from "../components/Section"
-import Contact from "../components/Contact"
-import { sanityFetch } from "../sanity/lib/client"
-import { ALL_PAGES_QUERY, GALLERY_QUERY } from "../sanity/lib/queries"
+import Intro from "../../components/Intro"
+import Section from "../../components/Section"
+import Contact from "../../components/Contact"
+import { sanityFetch } from "../../sanity/lib/client"
+import { ALL_PAGES_QUERY, GALLERY_QUERY } from "../../sanity/lib/queries"
 import { SanityDocument } from "next-sanity"
 import PagesLayout from "./(pages)/layout"
 import GalleryClient from "./gallery/GalleryClient"
 
-const Home = async () => {
+const Home = async ({ params }: { params: { lang: string } }) => {
+  const { lang } = await params
   const content = await sanityFetch<
     {
       _id: string
@@ -20,6 +21,7 @@ const Home = async () => {
     revalidate: 0,
     params: {
       category: "Pages",
+      locale: lang,
     },
   })
 
@@ -37,7 +39,7 @@ const Home = async () => {
   }>({ query: GALLERY_QUERY })
 
   return (
-    <PagesLayout>
+    <PagesLayout params={params}>
       <Intro />
       {content.map(item => (
         <Section
