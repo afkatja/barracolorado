@@ -1,17 +1,17 @@
 import { groq } from "next-sanity"
 
-export const ALL_PAGES_QUERY = groq`*[_type == "page" && defined(slug.current) && $category in categories[] -> title][0...12]{
+export const ALL_PAGES_QUERY = groq`*[_type == "page" && defined(slug.current) && $category in categories[] -> title && language == $locale][0...12]{
   _id, title, slug, subtitle, body, _createdAt, _updatedAt, isPublished
 }`
 
 export const SUB_PAGES_QUERY = groq`
-  *[_type == 'page' && defined(parent) && parent->slug.current == $parent][] {
+  *[_type == 'page' && defined(parent) && parent->slug.current == $parent && language == $locale][] {
     _id, title, subtitle, body, slug, isPublished, mainImage
   }
 `
 
 export const PAGE_QUERY = groq`
-  *[_type == 'page' && slug.current == $slug][0] {
+  *[_type == 'page' && slug.current == $slug && language == $locale][0] {
     _id, title, subtitle, description, mainImage, body, isPublished
 }`
 
@@ -39,7 +39,7 @@ export const NAV_ROUTE_QUERY = groq`
   }
 `
 
-export const BLOG_POSTS_QUERY = groq`*[_type == "post" && isPublished == true] | order(_createdAt desc) {
+export const BLOG_POSTS_QUERY = groq`*[_type == "post" && isPublished == true && language == $locale] | order(_createdAt desc) {
   _id,
   title,
   slug,
@@ -49,7 +49,7 @@ export const BLOG_POSTS_QUERY = groq`*[_type == "post" && isPublished == true] |
   _createdAt
 }`
 
-export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
+export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug && language == $locale][0] {
   _id,
   title,
   subtitle,
