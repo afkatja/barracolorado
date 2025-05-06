@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { urlFor } from "../../sanity/lib/image"
 import Image from "next/image"
 import Popover from "@/components/Popover"
 import GalleryAnimation from "@/components/GalleryAnimation"
+import gsap from "gsap"
 // import useEmblaCarousel from "embla-carousel-react"
 
 interface GalleryClientProps {
@@ -33,6 +34,7 @@ const shuffle = (array: any[]) => {
 
 const GalleryClient = ({ gallery }: GalleryClientProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const popoverRef = useRef<HTMLDivElement>(null)
   // const [emblaRef] = useEmblaCarousel({
   //   align: "start",
   //   containScroll: "trimSnaps",
@@ -40,6 +42,35 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
 
   // Shuffle the images array
   const shuffledImages = shuffle(gallery.images)
+
+  useEffect(() => {
+    if (!popoverRef.current) return
+
+    if (selectedImage !== null) {
+      // Animate in
+      gsap.fromTo(
+        popoverRef.current,
+        {
+          opacity: 0,
+          scale: 0.8,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      )
+    } else {
+      // Animate out
+      gsap.to(popoverRef.current, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in",
+      })
+    }
+  }, [selectedImage])
 
   return (
     <div className="mx-auto w-11/12">
@@ -75,12 +106,18 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
         })}
       </div>
 
-      {selectedImage !== null && (
-        <Popover
-          selectedImage={shuffledImages[selectedImage]}
-          onImageClick={() => setSelectedImage(null)}
-        />
-      )}
+      <div
+        ref={popoverRef}
+        style={{ opacity: 0 }}
+        className={`${selectedImage === null ? "pointer-events-none" : ""} fixed inset-0 bg-gray-900/90 bg-opacity-75 flex items-center justify-center p-4 z-50`}
+      >
+        {selectedImage !== null && (
+          <Popover
+            selectedImage={shuffledImages[selectedImage]}
+            onClose={() => setSelectedImage(null)}
+          />
+        )}
+      </div>
     </div>
   )
 }

@@ -15,9 +15,10 @@ const GalleryAnimation: React.FC<GalleryAnimationProps> = ({
   style = {},
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const hasAnimated = useRef(false)
 
   useEffect(() => {
-    if (!ref.current) return
+    if (!ref.current || hasAnimated.current) return
 
     // Random initial position and opacity
     const randomX = (Math.random() - 0.5) * 200 // Random value between -100 and 100
@@ -40,7 +41,10 @@ const GalleryAnimation: React.FC<GalleryAnimationProps> = ({
       opacity: 1,
       duration: 1,
       ease: "power2.out",
-      delay: Math.random() * 1.5, // Random delay between 0 and 0.5 seconds
+      delay: Math.random() * 1.5, // Random delay between 0 and 1.5 seconds
+      onComplete: () => {
+        hasAnimated.current = true
+      },
     })
   }, [])
 
