@@ -1,12 +1,11 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useMemo } from "react"
 import { urlFor } from "../../sanity/lib/image"
 import Image from "next/image"
 import Popover from "@/components/Popover"
 import GalleryAnimation from "@/components/GalleryAnimation"
 import gsap from "gsap"
-// import useEmblaCarousel from "embla-carousel-react"
 
 interface GalleryClientProps {
   gallery: {
@@ -24,24 +23,31 @@ interface GalleryClientProps {
 }
 
 // Fisher-Yates shuffle algorithm
-const shuffle = (array: any[]) => {
-  const arr = array
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
-  return arr
-}
+// const shuffle = (array: any[]) => {
+//   const arr = array
+//     .map(value => ({ value, sort: Math.random() }))
+//     .sort((a, b) => a.sort - b.sort)
+//     .map(({ value }) => value)
+//   return arr
+// }
 
 const GalleryClient = ({ gallery }: GalleryClientProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const popoverRef = useRef<HTMLDivElement>(null)
-  // const [emblaRef] = useEmblaCarousel({
-  //   align: "start",
-  //   containScroll: "trimSnaps",
-  // })
+  const [shuffleSeed] = useState(() => Math.random())
 
-  // Shuffle the images array
-  const shuffledImages = shuffle(gallery.images)
+  // Memoize the shuffled images to prevent re-shuffling on re-renders
+  const shuffledImages = useMemo(() => {
+    return [...gallery.images].sort((a, b) => {
+      const hashA = (a._key + shuffleSeed)
+        .split("")
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0)
+      const hashB = (b._key + shuffleSeed)
+        .split("")
+        .reduce((acc, char) => acc + char.charCodeAt(0), 0)
+      return hashA - hashB
+    })
+  }, [gallery.images, shuffleSeed])
 
   useEffect(() => {
     if (!popoverRef.current) return
@@ -109,11 +115,12 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
       <div
         ref={popoverRef}
         style={{ opacity: 0 }}
-        className={`${selectedImage === null ? "pointer-events-none" : ""} fixed inset-0 bg-gray-900/90 bg-opacity-75 flex items-center justify-center p-4 z-50`}
+        className={`${selectedImage === null ? "pointer-events-none" : ""} fixed inset-0 bg-gray-900/90 bg-opacity-75 z-50`}
       >
         {selectedImage !== null && (
           <Popover
             selectedImage={shuffledImages[selectedImage]}
+            images={shuffledImages}
             onClose={() => setSelectedImage(null)}
           />
         )}

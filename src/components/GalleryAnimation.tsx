@@ -39,7 +39,7 @@ const GalleryAnimation: React.FC<GalleryAnimationProps> = ({
       y: 0,
       rotation: 0,
       opacity: 1,
-      duration: 1,
+      duration: 0.5,
       ease: "power2.out",
       delay: Math.random() * 1.5, // Random delay between 0 and 1.5 seconds
       onComplete: () => {
