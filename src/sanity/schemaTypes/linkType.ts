@@ -10,7 +10,7 @@ export const linkType = defineType({
       name: "internalLink",
       description: "Select pages for navigation",
       type: "reference",
-      to: [{ type: "page" }, { type: "post" }],
+      to: [{ type: "page" }, { type: "post" }, { type: "gallery" }],
     }),
     defineField({
       name: "externalUrl",
