@@ -25,6 +25,7 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.9.4",
     "gsap": "^3.12.5",
+    "lucide-react": "^0.507.0",
     "media": "^0.2.1",
     "next": "^15.2.4",
     "next-sanity": "^9.9.9",
@@ -35,9 +36,9 @@
     "sanity-plugin-media": "^3.0.2",
     "scrollex": "^2.0.1",
     "styled-components": "^6.1.17",
-    "tailwindcss-animate": "^1.0.7",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^4.1"
+    "tailwindcss": "^4.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
