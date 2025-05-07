@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity"
-// import { isUniqueOtherThanLanguage } from "../../lib/utils"
+import { isUniqueOtherThanLanguage } from "../../lib/utils"
 
 export const pageType = defineType({
   name: "page",
@@ -15,6 +15,7 @@ export const pageType = defineType({
     defineField({
       name: "title",
       type: "string",
+      validation: rule => rule.required(),
     }),
     defineField({
       name: "subtitle",
@@ -30,7 +31,7 @@ export const pageType = defineType({
       options: {
         source: "title",
         maxLength: 96,
-        // isUnique: isUniqueOtherThanLanguage,
+        isUnique: isUniqueOtherThanLanguage,
       },
       validation: rule =>
         rule
