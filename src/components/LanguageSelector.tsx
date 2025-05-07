@@ -39,7 +39,7 @@ export default function LanguageSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 p-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium"
+        className="flex items-center gap-1 p-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
       >
         <span>{currentLanguage?.flag}</span>
         <span>{currentLanguage?.title}</span>
@@ -57,7 +57,7 @@ export default function LanguageSelector() {
             <button
               key={locale.id}
               onClick={() => handleLanguageChange(locale.id)}
-              className={`${currentLanguage?.id === locale.id ? "text-gray-400 cursor-default" : "text-gray-900"} flex items-center gap-1 w-full p-1 text-sm  hover:text-gray-400`}
+              className={`${currentLanguage?.id === locale.id ? "text-gray-400 cursor-default" : "text-gray-900 cursor-pointer"} flex items-center gap-1 w-full p-1 text-sm  hover:text-gray-400`}
               role="menuitem"
             >
               <span>{locale.flag}</span>
