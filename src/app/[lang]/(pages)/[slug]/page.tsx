@@ -1,18 +1,27 @@
 import React from "react"
-import Section from "../../../components/Section"
-import { sanityFetch } from "../../../sanity/lib/client"
-import { PAGE_QUERY, SUB_PAGES_QUERY } from "../../../sanity/lib/queries"
 import { SanityDocument } from "next-sanity"
-import { truncateString } from "../../../lib/string"
-import blockToText from "../../../sanity/lib/blockToText"
 import Link from "next/link"
 import Image from "next/image"
-import { urlFor } from "../../../sanity/lib/image"
+import Section from "@/components/Section"
+import { sanityFetch } from "../../../../sanity/lib/client"
+import { PAGE_QUERY, SUB_PAGES_QUERY } from "../../../../sanity/lib/queries"
+import { truncateString } from "../../../../lib/string"
+import blockToText from "../../../../sanity/lib/blockToText"
+import { urlFor } from "../../../../sanity/lib/image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = await params
+type PageParams = {
+  slug: string
+  lang: string
+}
+
+type PageProps = {
+  params: PageParams
+}
+
+const Page = async ({ params }: PageProps) => {
+  const { slug, lang } = await params
 
   const page = await sanityFetch<{
     _id: string
@@ -20,7 +29,8 @@ const Page = async ({ params }: { params: { slug: string } }) => {
     title: string
     body: SanityDocument
     description?: string
-  }>({ query: PAGE_QUERY, params: { slug } })
+  }>({ query: PAGE_QUERY, params: { slug, locale: lang } })
+
   const pages = await sanityFetch<
     {
       _id: string
@@ -30,7 +40,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       body: SanityDocument
       description?: string
     }[]
-  >({ query: SUB_PAGES_QUERY, params: { parent: slug } })
+  >({ query: SUB_PAGES_QUERY, params: { slug, parent: slug, locale: lang } })
 
   return (
     <>

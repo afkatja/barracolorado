@@ -6,12 +6,16 @@ import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
 import RichText from "@/components/RichText"
 import { sanityFetch } from "@/sanity/lib/client"
-const Page = async ({
-  params,
-}: {
-  params: Promise<Record<string, string>>
-}) => {
-  const { slug } = await params
+
+type PageProps = {
+  params: {
+    slug: string
+    lang: string
+  }
+}
+
+const Page = async ({ params }: PageProps) => {
+  const { slug, lang } = await params
   const content = await sanityFetch<{
     _id: string
     slug: { current: string }
@@ -23,7 +27,7 @@ const Page = async ({
   }>({
     query: PAGE_QUERY,
     revalidate: 0,
-    params: { slug },
+    params: { slug, locale: lang },
   })
 
   const image = content?.mainImage ? urlFor(content?.mainImage) : null
