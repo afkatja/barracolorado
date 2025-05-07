@@ -12,12 +12,15 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   ${TRANSLATION_QUERY}
 }`
 
-export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && parentPage->slug.current == $slug] {
+export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && parent->slug.current == $slug] {
   _id,
   _type,
   title,
   slug,
   language,
+  mainImage,
+  description,
+  "content": body,
   ${TRANSLATION_QUERY}
 }`
 

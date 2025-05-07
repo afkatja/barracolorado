@@ -1,5 +1,14 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType, StringRule } from "sanity"
 import { isUniqueOtherThanLanguage } from "../../lib/utils"
+
+const titleValidation = (rule: StringRule) =>
+  rule.custom((value, context) => {
+    const parent = context.document?.parent
+    if (parent && !value) {
+      return "Title is required when there is a parent page"
+    }
+    return true
+  })
 
 export const pageType = defineType({
   name: "page",
@@ -13,30 +22,43 @@ export const pageType = defineType({
       hidden: true,
     }),
     defineField({
+      name: "name",
+      type: "string",
+      validation: (rule: StringRule) =>
+        rule.custom((value, context) => {
+          if (!context.document?.title && !value) {
+            return "Required"
+          }
+          return true
+        }),
+    }),
+    defineField({
       name: "title",
       type: "string",
-      validation: rule => rule.required(),
+      validation: titleValidation,
     }),
     defineField({
       name: "subtitle",
       type: "string",
+      validation: titleValidation,
     }),
     defineField({
       name: "description",
       type: "string",
+      validation: titleValidation,
     }),
     defineField({
       name: "slug",
       type: "slug",
+      validation: rule =>
+        rule
+          .required()
+          .error("A slug is required to generate a page on the website"),
       options: {
         source: "title",
         maxLength: 96,
         isUnique: isUniqueOtherThanLanguage,
       },
-      validation: rule =>
-        rule
-          .required()
-          .error("A slug is required to generate a page on the website"),
     }),
     defineField({
       name: "mainImage",
@@ -80,12 +102,17 @@ export const pageType = defineType({
   preview: {
     select: {
       title: "title",
+      name: "name",
       subtitle: "subtitle",
       description: "description",
       media: "mainImage",
     },
     prepare(selection) {
-      return { ...selection }
+      const { title, name, ...rest } = selection
+      return {
+        ...rest,
+        title: title || name,
+      }
     },
   },
 })
