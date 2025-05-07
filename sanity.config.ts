@@ -34,7 +34,8 @@ export default defineConfig({
       // base: defaultLocale,
       apiVersion: apiVersion,
       // Define which document types should be internationalized
-      schemaTypes: ["page", "post", "navigation", "gallery"],
+      schemaTypes: ["page", "post", "home"],
+      bulkPublish: true,
     }),
   ],
 })
