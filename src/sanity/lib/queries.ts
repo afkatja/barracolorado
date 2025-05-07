@@ -7,6 +7,9 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   _id,
   _type,
   title,
+  subtitle,
+  description, 
+  mainImage,
   slug,
   language,
   ${TRANSLATION_QUERY}
