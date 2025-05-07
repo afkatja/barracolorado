@@ -6,6 +6,7 @@ import { navigationType } from "./navigationType"
 import { linkType } from "./linkType"
 import { navItemType } from "./navItem"
 import { galleryType } from "./galleryType"
+import { homeType } from "./homeType"
 
 export {
   postType,
@@ -16,4 +17,5 @@ export {
   navItemType,
   linkType,
   galleryType,
+  homeType,
 }
