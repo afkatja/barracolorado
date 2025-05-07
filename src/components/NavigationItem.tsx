@@ -32,12 +32,12 @@ const NavigationItem = ({
         </Link>
       </NavigationMenu.Trigger>
       {navigationMap.has(item._id) && (
-        <NavigationMenu.Content className="absolute top-full left-0 w-full bg-white shadow-lg rounded-md p-1">
+        <NavigationMenu.Content className="absolute top-full left-0 w-full max-w-15 bg-gray-50 shadow-lg rounded-md p-1">
           {navigationMap.get(item._id)?.map(subItem => (
             <Link
               key={subItem._id}
               href={`/${item.slug.current}/${subItem.slug.current}`}
-              className={`block p-3 hover:bg-gray-100 transition-colors ${
+              className={`block p-1 hover:text-gray-400 transition-colors ${
                 pathname === `/${item.slug.current}/${subItem.slug.current}`
                   ? "bg-gray-100"
                   : ""
