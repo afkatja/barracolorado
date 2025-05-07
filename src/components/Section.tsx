@@ -3,10 +3,16 @@ import { Link, Element } from "react-scroll"
 import RichText from "./RichText"
 import { SanityDocument } from "sanity"
 import ScrollAnimation from "./ScrollAnimation"
+import { urlFor } from "../sanity/lib/image"
+import Image from "next/image"
+import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 
 interface SectionProps {
   id: string
   title: string
+  subtitle?: string
+  description?: string
+  image: SanityImageObject
   content: SanityDocument | string
   nextSection?: string
   children?: React.ReactNode
@@ -15,6 +21,9 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({
   id,
   title,
+  subtitle,
+  description,
+  image,
   content,
   nextSection,
   children,
@@ -24,15 +33,34 @@ const Section: React.FC<SectionProps> = ({
     <Element name={id} className="main md:h-screen">
       <section
         id={id}
-        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center py-4 md:py-8 flex-1`}
+        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-white flex justify-center items-center py-4 md:py-8 flex-1`}
+        style={{
+          backgroundImage: image ? `url(${urlFor(image).url()})` : "",
+        }}
       >
         <ScrollAnimation
           direction={isEven ? "right" : "left"}
           className="content flex flex-col box p-2.5"
         >
-          <header>
-            <h2 className="text-3xl mb-4 text-center">{title}</h2>
+          <header className="flex">
+            {image && (
+              <Image
+                src={urlFor(image).url()}
+                alt={title}
+                width={100}
+                height={100}
+                className="rounded-lg w-1/2 h-1/2 mr-1"
+              />
+            )}
+            <div>
+              <h2 className="text-3xl font-bold">{title}</h2>
+              {subtitle && (
+                <h3 className="text-lg m1-2 font-medium">{subtitle}</h3>
+              )}
+            </div>
           </header>
+
+          {description && <p className="mt-2">{description}</p>}
           {typeof content === "string" ? (
             <p>{content}</p>
           ) : (

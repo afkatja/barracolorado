@@ -17,7 +17,7 @@ const Intro = ({
   <Element name="intro" className="main fullscreen">
     <section
       id="intro"
-      className="dark style1 bg-gray-900 text-white flex justify-center items-center p-8 flex-1 background-attachment-fixed background-size-cover background-position-center background-repeat-no-repeat"
+      className="dark style1 bg-gray-900 text-white flex justify-center items-center p-8 flex-1 bg-fixed bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${urlFor(image).url()})` }}
     >
       <div className="content text-center">
