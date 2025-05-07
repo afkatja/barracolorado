@@ -33,6 +33,9 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/studio") ||
+    pathname.startsWith("favicon") ||
+    pathname.startsWith("images") ||
+    pathname.startsWith("image") ||
     pathname.includes(".")
   ) {
     return NextResponse.next()
