@@ -9,6 +9,7 @@ import {
   navItemType,
   navigationType,
   galleryType,
+  homeType,
 } from "./schemaTypes"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -21,5 +22,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navItemType,
     navigationType,
     galleryType,
+    homeType,
   ],
 }
