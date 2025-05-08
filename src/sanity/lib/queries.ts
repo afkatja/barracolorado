@@ -3,7 +3,7 @@ import { groq } from "next-sanity"
 // Common translation query
 const TRANSLATION_QUERY = `"translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->`
 
-export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
+export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale && homeSection == true] {
   _id,
   _type,
   title,
@@ -12,6 +12,7 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   mainImage,
   slug,
   language,
+  homeSection,
   ${TRANSLATION_QUERY}
 }`
 

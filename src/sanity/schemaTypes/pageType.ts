@@ -95,6 +95,12 @@ export const pageType = defineType({
       to: [{ type: "page" }],
       description: "Reference to the parent page. Leave empty for main items.",
     }),
+    defineField({
+      name: "homeSection",
+      type: "boolean",
+      initialValue: false,
+      description: "Display in the home page?",
+    }),
   ],
   initialValue: {
     isPublished: true,
