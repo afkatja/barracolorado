@@ -32,9 +32,12 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug && lan
   _id,
   _type,
   title,
+  subtitle,
+  description,
   slug,
   language,
   content,
+  mainImage,
   ${TRANSLATION_QUERY}
 }`
 
@@ -73,10 +76,11 @@ export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug &
   title,
   slug,
   publishedAt,
-  excerpt,
-  coverImage,
-  content,
+  description,
+  mainImage,
+  "content": body,
   language,
+  _createdAt,
   ${TRANSLATION_QUERY}
 }`
 

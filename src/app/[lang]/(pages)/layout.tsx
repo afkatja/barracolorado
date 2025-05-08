@@ -15,7 +15,7 @@ const PagesLayout = async ({
     <RootLayout params={{ lang }}>
       <Header />
       <main
-        className="min-h-screen flex flex-col"
+        className="min-h-[calc(100vh-var(--header-height))] flex flex-col"
         style={{
           viewTimelineName: "--scroll-timeline",
           scrollTimelineName: "--scroll-timeline",
