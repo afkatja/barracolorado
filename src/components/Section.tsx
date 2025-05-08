@@ -30,7 +30,7 @@ const Section: React.FC<SectionProps> = ({
 }) => {
   const isEven = parseInt(id.replace(/\D/g, "")) % 2 === 0
   return (
-    <Element name={id} className="main md:h-screen">
+    <Element name={id} className="main md:h-[calc(100vh-var(--header-height))]">
       <section
         id={id}
         className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-white flex justify-center items-center py-4 md:py-8 flex-1`}
