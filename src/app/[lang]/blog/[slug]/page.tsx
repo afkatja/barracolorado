@@ -7,6 +7,8 @@ import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import { BLOG_POST_QUERY } from "../../../../sanity/lib/queries"
 import RichText from "../../../../components/RichText"
 import PagesLayout from "../../pagesLayout"
+import Breadcrumbs from "@/components/Breadcrumbs"
+import { format } from "date-fns"
 
 export default async function BlogPost({
   params,
@@ -21,7 +23,7 @@ export default async function BlogPost({
     subtitle?: string
     slug: { current: string }
     mainImage?: SanityImageObject
-    body?: SanityDocument
+    content?: SanityDocument
     description?: string
     _createdAt: string
   }>({
@@ -31,34 +33,54 @@ export default async function BlogPost({
 
   return (
     <PagesLayout params={{ lang }}>
-      <div className="main bg-linear-to-br from-teal-800 to-cyan-900 py-2">
-        <article className="md:p-4 w-11/12 mx-auto">
-          <div className="bg-gray-100 rounded-lg shadow-lg p-2 md:p-4">
-            {post?.mainImage && (
-              <div className="relative w-full aspect-video mb-2 rounded-lg overflow-hidden">
-                <Image
-                  src={urlFor(post.mainImage).url()}
-                  fill
-                  className="object-cover"
-                  alt={post.description ?? ""}
-                  priority
-                />
-              </div>
+      <div className="w-11/12 mx-auto py-1">
+        <Breadcrumbs
+          items={[
+            { label: "Blog", href: "/blog" },
+            { label: post.title, href: `/blog/${slug}` },
+          ]}
+        />
+      </div>
+      {/* Hero Section with Full-screen Image */}
+      <div className="relative h-[60vh] w-full overflow-hidden">
+        {post?.mainImage && (
+          <Image
+            src={urlFor(post.mainImage).url()}
+            fill
+            className="object-cover"
+            alt={post.description ?? ""}
+            priority
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 text-gray-50">
+          <div className=" absolute top-0 left-0 text-sm text-gray-300 mb-2 bg-gray-900/50 p-2 rounded-lg">
+            {new Date(post._createdAt).toLocaleDateString(lang)}
+          </div>
+          <div className="w-11/12 mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {post.title}
+            </h1>
+            {post.subtitle && (
+              <h2 className="text-xl md:text-2xl text-gray-200">
+                {post.subtitle}
+              </h2>
             )}
+          </div>
+        </div>
+      </div>
 
-            <header>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                {post.title}
-              </h1>
-              {post.subtitle && (
-                <h2 className="text-xl mb-4 ">{post.subtitle}</h2>
-              )}
-            </header>
-
+      {/* Content Section */}
+      <div className="main bg-linear-to-br from-teal-800 to-cyan-900 md:py-4">
+        <article className="py-2 w-11/12 mx-auto">
+          <div className="bg-gray-100 rounded-lg shadow-lg p-2 md:p-4 max-w-4xl mx-auto">
             {post.description && (
-              <p className="text-lg text-gray-600 mb-8">{post.description}</p>
+              <p className="text-lg text-gray-600 mb-8 italic border-l-4 border-teal-500 pl-4">
+                {post.description}
+              </p>
             )}
-            <RichText body={post.body} />
+
+            {post.content && <RichText body={post.content} />}
           </div>
         </article>
       </div>

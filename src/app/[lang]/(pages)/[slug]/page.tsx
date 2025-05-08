@@ -35,6 +35,7 @@ const Page = async ({ params }: PageProps) => {
           id={page._id}
           title={page.title}
           content={page.content}
+          image={page.mainImage}
         />
       )}
       <div className="main flex-1 md:fullscreen bg-linear-to-br from-teal-800 to-cyan-900 py-2">
