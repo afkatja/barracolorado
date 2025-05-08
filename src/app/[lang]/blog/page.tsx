@@ -30,7 +30,7 @@ export default async function BlogPage({
     <PagesLayout params={{ lang }}>
       <div
         className="main bg-linear-to-br from-teal-800 to-cyan-900 py-2 
-        min-h-screen"
+        min-h-[calc(100vh-var(--header-height))] flex flex-col"
       >
         <section className="w-11/12 mx-auto">
           <h1 className="text-3xl font-bold text-gray-50 mb-8">Blog Posts</h1>
