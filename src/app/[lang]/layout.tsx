@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Vara Colorado",
-  description: "Vara Colorado - Your trusted partner in Colorado",
+  title: "Barra Colorado",
+  description: "Barra Colorado - Your trusted partner in Barra del Colorado",
   metadataBase: new URL("https://barradelcolorado.com"),
   keywords: [
     "Barra del Colorado",
