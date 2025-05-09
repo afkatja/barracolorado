@@ -71,7 +71,7 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
 
   return (
     <div className="mx-auto w-11/12">
-      <h1 className="text-4xl font-bold text-white mb-2">{gallery.title}</h1>
+      <h1 className="text-4xl font-bold text-gray-50 mb-2">{gallery.title}</h1>
       {gallery.description && (
         <p className="text-xl text-gray-200 mb-1">{gallery.description}</p>
       )}

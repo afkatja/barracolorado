@@ -66,7 +66,7 @@ const Popover = ({ selectedImage, images, onClose }: PopoverProps) => {
   return (
     <div className="w-full h-full flex items-center justify-center p-4">
       <button
-        className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors"
+        className="absolute top-4 right-4 text-gray-50 text-2xl hover:text-gray-300 transition-colors"
         onClick={onClose}
       >
         ×
@@ -85,7 +85,9 @@ const Popover = ({ selectedImage, images, onClose }: PopoverProps) => {
                   />
                 </div>
                 {image.caption && (
-                  <p className="text-white text-center mt-4">{image.caption}</p>
+                  <p className="text-gray-50 text-center mt-4">
+                    {image.caption}
+                  </p>
                 )}
               </div>
             ))}
