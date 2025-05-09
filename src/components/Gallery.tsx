@@ -3,7 +3,10 @@ import { Element } from "react-scroll"
 
 const Gallery = () => (
   <Element name="gallery" className="main fullscreen">
-    <section id="gallery" className="style3 bg-gray-700 text-white p-8 flex-1">
+    <section
+      id="gallery"
+      className="style3 bg-gray-700 text-gray-50 p-8 flex-1"
+    >
       <div className="content text-center">
         <header>
           <h2 className="text-3xl mb-4">Gallery</h2>
