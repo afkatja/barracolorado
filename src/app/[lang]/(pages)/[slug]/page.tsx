@@ -4,6 +4,7 @@ import { sanityFetch } from "../../../../sanity/lib/client"
 import { PAGE_QUERY, SUB_PAGES_QUERY } from "../../../../sanity/lib/queries"
 import PageCard from "./pageCard"
 import { Page as PageType } from "../../../../types"
+import { notFound } from "next/navigation"
 
 type PageParams = {
   slug: string
@@ -26,6 +27,8 @@ const Page = async ({ params }: PageProps) => {
     query: SUB_PAGES_QUERY,
     params: { slug, locale: lang },
   })
+
+  if (!page) return notFound()
 
   return (
     <>

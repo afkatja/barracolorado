@@ -8,7 +8,7 @@ import { BLOG_POST_QUERY } from "../../../../sanity/lib/queries"
 import RichText from "../../../../components/RichText"
 import PagesLayout from "../../pagesLayout"
 import Breadcrumbs from "@/components/Breadcrumbs"
-import { format } from "date-fns"
+import { notFound } from "next/navigation"
 
 export default async function BlogPost({
   params,
@@ -30,6 +30,8 @@ export default async function BlogPost({
     query: BLOG_POST_QUERY,
     params: { slug, locale: lang },
   })
+
+  if (!post) return notFound()
 
   return (
     <PagesLayout params={{ lang }}>
