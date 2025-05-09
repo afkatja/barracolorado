@@ -3,7 +3,10 @@ import { Element } from "react-scroll"
 
 const Contact = () => (
   <Element name="contact" className="main fullscreen">
-    <section id="contact" className="style3 bg-gray-800 text-white p-8 flex-1">
+    <section
+      id="contact"
+      className="style3 bg-gray-800 text-gray-50 p-8 flex-1"
+    >
       <div className="content text-center">
         <header>
           <h2 className="text-3xl mb-4">Say Hello.</h2>
@@ -45,7 +48,7 @@ const Contact = () => (
                 <input
                   type="submit"
                   value="Send Message"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-700 text-gray-50 font-bold py-2 px-4 rounded"
                 />
               </li>
             </ul>

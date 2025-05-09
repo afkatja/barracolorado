@@ -10,7 +10,7 @@ import {
 // import Link from "next/link"
 
 const Footer = () => (
-  <footer id="footer" className="bg-gray-900 text-white p-4">
+  <footer id="footer" className="bg-gray-900 text-gray-50 p-4">
     <ul className="icons flex justify-center space-x-4 mb-4">
       <li>
         <a href="#" className="icon brands">

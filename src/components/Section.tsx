@@ -33,7 +33,7 @@ const Section: React.FC<SectionProps> = ({
     <Element name={id} className="main md:h-[calc(100vh-var(--header-height))]">
       <section
         id={id}
-        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-white flex justify-center items-center py-4 md:py-8 flex-1`}
+        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
         style={{
           backgroundImage: image ? `url(${urlFor(image).url()})` : "",
         }}
@@ -74,7 +74,7 @@ const Section: React.FC<SectionProps> = ({
             duration={500}
             smooth
             offset={-50}
-            className="button style2 down anchored  hover:bg-teal-700 text-white font-bold py-2 px-1 rounded-4xl animate-pulse"
+            className="button style2 down anchored  hover:bg-teal-700 text-gray-50 font-bold py-2 px-1 rounded-4xl animate-pulse"
           >
             Next
           </Link>

@@ -72,7 +72,7 @@ const Home = async ({ params }: { params: { lang: string } }) => {
       ))}
       <section
         id="gallery"
-        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-white flex justify-center items-center py-4 md:py-8 flex-1`}
+        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
       >
         <GalleryClient gallery={gallery} />
       </section>
