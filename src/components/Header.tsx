@@ -3,7 +3,7 @@ import Navigation from "./Navigation"
 import { Logo } from "./icons"
 import LanguageSelector from "./LanguageSelector"
 
-const Header = async () => {
+const Header = () => {
   return (
     <header
       id="header"
