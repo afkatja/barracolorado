@@ -4,6 +4,7 @@ import Section from "@/components/Section"
 import Breadcrumbs from "@/components/Breadcrumbs"
 import { sanityFetch } from "@/sanity/lib/client"
 import { Page as PageType } from "../../../../../types"
+import { notFound } from "next/navigation"
 
 type PageProps = {
   params: {
@@ -20,6 +21,8 @@ const Page = async ({ params }: PageProps) => {
     revalidate: 0,
     params: { slug: subSlug, locale: lang },
   })
+
+  if (!subPage) return notFound()
 
   const { title, subtitle, description, mainImage, content } = subPage
 
