@@ -1,13 +1,24 @@
 {
-  "name": "varacolorado",
+  "name": "barracolorado",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barracolorado/barracolorado.git"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tailwind": "tailwindcss init"
+    "tailwind": "tailwindcss init",
+    "changelog": "node scripts/generate-changelog.js",
+    "version": "node scripts/bump-version.js"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
