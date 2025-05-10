@@ -1,0 +1,47 @@
+name: Version and Changelog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Get latest version
+        id: version
+        run: |
+          VERSION=$(node -e "const pkg = require('./package.json'); console.log(pkg.version)")
+          echo "current_version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        run: npm run changelog
+
+      - name: Commit and push if changed
+        run: |
+          git add CHANGELOG.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update changelog" && git push)
+
+      - name: Create version tag
+        if: success()
+        run: |
+          git tag -a "v${{ steps.version.outputs.current_version }}" -m "Version ${{ steps.version.outputs.current_version }}"
+          git push origin "v${{ steps.version.outputs.current_version }}"
