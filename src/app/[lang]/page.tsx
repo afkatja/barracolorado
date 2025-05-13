@@ -48,7 +48,7 @@ const Home = async ({ params }: { params: { lang: string } }) => {
           subtitle={home.subtitle}
           image={home.image}
           description={home.description}
-          nextSection={content[0]._id}
+          nextSection={content[0]?._id ?? "gallery"}
         />
       ) : (
         <div className="text-center py-8">
