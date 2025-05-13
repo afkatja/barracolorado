@@ -16,7 +16,7 @@ import {
   Page as PageType,
 } from "../../types"
 
-const Home = async ({ params }: { params: { lang: string } }) => {
+const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params
   const home = await sanityFetch<HomeType>({
     query: HOME_QUERY,
@@ -46,7 +46,7 @@ const Home = async ({ params }: { params: { lang: string } }) => {
         <Intro
           title={home.title}
           subtitle={home.subtitle}
-          image={home.image}
+          backgroundImage={home.image}
           description={home.description}
           nextSection={content[0]?._id ?? "gallery"}
         />

@@ -13,7 +13,7 @@ import { notFound } from "next/navigation"
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string; lang: string }
+  params: Promise<{ slug: string; lang: string }>
 }) {
   const { slug, lang } = await params
 

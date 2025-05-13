@@ -8,7 +8,7 @@ import PostCard from "./PostCard"
 export default async function BlogPage({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
   const posts = await sanityFetch<

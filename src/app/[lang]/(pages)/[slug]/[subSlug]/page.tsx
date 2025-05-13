@@ -7,11 +7,11 @@ import { Page as PageType } from "../../../../../types"
 import { notFound } from "next/navigation"
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
     lang: string
     subSlug: string
-  }
+  }>
 }
 
 const Page = async ({ params }: PageProps) => {

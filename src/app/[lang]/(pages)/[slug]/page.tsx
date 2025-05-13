@@ -6,10 +6,10 @@ import PageCard from "./pageCard"
 import { Page as PageType } from "../../../../types"
 import { notFound } from "next/navigation"
 
-type PageParams = {
+type PageParams = Promise<{
   slug: string
   lang: string
-}
+}>
 
 type PageProps = {
   params: PageParams
