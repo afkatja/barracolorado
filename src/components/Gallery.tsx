@@ -1,5 +1,7 @@
 "use client"
 import { Element } from "react-scroll"
+import Image from "next/image"
+import Link from "next/link"
 
 const Gallery = () => (
   <Element name="gallery" className="main fullscreen">
@@ -30,14 +32,16 @@ const Gallery = () => (
               key={index}
               className={index % 2 === 0 ? "from-left" : "from-right"}
             >
-              <a href={`images/fulls/${image.src}`} className="image fit">
-                <img
+              <Link href={`images/fulls/${image.src}`} className="image fit">
+                <Image
                   src={`images/thumbs/${image.src}`}
                   title={image.title}
                   alt=""
                   className="w-full h-auto"
+                  width={100}
+                  height={100}
                 />
-              </a>
+              </Link>
             </article>
           ))}
         </div>

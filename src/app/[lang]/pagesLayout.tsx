@@ -3,13 +3,14 @@ import RootLayout from "./layout"
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 
-const PagesLayout = ({
+const PagesLayout = async ({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode
   params: { lang: string }
 }) => {
+  const { lang } = await params
   return (
     <RootLayout params={{ lang }}>
       <Header />

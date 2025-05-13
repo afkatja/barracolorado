@@ -3,12 +3,13 @@ import { GALLERY_QUERY } from "../../../sanity/lib/queries"
 import PagesLayout from "../pagesLayout"
 import GalleryClient from "./GalleryClient"
 import { notFound } from "next/navigation"
+
 export default async function GalleryPage({
   params,
 }: {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
-  const { lang } = params
+  const { lang } = await params
   const gallery = await sanityFetch<{
     title: string
     description?: string
