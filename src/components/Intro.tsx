@@ -1,41 +1,33 @@
 "use client"
-import { Link, Element } from "react-scroll"
+import { Link } from "react-scroll"
+import { urlFor } from "@/sanity/lib/image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
-import { urlFor } from "../sanity/lib/image"
-import { useEffect, useState } from "react"
 
-const Intro = ({
-  title,
-  subtitle,
-  image,
-  description,
-  nextSection,
-}: {
+interface IntroProps {
   title: string
   subtitle: string
-  image: SanityImageObject
   description: string
+  backgroundImage: SanityImageObject
+  sectionId?: string
   nextSection: string
-}) => {
-  const [headerHeight, setHeaderHeight] = useState(0)
+}
 
-  useEffect(() => {
-    if (typeof window === "undefined") return
-
-    const height = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--header-height"
-      )
-    )
-    setHeaderHeight(height)
-  }, [])
-
+export default function Intro({
+  title,
+  subtitle,
+  description,
+  backgroundImage,
+  nextSection,
+}: IntroProps) {
   return (
-    <Element name="intro" className="main fullscreen">
+    <div className="main fullscreen" data-name="intro">
       <section
-        id="intro"
+        data-testid={`intro-section`}
         className="dark style1 bg-gray-900 text-gray-50 flex justify-center items-center p-8 flex-1 bg-fixed bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${urlFor(image).url()})` }}
+        id="intro"
+        style={{
+          backgroundImage: `url(${urlFor(backgroundImage).url()})`,
+        }}
       >
         <div className="content text-center">
           <header>
@@ -46,18 +38,16 @@ const Intro = ({
           <footer className="relative py-4">
             <Link
               to={nextSection}
-              smooth
-              duration={500}
-              offset={headerHeight * -1}
               className="cursor-pointer button style2 down text-gray-50 font-bold py-2 px-1 rounded-4xl motion-safe:animate-bounce hover:animate-bounce absolute bottom-0 left-1/2 -translate-x-1/2"
+              duration={500}
+              offset={-64}
+              smooth="true"
             >
               More
             </Link>
           </footer>
         </div>
       </section>
-    </Element>
+    </div>
   )
 }
-
-export default Intro

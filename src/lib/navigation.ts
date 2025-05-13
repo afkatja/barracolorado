@@ -1,5 +1,5 @@
 import { sanityFetch } from "../sanity/lib/client"
-import { NAV_QUERY, NAV_ROUTE_QUERY } from "../sanity/lib/queries"
+import { NAV_QUERY } from "../sanity/lib/queries"
 
 export type navItem = {
   _id: string
@@ -23,27 +23,28 @@ const navigation = async () => {
         name: item.title,
         ...item,
       }))
-      .filter(item => item.isPublished)
+      // .filter(item => item.isPublished)
       .sort((a, b) => {
         if (a.title < b.title) return -1
         if (a.title > b.title) return 1
         return 0
       })
 
-  const mainNav = await sanityFetch<navItem[]>({
+  const mainNav = await sanityFetch<{
+    title: string
+    slug: string
+    items: { navItemUrl: { internalLink: navItem } }[]
+  }>({
     query: NAV_QUERY,
     revalidate: 0,
-    params: { category: "Pages", route: false },
   })
 
-  const routeNav = await sanityFetch<navItem[]>({
-    query: NAV_ROUTE_QUERY,
-    revalidate: 0,
-    params: { category: "Pages", route: true },
-  })
-
-  const main = mapNav(mainNav)
-  const routeNavItems = mapNav(routeNav)
-  return { main, routeNavItems }
+  const main = mapNav(
+    mainNav?.items.map(item => ({
+      ...item.navItemUrl?.internalLink,
+      route: true,
+    }))
+  )
+  return { main }
 }
 export default navigation
