@@ -1389,7 +1389,6 @@ body.is-touch .poptrox-popup .closer {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3em 0 3em 0;
 }
 
 .main .style1 h2 {
@@ -1541,25 +1540,9 @@ body.is-touch .main {
     height: auto !important;
   }
 
-  .main .style1 {
-    padding: 4em 15px 4em 15px;
-  }
-
-  .main .style1 h2 {
-    font-size: 3em;
-  }
-
-  .main .style2 {
-    padding: 6em 15px 6em 15px;
-  }
-
   .main .style2:before,
   .main .style2:after {
     display: none !important;
-  }
-
-  .main .style2 .button.anchored {
-    display: none;
   }
 
   .main .style2 .content {

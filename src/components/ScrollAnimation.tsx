@@ -23,9 +23,11 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   useEffect(() => {
     if (typeof window === "undefined") return
 
+    const isMobile = window.innerWidth < 768
+    if (isMobile) return
+
     // Check for scroll-timeline support
     setSupportsScrollTimeline(CSS.supports("animation-timeline: scroll()"))
-
     if (!supportsScrollTimeline && ref.current) {
       // Dynamically import GSAP only if needed
       import("gsap").then(({ default: gsap }) => {

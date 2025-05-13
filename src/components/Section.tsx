@@ -6,6 +6,7 @@ import ScrollAnimation from "./ScrollAnimation"
 import { urlFor } from "../sanity/lib/image"
 import Image from "next/image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import { useEffect, useState } from "react"
 
 interface SectionProps {
   id: string
@@ -29,8 +30,19 @@ const Section: React.FC<SectionProps> = ({
   children,
 }) => {
   const isEven = parseInt(id.replace(/\D/g, "")) % 2 === 0
+  const [offset, setOffset] = useState(0)
+
+  useEffect(() => {
+    const headerHeight = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--header-height"
+      )
+    )
+    setOffset(-headerHeight)
+  }, [])
+
   return (
-    <Element name={id} className="main md:h-[calc(100vh-var(--header-height))]">
+    <Element name={id} className="main h-[calc(100vh-var(--header-height))]">
       <section
         id={id}
         className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
@@ -73,8 +85,8 @@ const Section: React.FC<SectionProps> = ({
             to={nextSection}
             duration={500}
             smooth
-            offset={-50}
-            className="button style2 down anchored  hover:bg-teal-700 text-gray-50 font-bold py-2 px-1 rounded-4xl animate-pulse"
+            offset={offset}
+            className="button style2 down anchored hover:bg-teal-700 text-gray-50 font-bold py-2 px-1 rounded-4xl animate-pulse"
           >
             Next
           </Link>

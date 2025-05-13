@@ -58,7 +58,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           </p>
         </div>
       )}
-      {content.map(item => (
+      {content.map((item, index) => (
         <Section
           key={item._id}
           id={item._id}
@@ -67,7 +67,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           description={item.description}
           image={item.mainImage}
           content={item.content}
-          nextSection="gallery"
+          nextSection={content[index + 1]?._id ?? "gallery"}
         />
       ))}
       <section
