@@ -7,6 +7,7 @@ interface ScrollAnimationProps {
   direction?: "left" | "right"
   className?: string
   style?: React.CSSProperties
+  dataTestId?: string
 }
 
 const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
@@ -14,6 +15,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   direction = "left",
   className = "",
   style = {},
+  dataTestId,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [supportsScrollTimeline, setSupportsScrollTimeline] = useState(false)
@@ -56,6 +58,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   return (
     <div
       ref={ref}
+      data-testid={dataTestId}
       className={cn(
         className,
         direction === "left" ? "animate-slideleft" : "animate-slideright"
