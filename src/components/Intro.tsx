@@ -23,7 +23,7 @@ export default function Intro({
     <div className="main fullscreen" data-name="intro">
       <section
         data-testid={`intro-section`}
-        className="dark style1 bg-gray-900 text-gray-50 flex justify-center items-center p-8 flex-1 bg-fixed bg-cover bg-center bg-no-repeat"
+        className="dark style1 bg-gray-900 text-gray-50 flex justify-center items-center p-2 lg:p-8 flex-1 bg-fixed bg-cover bg-center bg-no-repeat max-w-screen"
         id="intro"
         style={{
           backgroundImage: `url(${urlFor(backgroundImage).url()})`,

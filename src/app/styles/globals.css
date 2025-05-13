@@ -15,6 +15,12 @@
   --header-height: 130px;
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --header-height: 100px;
+  }
+}
+
 @theme {
   --animate-slideright: slideright 1s ease-out;
   --animate-slideleft: slideleft 1s ease-out;
