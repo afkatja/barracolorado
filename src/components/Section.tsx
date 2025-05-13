@@ -42,7 +42,10 @@ const Section: React.FC<SectionProps> = ({
   }, [])
 
   return (
-    <Element name={id} className="main h-[calc(100vh-var(--header-height))]">
+    <Element
+      name={id}
+      className="main min-h-[calc(100vh-var(--header-height))]"
+    >
       <section
         id={id}
         className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
