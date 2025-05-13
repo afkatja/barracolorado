@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect, useMemo } from "react"
 import Image from "next/image"
 import Popover from "@/components/Popover"
 import GalleryAnimation from "@/components/GalleryAnimation"
-import gsap from "gsap"
 import { urlFor } from "@/sanity/lib/image"
 
 interface GalleryClientProps {
@@ -41,32 +40,34 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
   }, [gallery.images, shuffleSeed])
 
   useEffect(() => {
-    if (!popoverRef.current) return
+    if (typeof window === "undefined" || !popoverRef.current) return
 
-    if (selectedImage !== null) {
-      // Animate in
-      gsap.fromTo(
-        popoverRef.current,
-        {
+    import("gsap").then(({ default: gsap }) => {
+      if (selectedImage !== null) {
+        // Animate in
+        gsap.fromTo(
+          popoverRef.current,
+          {
+            opacity: 0,
+            scale: 0.8,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          }
+        )
+      } else {
+        // Animate out
+        gsap.to(popoverRef.current, {
           opacity: 0,
           scale: 0.8,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          ease: "power2.out",
-        }
-      )
-    } else {
-      // Animate out
-      gsap.to(popoverRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.3,
-        ease: "power2.in",
-      })
-    }
+          duration: 0.3,
+          ease: "power2.in",
+        })
+      }
+    })
   }, [selectedImage])
 
   return (
