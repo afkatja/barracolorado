@@ -259,6 +259,16 @@ Date: 2025-05-10
 
 - remove unused (2025-04-18)
 
+
+## Version 0.1.0
+
+Date: 2025-05-13
+
+### Change
+
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- checks for browser-specific APIs for server rendering (2025-05-12)
+
 ## [0.1.0] - 2025-05-10
 
 ### Change
