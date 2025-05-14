@@ -7,6 +7,7 @@ import { linkType } from "./linkType"
 import { navItemType } from "./navItem"
 import { galleryType } from "./galleryType"
 import { homeType } from "./homeType"
+import { seoSettingsType } from "./seoSettings"
 
 export {
   postType,
@@ -18,4 +19,5 @@ export {
   linkType,
   galleryType,
   homeType,
+  seoSettingsType,
 }
