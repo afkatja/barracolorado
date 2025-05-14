@@ -1485,14 +1485,6 @@ body.is-touch .poptrox-popup .closer {
   background: #f5f6f7;
 }
 
-.main .dark {
-  color: #ffffff;
-}
-
-.main .dark a {
-  color: inherit;
-}
-
 .main .dark .button.style2 {
   border-color: #ffffff;
 }
