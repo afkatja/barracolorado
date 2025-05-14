@@ -15,6 +15,8 @@ import {
   Gallery as GalleryType,
   Page as PageType,
 } from "../../types"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
+import Link from "next/link"
 
 const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params
@@ -68,7 +70,15 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           image={item.mainImage}
           content={item.content}
           nextSection={content[index + 1]?._id ?? "gallery"}
-        />
+        >
+          <Link
+            href={`/${lang}/${item.slug.current}`}
+            className="flex items-center justify-end text-teal-600 hover:text-teal-700 mt-auto group text-sm font-medium"
+          >
+            Read more
+            <ArrowRightIcon className="w-1.5 h-1.5 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </Section>
       ))}
       <section
         id="gallery"

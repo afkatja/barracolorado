@@ -17,6 +17,7 @@ interface SectionProps {
   content: SanityDocument | string
   nextSection?: string
   children?: React.ReactNode
+  className?: string
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -28,6 +29,7 @@ const Section: React.FC<SectionProps> = ({
   content,
   nextSection,
   children,
+  className,
 }) => {
   const isEven = parseInt(id.replace(/\D/g, "")) % 2 === 0
   const [offset, setOffset] = useState(0)
@@ -44,7 +46,7 @@ const Section: React.FC<SectionProps> = ({
   return (
     <Element
       name={id}
-      className="main min-h-[calc(100vh-var(--header-height))]"
+      className={`main min-h-[calc(100vh-var(--header-height))] ${className}`}
     >
       <section
         id={id}
