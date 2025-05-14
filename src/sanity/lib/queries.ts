@@ -101,3 +101,12 @@ export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
     order
   }
 }`
+
+export const seoSettingsQuery = `*[_type == "seoSettings"][0] {
+  title,
+  description,
+  keywords,
+  "ogImage": ogImage.asset->url,
+  ogTitle,
+  ogDescription
+}`

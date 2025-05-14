@@ -10,6 +10,7 @@ import {
   navigationType,
   galleryType,
   homeType,
+  seoSettingsType,
 } from "./schemaTypes"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navigationType,
     galleryType,
     homeType,
+    seoSettingsType,
   ],
 }
