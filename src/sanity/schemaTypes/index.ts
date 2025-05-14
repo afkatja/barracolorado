@@ -8,6 +8,7 @@ import { navItemType } from "./navItem"
 import { galleryType } from "./galleryType"
 import { homeType } from "./homeType"
 import { seoSettingsType } from "./seoSettings"
+import { contactType } from "./contactType"
 
 export {
   postType,
@@ -20,4 +21,5 @@ export {
   galleryType,
   homeType,
   seoSettingsType,
+  contactType,
 }

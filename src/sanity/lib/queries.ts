@@ -110,3 +110,16 @@ export const seoSettingsQuery = `*[_type == "seoSettings"][0] {
   ogTitle,
   ogDescription
 }`
+
+export const CONTACT_QUERY = groq`
+  *[_type == "contact" && language == $language][0] {
+    title,
+    subtitle,
+    formLabels {
+      nameLabel,
+      emailLabel,
+      messageLabel,
+      submitButton
+    }
+  }
+`
