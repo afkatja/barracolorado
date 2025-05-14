@@ -16,7 +16,7 @@ const MobileNavigation = ({
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
   return (
-    <div className="md:hidden ml-auto">
+    <div className="md:hidden ml-auto order-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="text-gray-100 hover:text-gray-500 transition-colors"

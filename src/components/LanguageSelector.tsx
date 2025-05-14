@@ -36,13 +36,13 @@ export default function LanguageSelector() {
   }, [])
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative ml-2 order-3" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 p-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
+        className="flex items-center gap-1 py-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
       >
-        <span>{currentLanguage?.flag}</span>
-        <span>{currentLanguage?.title}</span>
+        <span className="text-3xl">{currentLanguage?.flag}</span>
+        <span className="hidden md:block">{currentLanguage?.title}</span>
       </button>
 
       <div
