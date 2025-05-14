@@ -63,7 +63,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
       data-testid={dataTestId}
       className={cn(
         className,
-        direction === "left" ? "animate-slideleft" : "animate-slideright"
+        direction === "left" ? "md:animate-slideleft" : "md:animate-slideright"
       )}
       style={{
         ...(supportsScrollTimeline
