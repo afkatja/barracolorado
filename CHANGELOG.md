@@ -309,6 +309,32 @@ Date: 2025-05-13
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
 
+
+## Version 0.1.0
+
+Date: 2025-05-14
+
+### Change
+
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- checks for browser-specific APIs for server rendering (2025-05-12)
+
+### Fixed
+
+- only allow one home page per language (2025-05-13)
+- display content of the page (2025-05-13)
+
+### Changed
+
+- update changelog (2025-05-13)
+- adjust mobile styling (2025-05-13)
+- update changelog (2025-05-13)
+- add unit and integration tests (2025-05-12)
+- fix build errors (2025-05-12)
+- update changelog (2025-05-13)
+
 ## [0.1.0] - 2025-05-10
 
 ### Change
