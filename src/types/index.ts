@@ -59,3 +59,14 @@ export type Gallery = {
     caption?: string
   }>
 }
+
+export type TContact = {
+  title: string
+  subtitle: string
+  formLabels: {
+    nameLabel: string
+    emailLabel: string
+    messageLabel: string
+    submitButton: string
+  }
+}

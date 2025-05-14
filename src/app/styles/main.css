@@ -304,76 +304,6 @@ button.style2.down {
 
 /* Form */
 
-form {
-  margin: 0 0 2em 0;
-}
-
-form > :last-child {
-  margin-bottom: 0;
-}
-
-form > .fields {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  width: calc(100% + 3em);
-  margin: -1.5em 0 2em -1.5em;
-}
-
-form > .fields > .field {
-  -moz-flex-grow: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-grow: 0;
-  flex-grow: 0;
-  -moz-flex-shrink: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-shrink: 0;
-  flex-shrink: 0;
-  padding: 1.5em 0 0 1.5em;
-  width: calc(100% - 1.5em);
-}
-
-form > .fields > .field.half {
-  width: calc(50% - 0.75em);
-}
-
-form > .fields > .field.third {
-  width: calc(100% / 3 - 0.5em);
-}
-
-form > .fields > .field.quarter {
-  width: calc(25% - 0.375em);
-}
-
-@media screen and (max-width: 480px) {
-  form > .fields {
-    width: calc(100% + 2em);
-    margin: -1em 0 2em -1em;
-  }
-
-  form > .fields > .field {
-    padding: 1em 0 0 1em;
-    width: calc(100% - 1em);
-  }
-
-  form > .fields > .field.half {
-    width: calc(100% - 1em);
-  }
-
-  form > .fields > .field.third {
-    width: calc(100% - 1em);
-  }
-
-  form > .fields > .field.quarter {
-    width: calc(100% - 1em);
-  }
-}
-
 label {
   display: block;
 }
@@ -1594,13 +1524,7 @@ body.is-touch .main {
 
 @media screen and (max-width: 1000px) {
   #footer {
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -ms-justify-content: center;
     justify-content: center;
     line-height: 1.5em;
     text-align: center;
@@ -1624,34 +1548,5 @@ body.is-touch .main {
   #footer ul.menu li:first-child {
     margin-top: 0;
     padding-top: 0;
-  }
-}
-
-/* Contact */
-
-#contact {
-  overflow: hidden;
-  padding-bottom: 0;
-}
-
-#contact .box {
-  transition: transform 1s ease;
-  transform: translateY(0);
-  position: relative;
-}
-
-#contact.inactive .box {
-  transform: translateY(100%);
-}
-
-@media screen and (max-width: 736px) {
-  #contact .box {
-    padding: 1.5em 1.5em 2em 1.5em;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #contact .box {
-    padding: 1em 1em 2em 1em;
   }
 }

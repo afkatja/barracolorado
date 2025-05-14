@@ -6,6 +6,7 @@ import {
   ALL_PAGES_QUERY,
   GALLERY_QUERY,
   HOME_QUERY,
+  CONTACT_QUERY,
 } from "../../sanity/lib/queries"
 import PagesLayout from "./(pages)/layout"
 import GalleryClient from "./gallery/GalleryClient"
@@ -14,6 +15,7 @@ import {
   Home as HomeType,
   Gallery as GalleryType,
   Page as PageType,
+  TContact,
 } from "../../types"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 import Link from "next/link"
@@ -40,6 +42,11 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const gallery = await sanityFetch<GalleryType>({
     query: GALLERY_QUERY,
     params: { locale: lang },
+  })
+
+  const contact = await sanityFetch<TContact>({
+    query: CONTACT_QUERY,
+    params: { language: lang },
   })
 
   return (
@@ -86,7 +93,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
       >
         <GalleryClient gallery={gallery} />
       </section>
-      <Contact />
+      {contact && <Contact contact={contact} />}
     </PagesLayout>
   )
 }
