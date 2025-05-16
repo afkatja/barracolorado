@@ -10,16 +10,20 @@ export const navigationType = defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "navId",
-      type: "slug",
-      title: "Navigation ID",
-      description: "This is used to identify the navigation item in the URL",
+      name: "language",
+      type: "string",
+      title: "Language",
     }),
     defineField({
-      name: "items",
+      name: "navId",
+      type: "string",
+      title: "Navigation ID",
+    }),
+    defineField({
+      name: "menuPages",
       type: "array",
-      title: "Navigation items",
-      of: [{ type: "reference", to: [{ type: "navigationItem" }] }],
+      title: "Menu Pages",
+      of: [{ type: "reference", to: [{ type: "page" }] }],
     }),
   ],
   preview: {
