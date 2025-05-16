@@ -101,6 +101,17 @@ export const pageType = defineType({
       initialValue: false,
       description: "Display in the home page?",
     }),
+    defineField({
+      name: "displayTitle",
+      type: "string",
+      description: "Display title in the navigation",
+    }),
+    defineField({
+      name: "menuOrder",
+      type: "number",
+      title: "Menu Order",
+      description: "Order of the page in the menu",
+    }),
   ],
   initialValue: {
     isPublished: true,

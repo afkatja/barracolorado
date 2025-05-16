@@ -6,17 +6,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import * as Collapsible from "@radix-ui/react-collapsible"
 import { INavigationItem } from "./Navigation"
 import { ChevronDown, Close } from "./icons"
-const MobileNavigation = ({
-  mainItems,
-  navigationMap,
-}: {
-  mainItems: INavigationItem[]
-  navigationMap: Map<string, INavigationItem[]>
-}) => {
+
+const MobileNavigation = ({ items }: { items: INavigationItem[] }) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
   return (
-    <div className="md:hidden ml-auto order-2">
+    <div className="lg:hidden ml-auto order-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="text-gray-100 hover:text-gray-500 transition-colors"
@@ -64,7 +59,7 @@ const MobileNavigation = ({
             </div>
 
             <nav className="p-2">
-              {mainItems.map(item => (
+              {items.map(item => (
                 <Collapsible.Root key={item._id} className="py-1">
                   <Collapsible.Trigger asChild>
                     <Link
@@ -76,12 +71,12 @@ const MobileNavigation = ({
                       }`}
                     >
                       {item.title}
-                      {navigationMap.has(item._id) && <ChevronDown />}
+                      {!!item.subItems?.length && <ChevronDown />}
                     </Link>
                   </Collapsible.Trigger>
-                  {navigationMap.has(item._id) && (
+                  {!!item.subItems?.length && (
                     <Collapsible.Content className="pl-2 w-full">
-                      {navigationMap.get(item._id)?.map(subItem => (
+                      {item.subItems?.map(subItem => (
                         <Link
                           key={subItem._id}
                           href={`/${item.slug.current}/${subItem.slug.current}`}

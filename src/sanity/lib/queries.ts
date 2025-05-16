@@ -84,21 +84,26 @@ export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug &
   ${TRANSLATION_QUERY}
 }`
 
-export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
-  _id, 
-  title, 
-  'slug': navId, 
-  items[] -> {
+export const NAV_QUERY = groq`*[_type == 'navigation' && language == $language][0] {
+  _id,
+  title,
+  'navSlug': navId,
+  'items': menuPages[]-> {
     _id,
+    _type,
     title,
-    'slug': navItemUrl.internalLink->slug,
-    isMainNavItem,
-    parent->{
+    slug,
+    language,
+    ${TRANSLATION_QUERY},
+    "subItems": *[_type == 'page' && parent._ref == ^._id && language == $language] | order(menuOrder asc, title asc) {
       _id,
+      _type,
       title,
-      'slug': navItemUrl.internalLink->slug
-    },
-    order
+      slug,
+      language,
+      menuOrder,
+      ${TRANSLATION_QUERY}
+    }
   }
 }`
 

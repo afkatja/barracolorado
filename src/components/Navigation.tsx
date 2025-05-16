@@ -8,44 +8,28 @@ export interface INavigationItem {
   _id: string
   title: string
   slug: { current: string }
-  parent: INavigationItem | null
-  order: number
+  language: string
+  menuOrder: number
+  subItems?: INavigationItem[]
 }
 const Navigation = async () => {
-  const { items } = await sanityFetch<{ items: INavigationItem[] }>({
+  const { items } = await sanityFetch<{
+    items: INavigationItem[]
+  }>({
     query: NAV_QUERY,
-  })
-
-  // Group items by parent
-  const mainItems = items.filter(item => !item.parent)
-  const subItems = items.filter(item => item.parent)
-
-  // Create a map of parent items to their children
-  const navigationMap = new Map<string, INavigationItem[]>()
-  subItems.forEach(item => {
-    if (item.parent) {
-      const parentId = item.parent._id
-      if (!navigationMap.has(parentId)) {
-        navigationMap.set(parentId, [])
-      }
-      navigationMap.get(parentId)?.push(item)
-    }
+    params: { language: "en" },
   })
 
   return (
     <>
-      <NavigationMenu.Root className="hidden md:block ml-auto order-2">
+      <NavigationMenu.Root className="hidden lg:block ml-auto order-2">
         <NavigationMenu.List className="flex items-center gap-1.5 m-0">
-          {mainItems.map(item => (
-            <NavigationItem
-              key={item._id}
-              item={item}
-              navigationMap={navigationMap}
-            />
+          {items.map(item => (
+            <NavigationItem key={item._id} item={item} />
           ))}
         </NavigationMenu.List>
       </NavigationMenu.Root>
-      <MobileNavigation mainItems={mainItems} navigationMap={navigationMap} />
+      <MobileNavigation items={items} />
     </>
   )
 }
