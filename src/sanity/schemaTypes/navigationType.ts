@@ -10,11 +10,6 @@ export const navigationType = defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "language",
-      type: "string",
-      title: "Language",
-    }),
-    defineField({
       name: "navId",
       type: "string",
       title: "Navigation ID",
@@ -31,10 +26,9 @@ export const navigationType = defineType({
       title: "title",
       navId: "navId.current",
     },
-    prepare({ title, navId }) {
+    prepare({ title }) {
       return {
         title,
-        subtitle: navId ? `ID: ${navId}` : "No ID set",
       }
     },
   },

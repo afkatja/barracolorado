@@ -15,6 +15,19 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale && 
   homeSection,
   ${TRANSLATION_QUERY}
 }`
+export const PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
+  _id,
+  _type,
+  title,
+  displayTitle,
+  subtitle,
+  description, 
+  mainImage,
+  slug,
+  language,
+  homeSection,
+  ${TRANSLATION_QUERY}
+}`
 
 export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && parent->slug.current == $slug] {
   _id,
@@ -84,7 +97,7 @@ export const BLOG_POST_QUERY = groq`*[_type == "post" && slug.current == $slug &
   ${TRANSLATION_QUERY}
 }`
 
-export const NAV_QUERY = groq`*[_type == 'navigation' && language == $language][0] {
+export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
   _id,
   title,
   'navSlug': navId,
@@ -92,13 +105,15 @@ export const NAV_QUERY = groq`*[_type == 'navigation' && language == $language][
     _id,
     _type,
     title,
+    displayTitle,
     slug,
     language,
     ${TRANSLATION_QUERY},
-    "subItems": *[_type == 'page' && parent._ref == ^._id && language == $language] | order(menuOrder asc, title asc) {
+    "subItems": *[_type == 'page' && parent._ref == ^._id] | order(menuOrder asc, title asc) {
       _id,
       _type,
       title,
+      displayTitle,
       slug,
       language,
       menuOrder,

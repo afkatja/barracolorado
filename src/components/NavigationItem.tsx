@@ -3,13 +3,7 @@ import React from "react"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import { usePathname } from "next/navigation"
-
-interface INavigationItem {
-  slug: { current: string }
-  title: string
-  _id: string
-  subItems?: INavigationItem[]
-}
+import { INavigationItem } from "./Navigation"
 
 const NavigationItem = ({ item }: { item: INavigationItem }) => {
   const pathname = usePathname()
@@ -23,7 +17,7 @@ const NavigationItem = ({ item }: { item: INavigationItem }) => {
             pathname === `/${item.slug.current}` ? "text-gray-400" : ""
           }`}
         >
-          {item.title}
+          {item.displayTitle ?? item.title}
         </Link>
       </NavigationMenu.Trigger>
       {!!item.subItems?.length && (

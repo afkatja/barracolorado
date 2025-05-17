@@ -19,7 +19,7 @@ export const pageType = defineType({
       name: "language",
       type: "string",
       readOnly: true,
-      hidden: true,
+      // hidden: true,
     }),
     defineField({
       name: "name",
@@ -123,12 +123,13 @@ export const pageType = defineType({
       subtitle: "subtitle",
       description: "description",
       media: "mainImage",
+      language: "language",
     },
     prepare(selection) {
-      const { title, name, ...rest } = selection
+      const { title, name, language, ...rest } = selection
       return {
         ...rest,
-        title: title || name,
+        title: `${title || name} ${language ? `(${language})` : ""}`,
       }
     },
   },
