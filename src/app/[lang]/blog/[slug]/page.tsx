@@ -34,7 +34,7 @@ export default async function BlogPost({
   if (!post) return notFound()
 
   return (
-    <PagesLayout params={{ lang }}>
+    <PagesLayout params={params}>
       <div className="w-11/12 mx-auto py-1">
         <Breadcrumbs
           items={[
