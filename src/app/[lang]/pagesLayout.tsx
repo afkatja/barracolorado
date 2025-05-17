@@ -8,12 +8,14 @@ const PagesLayout = async ({
   params,
 }: {
   children: React.ReactNode
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) => {
   const { lang } = await params
+  console.log({ lang })
+
   return (
     <RootLayout params={{ lang }}>
-      <Header />
+      <Header lang={lang} />
       {children}
       <Footer />
     </RootLayout>

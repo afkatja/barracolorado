@@ -3,7 +3,7 @@ import Navigation from "./Navigation"
 import { Logo } from "./icons"
 import LanguageSelector from "./LanguageSelector"
 
-const Header = () => {
+const Header = ({ lang }: { lang: string }) => {
   return (
     <header
       id="header"
@@ -17,7 +17,7 @@ const Header = () => {
           <Logo className="fill-gray-50" />
         </Link>
         <LanguageSelector />
-        <Navigation />
+        <Navigation lang={lang} />
       </div>
     </header>
   )

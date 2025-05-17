@@ -13,7 +13,7 @@ const PagesLayout = async ({
   const { lang } = await params
   return (
     <RootLayout params={{ lang }}>
-      <Header />
+      <Header lang={lang} />
       <main
         className="min-h-[calc(100vh-var(--header-height))] flex flex-col"
         style={{
