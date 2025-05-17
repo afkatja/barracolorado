@@ -27,7 +27,7 @@ export default async function BlogPage({
   })
 
   return (
-    <PagesLayout params={{ lang }}>
+    <PagesLayout params={params}>
       <div
         className="main bg-linear-to-br from-teal-800 to-cyan-900 py-2 
         min-h-[calc(100vh-var(--header-height))] flex flex-col"

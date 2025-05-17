@@ -9,7 +9,6 @@ export default async function GalleryPage({
 }: {
   params: Promise<{ lang: string }>
 }) {
-  const { lang } = await params
   const gallery = await sanityFetch<{
     title: string
     description?: string
@@ -26,7 +25,7 @@ export default async function GalleryPage({
   if (!gallery) return notFound()
 
   return (
-    <PagesLayout params={{ lang }}>
+    <PagesLayout params={params}>
       <section
         className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center items-center py-2 md:py-4 flex-1`}
       >
