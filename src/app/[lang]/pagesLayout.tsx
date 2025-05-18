@@ -11,7 +11,6 @@ const PagesLayout = async ({
   params: Promise<{ lang: string }>
 }) => {
   const { lang } = await params
-  console.log({ lang })
 
   return (
     <RootLayout params={{ lang }}>

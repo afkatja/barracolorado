@@ -51,7 +51,6 @@ const Navigation = async ({ lang }: { lang: string }) => {
 
   if (!filteredItems.length)
     return <div className="hidden lg:block ml-auto order-2">Nothing yet</div>
-  console.log({ lang })
 
   return (
     <>
