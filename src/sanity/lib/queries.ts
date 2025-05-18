@@ -54,7 +54,12 @@ export const HOME_QUERY = groq`*[_type == 'home' && language == $locale][0] {
   title,
   subtitle,
   description,
-  image,
+  "media": {
+    "type": media.type,
+    "singleImage": media.singleImage,
+    "video": media.video.asset->{url},
+    "imageGallery": media.imageGallery[]
+  },
   language,
   ${TRANSLATION_QUERY}
 }`
