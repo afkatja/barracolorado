@@ -51,13 +51,14 @@ const Navigation = async ({ lang }: { lang: string }) => {
 
   if (!filteredItems.length)
     return <div className="hidden lg:block ml-auto order-2">Nothing yet</div>
+  console.log({ lang })
 
   return (
     <>
       <NavigationMenu.Root className="hidden lg:block ml-auto order-2">
         <NavigationMenu.List className="flex items-center gap-1.5 m-0">
           {filteredItems.map(item => (
-            <NavigationItem key={item._id} item={item} />
+            <NavigationItem key={item._id} item={item} lang={lang} />
           ))}
         </NavigationMenu.List>
       </NavigationMenu.Root>
