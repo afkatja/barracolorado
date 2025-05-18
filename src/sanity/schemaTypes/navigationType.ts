@@ -18,9 +18,19 @@ export const navigationType = defineType({
       name: "menuPages",
       type: "array",
       title: "Menu Pages",
-      of: [{ type: "reference", to: [{ type: "page" }] }],
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "page" }],
+          options: {
+            filter: "!defined(parent)", // Only show top-level pages
+            disableNew: true, // Prevent creating new pages from here
+          },
+        },
+      ],
     }),
   ],
+
   preview: {
     select: {
       title: "title",

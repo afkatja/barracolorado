@@ -17,15 +17,10 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale && 
 }`
 export const PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   _id,
-  _type,
   title,
   displayTitle,
-  subtitle,
-  description, 
-  mainImage,
   slug,
   language,
-  homeSection,
   ${TRANSLATION_QUERY}
 }`
 
