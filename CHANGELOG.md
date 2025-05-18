@@ -527,6 +527,54 @@ Date: 2025-05-17
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
 
+
+## Version 0.1.0
+
+Date: 2025-05-17
+
+### Change
+
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- checks for browser-specific APIs for server rendering (2025-05-12)
+
+### Fixed
+
+- fix build errors (2025-05-17)
+- type fix (2025-05-15)
+- remove scroll animation for mobile (2025-05-13)
+- only allow one home page per language (2025-05-13)
+- display content of the page (2025-05-13)
+
+### Changed
+
+- update changelog (2025-05-17)
+- update changelog (2025-05-16)
+- update changelog (2025-05-14)
+- contact form from sanity (2025-05-13)
+- minimize lang in lang selector for mobile (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-14)
+- add read more to home sections (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-13)
+- adjust mobile styling (2025-05-13)
+- update changelog (2025-05-13)
+- add unit and integration tests (2025-05-12)
+- fix build errors (2025-05-12)
+- update changelog (2025-05-13)
+
+### Added
+
+- fetch translated pages based on nav items (2025-05-16)
+- refactor navigation to include pages and subpages with auto translated title (2025-05-15)
+- add seo data from cms (2025-05-13)
+
 ## [0.1.0] - 2025-05-10
 
 ### Change
