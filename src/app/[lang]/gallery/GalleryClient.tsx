@@ -2,9 +2,10 @@
 
 import React, { useState, useRef, useEffect, useMemo } from "react"
 import Image from "next/image"
-import Popover from "@/components/Popover"
+import Dialog from "@/components/Dialog"
 import GalleryAnimation from "@/components/GalleryAnimation"
 import { urlFor } from "@/sanity/lib/image"
+import Carousel from "../../../components/Carousel"
 
 interface GalleryClientProps {
   gallery: {
@@ -110,11 +111,12 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
         className={`${selectedImage === null ? "pointer-events-none" : ""} fixed inset-0 bg-gray-900/90 bg-opacity-75 z-50`}
       >
         {selectedImage !== null && (
-          <Popover
-            selectedImage={shuffledImages[selectedImage]}
-            images={shuffledImages}
-            onClose={() => setSelectedImage(null)}
-          />
+          <Dialog onClose={() => setSelectedImage(null)}>
+            <Carousel
+              selectedImage={shuffledImages[selectedImage]}
+              images={shuffledImages}
+            />
+          </Dialog>
         )}
       </div>
     </div>
