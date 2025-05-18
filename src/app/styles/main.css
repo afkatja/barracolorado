@@ -1312,7 +1312,7 @@ body.is-touch .poptrox-popup .closer {
 }
 
 .main.fullscreen {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
 }
 
 .main .style1 {
