@@ -44,7 +44,7 @@ export type Post = Document & {
 export type Home = Document & {
   subtitle: string
   description: string
-  image: SanityImageObject
+  media: Media
 }
 
 export type Gallery = {
@@ -69,4 +69,15 @@ export type TContact = {
     messageLabel: string
     submitButton: string
   }
+}
+
+export type Media = {
+  type: string
+  singleImage: SanityImageObject
+  video: { url: string }
+  imageGallery: (SanityImageObject & {
+    caption?: string
+    alt: string
+    _key: string
+  })[]
 }

@@ -1,13 +1,13 @@
 "use client"
 import { Link } from "react-scroll"
-import { urlFor } from "@/sanity/lib/image"
-import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import MediaComponent from "./MediaComponent"
+import { Media } from "../types"
 
 interface IntroProps {
   title: string
   subtitle: string
   description: string
-  backgroundImage: SanityImageObject
+  media: Media
   sectionId?: string
   nextSection: string
 }
@@ -16,7 +16,7 @@ export default function Intro({
   title,
   subtitle,
   description,
-  backgroundImage,
+  media,
   nextSection,
 }: IntroProps) {
   return (
@@ -25,10 +25,8 @@ export default function Intro({
         data-testid={`intro-section`}
         className="dark style1 bg-gray-900 text-gray-50 flex justify-center items-center p-2 lg:p-8 flex-1 bg-fixed bg-cover bg-center bg-no-repeat max-w-screen"
         id="intro"
-        style={{
-          backgroundImage: `url(${urlFor(backgroundImage).url()})`,
-        }}
       >
+        <MediaComponent media={media} />
         <div className="content text-center">
           <header>
             <h2 className="text-4xl mb-4 font-black">{title}</h2>

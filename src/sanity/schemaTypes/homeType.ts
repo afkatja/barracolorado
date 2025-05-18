@@ -43,8 +43,42 @@ export const homeType = defineType({
       type: "string",
     }),
     defineField({
-      name: "image",
-      type: "image",
+      name: "media",
+      title: "Media",
+      type: "object",
+      fields: [
+        {
+          name: "type",
+          title: "Media Type",
+          type: "string",
+          options: {
+            list: [
+              { title: "Single Image", value: "singleImage" },
+              { title: "Video", value: "video" },
+              { title: "Image Gallery", value: "imageGallery" },
+            ],
+          },
+        },
+        {
+          name: "singleImage",
+          title: "Single Image",
+          type: "image",
+          hidden: ({ parent }) => parent?.type !== "singleImage",
+        },
+        {
+          name: "video",
+          title: "Video",
+          type: "file",
+          hidden: ({ parent }) => parent?.type !== "video",
+        },
+        {
+          name: "imageGallery",
+          title: "Image Gallery",
+          type: "array",
+          hidden: ({ parent }) => parent?.type !== "imageGallery",
+          of: [{ type: "image" }],
+        },
+      ],
     }),
   ],
   preview: {
