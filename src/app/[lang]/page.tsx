@@ -55,7 +55,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
         <Intro
           title={home.title}
           subtitle={home.subtitle}
-          backgroundImage={home.image}
+          media={home.media}
           description={home.description}
           nextSection={content[0]?._id ?? "gallery"}
         />
