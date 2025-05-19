@@ -62,20 +62,22 @@ const Section: React.FC<SectionProps> = ({
           className={`content flex flex-col box p-2.5 ${!asSection && "prose mx-auto text-justify"}`}
           asSection={asSection}
         >
-          <header className="flex">
+          <header className="flex items-start mb-0">
             {image && (
               <Image
                 src={urlFor(image).url()}
                 alt={title}
                 width={100}
                 height={100}
-                className="rounded-lg w-1/2 h-1/2 mr-1"
+                className="rounded-lg w-1/2 h-1/2 mr-1 my-2"
               />
             )}
             <div>
-              <h2 className="text-3xl font-bold">{title}</h2>
+              <h2 className="text-3xl font-bold text-left mt-2">{title}</h2>
               {subtitle && (
-                <h3 className="text-lg ml-2 font-medium">{subtitle}</h3>
+                <h3 className="text-lg my-2 font-medium text-left">
+                  {subtitle}
+                </h3>
               )}
             </div>
           </header>
