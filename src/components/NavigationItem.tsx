@@ -18,7 +18,7 @@ const NavigationItem = ({
     <NavigationMenu.Item key={item._id} className="relative">
       <NavigationMenu.Trigger className="group" asChild>
         <Link
-          href={`${lang}/${item.slug.current}`}
+          href={`/${lang}/${item.slug.current}`}
           className={`block text-gray-100 text-lg font-medium hover:text-gray-400 transition-colors ${
             pathname === `/${item.slug.current}` ? "text-gray-400" : ""
           }`}
