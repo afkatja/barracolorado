@@ -1302,8 +1302,8 @@ body.is-touch .poptrox-popup .closer {
 }
 
 .main .content {
-  width: 45em;
-  max-width: calc(100% - 4em);
+  /* width: 45em;
+  max-width: calc(100% - 4em); */
   margin: 0 auto;
 }
 
@@ -1338,9 +1338,9 @@ body.is-touch .poptrox-popup .closer {
 }
 
 .main .style2 {
-  align-items: center;
+  /*align-items: center;
   justify-content: center;
-  /* overflow: hidden; */
+   overflow: hidden; */
 }
 
 /* @media screen and (min-width: 900px) {
@@ -1369,17 +1369,17 @@ body.is-touch .poptrox-popup .closer {
 .main .style2 > .content {
   transition: transform 1s ease;
   position: relative;
-  width: 35%;
+  /* width: 35%; */
   margin: 0;
 }
 
-.main:nth-child(odd) .style2 {
+/* .main:nth-child(odd) .style2 {
   justify-content: flex-start;
 }
 
 .main:nth-child(even) .style2 {
   justify-content: flex-end;
-}
+} */
 
 @keyframes adjustPositionOdd {
   from {
@@ -1435,7 +1435,7 @@ body.is-touch .main {
   background-attachment: scroll !important;
 }
 
-@media screen and (max-width: 1920px) {
+/* @media screen and (max-width: 1920px) {
   .main .style2 .content {
     width: 40%;
   }
@@ -1451,7 +1451,7 @@ body.is-touch .main {
   .main .style2 .content {
     width: 60%;
   }
-}
+} */
 
 @media screen and (max-width: 736px) {
   .main .content br {

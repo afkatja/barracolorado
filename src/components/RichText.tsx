@@ -10,7 +10,7 @@ const RichText = ({ body }: { body: any }) => {
   if (!body) return
   const components: Partial<PortableTextReactComponents> = {
     block: {
-      normal: ({ children }) => <p className="m-2">{children}</p>,
+      normal: ({ children }) => <p className="my-2">{children}</p>,
       blockquote: ({ children }) => <p>{children}</p>,
       h1: ({ children }) => (
         <Title Heading="h1" titleClassName="col-span-2" title={children} />

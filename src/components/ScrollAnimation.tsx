@@ -8,6 +8,7 @@ interface ScrollAnimationProps {
   className?: string
   style?: React.CSSProperties
   dataTestId?: string
+  asSection?: boolean
 }
 
 const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
@@ -16,6 +17,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   className = "",
   style = {},
   dataTestId,
+  asSection,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [supportsScrollTimeline, setSupportsScrollTimeline] = useState(false)
@@ -25,6 +27,8 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
 
     const isMobile = window.innerWidth < 768
     if (isMobile) return
+
+    if (!asSection) return
 
     // Check for scroll-timeline support
     setSupportsScrollTimeline(CSS.supports("animation-timeline: scroll()"))
@@ -55,16 +59,19 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
         })
       })
     }
-  }, [direction, supportsScrollTimeline])
+  }, [direction, supportsScrollTimeline, asSection])
+
+  const animationClass = () => {
+    if (!asSection) return ""
+    if (direction === "left") return "md:animate-slideleft"
+    if (direction === "right") return "md:animate-slideright"
+  }
 
   return (
     <div
       ref={ref}
       data-testid={dataTestId}
-      className={cn(
-        className,
-        direction === "left" ? "md:animate-slideleft" : "md:animate-slideright"
-      )}
+      className={cn(className, animationClass())}
       style={{
         ...(supportsScrollTimeline
           ? {
