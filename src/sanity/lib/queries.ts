@@ -46,6 +46,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug && lan
   language,
   'content': body,
   mainImage,
+  parent->,
   ${TRANSLATION_QUERY}
 }`
 
