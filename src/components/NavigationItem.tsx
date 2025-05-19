@@ -13,7 +13,6 @@ const NavigationItem = ({
   lang: string
 }) => {
   const pathname = usePathname()
-  console.log({ pathname })
 
   return (
     <NavigationMenu.Item key={item._id} className="relative">

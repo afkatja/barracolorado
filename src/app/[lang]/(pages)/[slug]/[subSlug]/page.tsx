@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs"
 import { sanityFetch } from "@/sanity/lib/client"
 import { Page as PageType } from "../../../../../types"
 import { notFound } from "next/navigation"
+import { SanityDocument } from "next-sanity"
 
 type PageProps = {
   params: Promise<{
@@ -16,7 +17,7 @@ type PageProps = {
 
 const Page = async ({ params }: PageProps) => {
   const { lang, subSlug, slug } = await params
-  const subPage = await sanityFetch<PageType>({
+  const subPage = await sanityFetch<PageType & { parent: SanityDocument }>({
     query: PAGE_QUERY,
     revalidate: 0,
     params: { slug: subSlug, locale: lang },
@@ -24,15 +25,15 @@ const Page = async ({ params }: PageProps) => {
 
   if (!subPage) return notFound()
 
-  const { title, subtitle, description, mainImage, content } = subPage
+  const { title, subtitle, description, mainImage, content, parent } = subPage
 
   return (
     <>
       <div className="w-11/12 mx-auto py-1">
         <Breadcrumbs
           items={[
-            { label: slug, href: `/${slug}` },
-            { label: title, href: `/${slug}/${subSlug}` },
+            { label: parent.title, href: `/${lang}/${slug}` },
+            { label: title, href: `/${lang}/${slug}/${subSlug}` },
           ]}
         />
       </div>
@@ -43,6 +44,7 @@ const Page = async ({ params }: PageProps) => {
         description={description}
         image={mainImage}
         content={content}
+        asSection={false}
       />
     </>
   )
