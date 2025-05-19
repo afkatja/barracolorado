@@ -18,6 +18,7 @@ interface SectionProps {
   nextSection?: string
   children?: React.ReactNode
   className?: string
+  asSection?: boolean
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -30,6 +31,7 @@ const Section: React.FC<SectionProps> = ({
   nextSection,
   children,
   className,
+  asSection = true,
 }) => {
   const isEven = parseInt(id.replace(/\D/g, "")) % 2 === 0
   const [offset, setOffset] = useState(0)
@@ -50,14 +52,15 @@ const Section: React.FC<SectionProps> = ({
     >
       <section
         id={id}
-        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
+        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex items-center py-4 md:py-8 flex-1 ${asSection && isEven ? "justify-end" : "justify-center"}`}
         style={{
           backgroundImage: image ? `url(${urlFor(image).url()})` : "",
         }}
       >
         <ScrollAnimation
           direction={isEven ? "right" : "left"}
-          className="content flex flex-col box p-2.5"
+          className={`content flex flex-col box p-2.5 ${!asSection && "prose mx-auto text-justify"}`}
+          asSection={asSection}
         >
           <header className="flex">
             {image && (
@@ -72,7 +75,7 @@ const Section: React.FC<SectionProps> = ({
             <div>
               <h2 className="text-3xl font-bold">{title}</h2>
               {subtitle && (
-                <h3 className="text-lg m1-2 font-medium">{subtitle}</h3>
+                <h3 className="text-lg ml-2 font-medium">{subtitle}</h3>
               )}
             </div>
           </header>

@@ -39,17 +39,20 @@ const Page = async ({ params }: PageProps) => {
           title={page.title}
           content={page.content}
           image={page.mainImage}
+          asSection={false}
         />
       )}
-      <div className="main flex-1 md:fullscreen bg-linear-to-br from-teal-800 to-cyan-900 py-2">
-        <section className="md:p-4 w-11/12 mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-4">
-            {pages.map(page => (
-              <PageCard key={page._id} page={page} slug={slug} />
-            ))}
-          </div>
-        </section>
-      </div>
+      {!pages.length ? null : (
+        <div className="main flex-1 md:fullscreen bg-linear-to-br from-teal-800 to-cyan-900 py-2">
+          <section className="md:p-4 w-11/12 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-4">
+              {pages.map(page => (
+                <PageCard key={page._id} page={page} slug={slug} />
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
     </>
   )
 }
