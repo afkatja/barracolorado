@@ -13,6 +13,7 @@ const NavigationItem = ({
   lang: string
 }) => {
   const pathname = usePathname()
+  console.log({ pathname })
 
   return (
     <NavigationMenu.Item key={item._id} className="relative">
@@ -20,7 +21,7 @@ const NavigationItem = ({
         <Link
           href={`/${lang}/${item.slug.current}`}
           className={`block text-gray-100 text-lg font-medium hover:text-gray-400 transition-colors ${
-            pathname === `/${item.slug.current}` ? "text-gray-400" : ""
+            pathname === `/${lang}/${item.slug.current}` ? "text-gray-400" : ""
           }`}
         >
           {item.displayTitle ?? item.title}
