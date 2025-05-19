@@ -14,6 +14,7 @@ const MediaComponent = ({ media }: { media: Media }) => {
             alt=""
             width={1200}
             height={780}
+            className="h-full w-full object-cover"
           />
         )
       case "video":
