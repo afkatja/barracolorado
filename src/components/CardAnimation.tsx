@@ -3,13 +3,13 @@ import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { cn } from "@/lib/utils"
 
-interface BlogCardAnimationProps {
+interface CardAnimationProps {
   children: React.ReactNode
   index: number
   className?: string
 }
 
-const BlogCardAnimation: React.FC<BlogCardAnimationProps> = ({
+const CardAnimation: React.FC<CardAnimationProps> = ({
   children,
   index,
   className = "",
@@ -46,4 +46,4 @@ const BlogCardAnimation: React.FC<BlogCardAnimationProps> = ({
   )
 }
 
-export default BlogCardAnimation
+export default CardAnimation
