@@ -5,7 +5,7 @@ import { Button } from "./ui/button"
 
 interface DialogProps {
   children: React.ReactNode
-  buttonText: string
+  buttonText?: string
 }
 
 const Dialog = ({ children, buttonText }: DialogProps) => {

@@ -74,7 +74,7 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
       </div>
 
       {selectedImage !== null && (
-        <Dialog onClose={() => setSelectedImage(null)}>
+        <Dialog>
           <Carousel
             selectedImage={shuffledImages[selectedImage]}
             images={shuffledImages}
