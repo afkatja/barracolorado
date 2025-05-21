@@ -9,6 +9,8 @@ import { galleryType } from "./galleryType"
 import { homeType } from "./homeType"
 import { seoSettingsType } from "./seoSettings"
 import { contactType } from "./contactType"
+import { dialogType } from "./dialogType"
+import { packageType } from "./packageType"
 
 export {
   postType,
@@ -22,4 +24,6 @@ export {
   homeType,
   seoSettingsType,
   contactType,
+  dialogType,
+  packageType,
 }
