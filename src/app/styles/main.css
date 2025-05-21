@@ -226,9 +226,7 @@ input[type="reset"],
 .button,
 button {
   appearance: none;
-  border: 0;
   outline: 0;
-  text-align: center;
   text-decoration: none;
 }
 
@@ -320,13 +318,9 @@ textarea {
   transition:
     border-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
-  color: #39454b;
   display: block;
   width: 100%;
-  padding: 0.65em 0.75em;
   background: none;
-  border: solid 2px #e5e6e7;
-  border-radius: 0.5em;
   outline: none;
 }
 
@@ -339,16 +333,6 @@ input[type="url"]:focus,
 select:focus,
 textarea:focus {
   border-color: #9ac8e9;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input[type="search"],
-input[type="url"],
-select {
-  line-height: 1.35em;
 }
 
 textarea {
