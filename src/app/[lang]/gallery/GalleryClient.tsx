@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect, useMemo } from "react"
+import React, { useState, useMemo } from "react"
 import Image from "next/image"
 import Dialog from "@/components/Dialog"
 import GalleryAnimation from "@/components/GalleryAnimation"
@@ -24,7 +24,6 @@ interface GalleryClientProps {
 
 const GalleryClient = ({ gallery }: GalleryClientProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const popoverRef = useRef<HTMLDivElement>(null)
   const [shuffleSeed] = useState(() => Math.random())
 
   // Memoize the shuffled images to prevent re-shuffling on re-renders
@@ -39,37 +38,6 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
       return hashA - hashB
     })
   }, [gallery.images, shuffleSeed])
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !popoverRef.current) return
-
-    import("gsap").then(({ default: gsap }) => {
-      if (selectedImage !== null) {
-        // Animate in
-        gsap.fromTo(
-          popoverRef.current,
-          {
-            opacity: 0,
-            scale: 0.8,
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.5,
-            ease: "power2.out",
-          }
-        )
-      } else {
-        // Animate out
-        gsap.to(popoverRef.current, {
-          opacity: 0,
-          scale: 0.8,
-          duration: 0.3,
-          ease: "power2.in",
-        })
-      }
-    })
-  }, [selectedImage])
 
   return (
     <div className="mx-auto w-11/12">
@@ -105,20 +73,14 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
         })}
       </div>
 
-      <div
-        ref={popoverRef}
-        style={{ opacity: 0 }}
-        className={`${selectedImage === null ? "pointer-events-none" : ""} fixed inset-0 bg-gray-900/90 bg-opacity-75 z-50`}
-      >
-        {selectedImage !== null && (
-          <Dialog onClose={() => setSelectedImage(null)}>
-            <Carousel
-              selectedImage={shuffledImages[selectedImage]}
-              images={shuffledImages}
-            />
-          </Dialog>
-        )}
-      </div>
+      {selectedImage !== null && (
+        <Dialog onClose={() => setSelectedImage(null)}>
+          <Carousel
+            selectedImage={shuffledImages[selectedImage]}
+            images={shuffledImages}
+          />
+        </Dialog>
+      )}
     </div>
   )
 }
