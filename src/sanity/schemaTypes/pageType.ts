@@ -83,6 +83,11 @@ export const pageType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    // defineField({
+    //   name: "pageDialog",
+    //   type: "reference",
+    //   to: { type: "dialog" },
+    // }),
     defineField({
       name: "isPublished",
       type: "boolean",
