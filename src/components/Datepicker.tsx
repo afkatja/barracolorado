@@ -1,5 +1,5 @@
+"use client"
 import React from "react"
-import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { Calendar } from "@/components/ui/calendar"
@@ -9,6 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
+import { useParams } from "next/navigation"
 
 const Datepicker = ({
   label,
@@ -23,6 +24,19 @@ const Datepicker = ({
   availableDates: Date[]
   error: boolean
 }) => {
+  const params = useParams()
+
+  const locale = (params?.lang as string) || "en"
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString(locale, {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -34,7 +48,7 @@ const Datepicker = ({
           )}
         >
           <CalendarIcon className="mr-1 size-1" />
-          {date ? format(date, "PPP") : <span>{label}</span>}
+          {date ? formatDate(date) : <span>{label}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
