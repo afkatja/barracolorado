@@ -144,3 +144,78 @@ export const CONTACT_QUERY = groq`
     }
   }
 `
+
+export const PACKAGE_QUERY = groq`
+  *[_type == 'package' && language == $language && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    subtitle,
+    description,
+    slug,
+    language,
+    'content': body,
+    mainImage,
+    parent->,
+    'dialog': packageDialog {
+      'title': dialogTitle,
+      'subtitle': dialogSubtitle,
+      'description': dialogDescription,
+      formLabels {
+        nameLabel,
+        emailLabel,
+        peopleLabel,
+        dateLabel,
+        submitButton
+      },
+      formValidation {
+        required,
+        invalidEmail,
+        minPeople,
+        maxPeople
+      },
+      formSettings {
+        minPeople,
+        maxPeople,
+        'availableDates': coalesce(
+          availableDates[] {
+            date,
+            availableSlots
+          },
+          [{
+            'date': dateTime(now()),
+            'availableSlots': 1
+          }]
+        )
+      }
+    },
+    ${TRANSLATION_QUERY}
+  }
+`
+
+export const DIALOG_QUERY = groq`*[_type == "dialog" && language == $language && slug == $slug][0] {
+  title,
+  subtitle,
+  description,
+  formLabels {
+    nameLabel,
+    emailLabel,
+    peopleLabel,
+    dateLabel,
+    submitButton
+  },
+  formValidation {
+    required,
+    invalidEmail,
+    minPeople,
+    maxPeople
+  },
+  formSettings {
+    minPeople,
+    maxPeople,
+    availableDates[] {
+      date,
+      availableSlots
+    }
+  }
+}`

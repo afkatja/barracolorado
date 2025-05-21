@@ -12,6 +12,8 @@ import {
   homeType,
   seoSettingsType,
   contactType,
+  dialogType,
+  packageType,
 } from "./schemaTypes"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -27,5 +29,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homeType,
     seoSettingsType,
     contactType,
+    dialogType,
+    packageType,
   ],
 }
