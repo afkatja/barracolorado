@@ -9,8 +9,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 // import Link from "next/link"
 
-const Footer = () => (
-  <footer id="footer" className="bg-gray-900 text-gray-50 p-4">
+const Footer = ({id}:{id?:string}) => (
+  <footer id={id || "footer"} className="bg-gray-900 text-gray-50 p-4">
     <ul className="icons flex justify-center space-x-4 mb-4">
       <li>
         <a href="#" className="icon brands">

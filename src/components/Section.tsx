@@ -13,7 +13,7 @@ interface SectionProps {
   title: string
   subtitle?: string
   description?: string
-  image: SanityImageObject
+  image?: SanityImageObject
   content: SanityDocument | string
   nextSection?: string
   children?: React.ReactNode
@@ -59,7 +59,7 @@ const Section: React.FC<SectionProps> = ({
       >
         <ScrollAnimation
           direction={isEven ? "right" : "left"}
-          className={`content flex flex-col box p-2.5 ${!asSection && "prose mx-auto text-justify"}`}
+          className={`content flex flex-col box p-2.5 ${!asSection && "prose min-w-[65ch] mx-auto text-justify"}`}
           asSection={asSection}
         >
           <header className="flex items-start mb-0">
