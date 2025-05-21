@@ -81,3 +81,30 @@ export type Media = {
     _key: string
   })[]
 }
+
+export type TFormData = {
+  title: string
+  subtitle?: string
+  description?: string
+  formLabels: {
+    nameLabel: string
+    emailLabel: string
+    peopleLabel: string
+    dateLabel: string
+    submitButton: string
+  }
+  formValidation: {
+    required: string
+    invalidEmail: string
+    minPeople: string
+    maxPeople: string
+  }
+  formSettings: {
+    minPeople: number
+    maxPeople: number
+    availableDates: Array<{
+      date: string
+      availableSlots: number
+    }>
+  }
+}
