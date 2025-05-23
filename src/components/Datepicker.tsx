@@ -64,7 +64,6 @@ const Datepicker = ({
                 availableDate.toDateString() === date.toDateString()
             )
           }
-          initialFocus
         />
       </PopoverContent>
     </Popover>
