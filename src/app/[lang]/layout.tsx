@@ -5,6 +5,7 @@ import { Inter } from "next/font/google"
 import { locales } from "@/i18n"
 import { client } from "@/sanity/lib/client"
 import { seoSettingsQuery } from "@/sanity/lib/queries"
+import "react-day-picker/style.css"
 import "../styles/globals.css"
 import "../styles/main.css"
 
