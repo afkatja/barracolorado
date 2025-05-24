@@ -1,5 +1,5 @@
 import React from "react"
-import RootLayout from "./layout"
+// import RootLayout from "./layout"
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 
@@ -13,11 +13,11 @@ const PagesLayout = async ({
   const { lang } = await params
 
   return (
-    <RootLayout params={{ lang }}>
+    <>
       <Header lang={lang} id="pages" />
       {children}
       <Footer id="pages" />
-    </RootLayout>
+    </>
   )
 }
 

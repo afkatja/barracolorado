@@ -3,13 +3,14 @@ import {
   faTwitter,
   faFacebookF,
   faInstagram,
-  faLinkedinIn,
-  faDribbble,
-  faPinterest,
+  faWhatsapp,
+  // faLinkedinIn,
+  // faDribbble,
+  // faPinterest,
 } from "@fortawesome/free-brands-svg-icons"
 // import Link from "next/link"
 
-const Footer = ({id}:{id?:string}) => (
+const Footer = ({ id }: { id?: string }) => (
   <footer id={id || "footer"} className="bg-gray-900 text-gray-50 p-4">
     <ul className="icons flex justify-center space-x-4 mb-4">
       <li>
@@ -28,6 +29,11 @@ const Footer = ({id}:{id?:string}) => (
         </a>
       </li>
       <li>
+        <a href="http://wa.me/50688748375" className="icon brands">
+          <FontAwesomeIcon icon={faWhatsapp} />
+        </a>
+      </li>
+      {/* <li>
         <a href="#" className="icon brands">
           <FontAwesomeIcon icon={faLinkedinIn} />
         </a>
@@ -41,12 +47,12 @@ const Footer = ({id}:{id?:string}) => (
         <a href="#" className="icon brands">
           <FontAwesomeIcon icon={faPinterest} />
         </a>
-      </li>
+      </li> */}
     </ul>
     <ul className="menu flex justify-center space-x-4">
       <li>&copy; Barra Colorado</li>
       <li>
-        Design:{" "}
+        Design & development:{" "}
         <a href="http://afkatja.github.io" className="underline">
           Katja Hollaar
         </a>
