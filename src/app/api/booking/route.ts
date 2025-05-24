@@ -31,17 +31,17 @@ export async function POST(request: Request) {
       from: process.env.SENDGRID_FROM_EMAIL!, // Verified sender email
       subject: `New Booking Request from ${name}`,
       text: `
-Name: ${name}
-Email: ${email}
-Number of People: ${people}
-Date: ${formattedDate}
-      `,
+        Name: ${name}
+        Email: ${email}
+        Number of People: ${people}
+        Date: ${formattedDate}
+              `,
       html: `
-<h2>New Booking Request</h2>
-<p><strong>Name:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Number of People:</strong> ${people}</p>
-<p><strong>Date:</strong> ${formattedDate}</p>
+        <h2>New Booking Request</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Number of People:</strong> ${people}</p>
+        <p><strong>Date:</strong> ${formattedDate}</p>
       `,
     }
 
@@ -49,8 +49,8 @@ Date: ${formattedDate}
     await sgMail.send(msg)
 
     return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error("Error sending email:", error)
+  } catch (error: any) {
+    console.error("Error sending email:", error?.response?.body || error)
     return NextResponse.json(
       { error: "Failed to send booking request" },
       { status: 500 }

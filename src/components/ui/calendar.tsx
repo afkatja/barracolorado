@@ -38,14 +38,14 @@ function Calendar({
           "text-muted-foreground rounded-md w-3 font-normal text-[0.8rem]",
         week: "flex w-full",
         day: cn(
-          "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].range-end)]:rounded-r-md hover:bg-gray-100 transition-colors duration-200",
+          "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].range-end)]:rounded-r-md rounded-md",
           props.mode === "range"
             ? "[&:has(>.range-end)]:rounded-r-md [&:has(>.range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
             : "[&:has([aria-selected])]:rounded-md"
         ),
         day_button: cn(
           buttonVariants({ variant: "ghost" }),
-          "size-3 p-0 font-normal aria-selected:opacity-100"
+          "size-3 p-0 font-normal aria-selected:opacity-100 hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
         ),
         range_start:
           "range-start aria-selected:bg-primary aria-selected:text-primary-foreground",
