@@ -79,10 +79,10 @@ const Section: React.FC<SectionProps> = ({
                   {subtitle}
                 </h3>
               )}
+              {description && <p className="mt-2">{description}</p>}
             </div>
           </header>
 
-          {description && <p className="mt-2">{description}</p>}
           {typeof content === "string" ? (
             <p>{content}</p>
           ) : (

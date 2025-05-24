@@ -44,7 +44,7 @@ const MediaComponent = ({ media }: { media: Media }) => {
     }
   }
   return (
-    <div className="fixed top-[var(--header-height))] left-0 h-[calc(100vh-var(--header-height))] w-screen">
+    <div className="absolute top-0 left-0 h-[calc(100vh-var(--header-height))] w-screen">
       {determineMediaType()}
     </div>
   )
