@@ -947,6 +947,96 @@ Date: 2025-05-19
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
 
+
+## Version 0.1.0
+
+Date: 2025-05-24
+
+### Changed
+
+- contact form styling (2025-05-23)
+- gallery on home styling (2025-05-23)
+- minor fixes (2025-05-20)
+- add booking form data type (2025-05-20)
+- styling changes (2025-05-20)
+- add aliases (2025-05-20)
+- update changelog (2025-05-19)
+- page card uses card animation (2025-05-18)
+- update changelog (2025-05-19)
+- update changelog (2025-05-19)
+- update changelog (2025-05-18)
+- cleanup logs (2025-05-18)
+- rename comp to Dialog (2025-05-18)
+- add reference to media in intro (2025-05-18)
+- update changelog (2025-05-18)
+- update changelog (2025-05-18)
+- update changelog (2025-05-17)
+- update changelog (2025-05-17)
+- update changelog (2025-05-16)
+- update changelog (2025-05-14)
+- contact form from sanity (2025-05-13)
+- minimize lang in lang selector for mobile (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-14)
+- add read more to home sections (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-13)
+- adjust mobile styling (2025-05-13)
+- update changelog (2025-05-13)
+- add unit and integration tests (2025-05-12)
+- fix build errors (2025-05-12)
+- update changelog (2025-05-13)
+
+### Added
+
+- add floating whatsapp button (2025-05-23)
+- add packages doc type and page (2025-05-20)
+- add form component with ui elements (2025-05-20)
+- add prose and center page content (2025-05-18)
+- add media component and options for media in home (2025-05-18)
+- fetch translated pages based on nav items (2025-05-16)
+- refactor navigation to include pages and subpages with auto translated title (2025-05-15)
+- add seo data from cms (2025-05-13)
+
+### Change
+
+- import day picker style for customizing (2025-05-22)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-20)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- checks for browser-specific APIs for server rendering (2025-05-12)
+
+### Fixed
+
+- fix build error (2025-05-21)
+- remove date-fns, use native date format (2025-05-21)
+- fix build error (2025-05-21)
+- add package doc type for translations (2025-05-20)
+- dialog maintains its own state instead of gallery (2025-05-20)
+- parent field to subpage (2025-05-18)
+- correct display of breadcrumbs title and link (2025-05-18)
+- nav item active pathname (2025-05-18)
+- fix nav item link (2025-05-18)
+- single image styling (2025-05-18)
+- include locale in the nav (2025-05-17)
+- only display top level pages for nav (2025-05-17)
+- fix build errors (2025-05-17)
+- type fix (2025-05-15)
+- remove scroll animation for mobile (2025-05-13)
+- only allow one home page per language (2025-05-13)
+- display content of the page (2025-05-13)
+
 ## [0.1.0] - 2025-05-10
 
 ### Change
