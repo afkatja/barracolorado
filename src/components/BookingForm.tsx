@@ -16,12 +16,6 @@ import Input from "./ui/input"
 
 type BookingFormProps = {
   data: TFormData
-  onSubmit: (formData: {
-    name: string
-    email: string
-    people: number
-    date: Date
-  }) => void
 }
 
 const generateDateRange = (startDate: Date, days: number = 30) => {
@@ -39,7 +33,7 @@ const generateDateRange = (startDate: Date, days: number = 30) => {
   return dates
 }
 
-const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
+const BookingForm = ({ data }: BookingFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,6 +42,8 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -81,9 +77,25 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
     if (!validateForm()) return
 
     setIsSubmitting(true)
+    setError(null)
+    setSuccess(false)
+
     try {
-      await onSubmit(formData)
-      // Reset form after successful submission
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const responseData = await response.json()
+
+      if (!response.ok) {
+        throw new Error(responseData.error || "Failed to send booking request")
+      }
+
+      setSuccess(true)
       setFormData({
         name: "",
         email: "",
@@ -91,8 +103,10 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
         date: new Date(),
       })
       setErrors({})
-    } catch (error) {
-      console.error("Error submitting form:", error)
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Failed to send booking request"
+      )
     } finally {
       setIsSubmitting(false)
     }
@@ -110,14 +124,29 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
     : generateDateRange(new Date(), 30).map(date => date.date)
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-100 p-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-gray-100 p-4"
+      data-netlify="true"
+      name="booking-form"
+    >
       {data.title && <h2 className="text-2xl font-bold mt-0">{data.title}</h2>}
       {data.subtitle && <h3 className="text-xl">{data.subtitle}</h3>}
       {data.description && <p className="text-gray-600">{data.description}</p>}
 
+      {success ? (
+        <div className="text-center text-green-600 mb-4">
+          Thank you for your booking request! We&apos;ll get back to you soon.
+        </div>
+      ) : null}
+      {error ? (
+        <div className="text-center text-red-600 mb-4">{error}</div>
+      ) : null}
+
       <div className="space-y-2">
         <Input
           id="name"
+          name="name"
           label={data.formLabels.nameLabel}
           type="text"
           initialValue={formData.name}
@@ -128,6 +157,7 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
         />
         <Input
           id="email"
+          name="email"
           label={data.formLabels.emailLabel}
           type="email"
           initialValue={formData.email}
@@ -192,9 +222,9 @@ const BookingForm = ({ data, onSubmit }: BookingFormProps) => {
         <Button
           type="submit"
           className="bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg py-1 px-2 ml-auto mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={isSubmitting || !isFormValid}
+          disabled={!isFormValid || isSubmitting}
         >
-          {isSubmitting ? "..." : data.formLabels.submitButton}
+          {isSubmitting ? "Sending..." : data.formLabels.submitButton}
         </Button>
       </footer>
     </form>
