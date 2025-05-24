@@ -5,6 +5,7 @@ import { Inter } from "next/font/google"
 import { locales } from "@/i18n"
 import { client } from "@/sanity/lib/client"
 import { seoSettingsQuery } from "@/sanity/lib/queries"
+import WhatsAppButton from "@/components/WhatsAppButton"
 import "react-day-picker/style.css"
 import "../styles/globals.css"
 import "../styles/main.css"
@@ -143,6 +144,7 @@ const RootLayout = async ({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen ${inter.className}`}
       >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   )
