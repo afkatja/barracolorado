@@ -87,12 +87,14 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           </Link>
         </Section>
       ))}
-      <section
-        id="gallery"
-        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center items-center py-4 md:py-8 flex-1`}
-      >
-        <GalleryClient gallery={gallery} />
-      </section>
+      <div className={`main min-h-[calc(100vh-var(--header-height))]`}>
+        <section
+          id="gallery"
+          className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center py-2 md:py-4 flex-1`}
+        >
+          <GalleryClient gallery={gallery} />
+        </section>
+      </div>
       {contact && <Contact contact={contact} />}
     </PagesLayout>
   )
