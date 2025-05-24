@@ -18,15 +18,13 @@ type BookingFormProps = {
   data: TFormData
 }
 
-const generateDateRange = (startDate: Date, days: number = 30) => {
+const generateDateRange = (startDate: Date = new Date(), days: number = 30) => {
   const dates = []
   const currentDate = new Date(startDate)
+  currentDate.setHours(0, 0, 0, 0) // Reset time to start of day
 
   for (let i = 0; i < days; i++) {
-    dates.push({
-      date: new Date(currentDate),
-      availableSlots: 1,
-    })
+    dates.push(new Date(currentDate))
     currentDate.setDate(currentDate.getDate() + 1)
   }
 
@@ -113,15 +111,13 @@ const BookingForm = ({ data }: BookingFormProps) => {
   }
 
   const isFormValid =
-    !!Object.keys(errors).length &&
+    !Object.keys(errors).length &&
     !!formData.name.trim() &&
     !!formData.email.trim() &&
     !!formData.date
 
   // Generate available dates if none are provided
-  const availableDates = data.formSettings.availableDates?.length
-    ? data.formSettings.availableDates.map(date => new Date(date.date))
-    : generateDateRange(new Date(), 30).map(date => date.date)
+  const availableDates = generateDateRange(new Date(), 30)
 
   return (
     <form
