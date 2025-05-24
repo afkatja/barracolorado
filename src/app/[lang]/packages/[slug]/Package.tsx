@@ -41,10 +41,7 @@ const Package = ({
         >
           {formData && (
             <Dialog buttonText="Book now">
-              <BookingForm
-                onSubmit={() => console.log("submit the form")}
-                data={formData}
-              />
+              <BookingForm data={formData} />
             </Dialog>
           )}
         </Section>

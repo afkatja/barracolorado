@@ -42,6 +42,7 @@
     "@sanity/document-internationalization": "^3.3.1",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.82.0",
+    "@sendgrid/mail": "^8.1.5",
     "@types/gsap": "^1.20.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -3,9 +3,49 @@ import { Element } from "react-scroll"
 import { TContact } from "../types"
 import Input from "./ui/input"
 import { Button } from "./ui/button"
+import { useState } from "react"
 
 const Contact = ({ contact }: { contact: TContact }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+
   if (!contact) return null
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError(null)
+    setSuccess(false)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      setSuccess(true)
+      setFormData({ name: "", email: "", message: "" })
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send message")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <Element name="contact" className="main fullscreen">
@@ -19,7 +59,15 @@ const Contact = ({ contact }: { contact: TContact }) => {
             <p className="mb-4">{contact.subtitle}</p>
           </header>
           <div className="bg-gray-50 p-4 rounded-lg">
-            <form method="post" action="#">
+            {success ? (
+              <div className="text-center text-green-600 mb-4">
+                Thank you for your message! We&apos;ll get back to you soon.
+              </div>
+            ) : null}
+            {error ? (
+              <div className="text-center text-red-600 mb-4">{error}</div>
+            ) : null}
+            <form onSubmit={handleSubmit}>
               <div className="fields grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div className="field half">
                   <Input
@@ -28,8 +76,10 @@ const Contact = ({ contact }: { contact: TContact }) => {
                     placeholder={contact.formLabels.nameLabel}
                     id="name"
                     label={contact.formLabels.nameLabel}
-                    initialValue=""
-                    onChange={() => {}}
+                    initialValue={formData.name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                   />
                 </div>
                 <div className="field half">
@@ -39,8 +89,10 @@ const Contact = ({ contact }: { contact: TContact }) => {
                     placeholder={contact.formLabels.emailLabel}
                     id="email"
                     label={contact.formLabels.emailLabel}
-                    initialValue=""
-                    onChange={() => {}}
+                    initialValue={formData.email}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                   />
                 </div>
                 <div className="field col-span-2">
@@ -54,6 +106,10 @@ const Contact = ({ contact }: { contact: TContact }) => {
                     name="message"
                     placeholder={contact.formLabels.messageLabel}
                     rows={6}
+                    value={formData.message}
+                    onChange={e =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="block w-full rounded-md border border-input shadow-xs focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus:border-teal-500 focus:ring-teal-500 sm:text-sm px-2 py-1 text-sm"
                   />
                 </div>
@@ -61,11 +117,15 @@ const Contact = ({ contact }: { contact: TContact }) => {
               <ul className="actions special flex justify-center">
                 <li>
                   <Button
+                    type="submit"
                     variant="default"
                     size="sm"
-                    className="bg-teal-600 hover:bg-teal-800 text-gray-50 font-bold p-1.5 rounded-lg focus:outline-none cursor-pointer"
+                    className="bg-teal-600 hover:bg-teal-800 text-gray-50 font-bold p-1.5 rounded-lg focus:outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isSubmitting}
                   >
-                    {contact.formLabels.submitButton}
+                    {isSubmitting
+                      ? "Sending..."
+                      : contact.formLabels.submitButton}
                   </Button>
                 </li>
               </ul>
