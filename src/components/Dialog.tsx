@@ -75,7 +75,7 @@ const Dialog = ({ children, buttonText }: DialogProps) => {
         className={`${!isOpen ? "pointer-events-none" : ""} fixed top-0 w-screen h-screen inset-0 bg-gray-900/90 bg-opacity-75 z-50`}
       >
         <button
-          className="absolute top-4 right-4 text-gray-50 text-2xl hover:text-gray-300 transition-colors"
+          className="absolute top-4 right-4 text-gray-50 text-2xl hover:text-gray-300 transition-colors cursor-pointer z-10"
           onClick={() => setIsOpen(false)}
         >
           ×
