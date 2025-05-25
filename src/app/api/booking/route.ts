@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import sgMail from "@sendgrid/mail"
+import { appendToSheet } from "@/lib/googleSheets"
 
 // Initialize SendGrid with API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!)
@@ -45,14 +46,23 @@ export async function POST(request: Request) {
       `,
     }
 
-    // Send email
-    await sgMail.send(msg)
+    // Send email and write to Google Sheets in parallel
+    await Promise.all([
+      sgMail.send(msg),
+      appendToSheet([
+        new Date().toISOString(), // Timestamp
+        name,
+        email,
+        people,
+        formattedDate,
+      ]),
+    ])
 
     return NextResponse.json({ success: true })
   } catch (error: any) {
-    console.error("Error sending email:", error?.response?.body || error)
+    console.error("Error processing booking:", error?.response?.body || error)
     return NextResponse.json(
-      { error: "Failed to send booking request" },
+      { error: "Failed to process booking request" },
       { status: 500 }
     )
   }
