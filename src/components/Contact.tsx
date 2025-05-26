@@ -17,6 +17,9 @@ const Contact = ({ contact }: { contact: TContact }) => {
 
   if (!contact) return null
 
+  const isFormValid =
+    !error && !!formData.name && !!formData.email && !!formData.message
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -58,7 +61,7 @@ const Contact = ({ contact }: { contact: TContact }) => {
             <h2 className="text-3xl mb-4">{contact.title}</h2>
             <p className="mb-4">{contact.subtitle}</p>
           </header>
-          <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="bg-gray-50 p-4 rounded-lg text-gray-700">
             {success ? (
               <div className="text-center text-green-600 mb-4">
                 Thank you for your message! We&apos;ll get back to you soon.
@@ -121,7 +124,7 @@ const Contact = ({ contact }: { contact: TContact }) => {
                     variant="default"
                     size="sm"
                     className="bg-teal-600 hover:bg-teal-800 text-gray-50 font-bold p-1.5 rounded-lg focus:outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isSubmitting}
+                    disabled={!isFormValid || isSubmitting}
                   >
                     {isSubmitting
                       ? "Sending..."
