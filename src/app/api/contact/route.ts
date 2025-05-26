@@ -23,16 +23,16 @@ export async function POST(request: Request) {
       from: process.env.SENDGRID_FROM_EMAIL!, // Verified sender email
       subject: `New Contact Form Submission from ${name}`,
       text: `
-Name: ${name}
-Email: ${email}
-Message: ${message}
+        Name: ${name}
+        Email: ${email}
+        Message: ${message}
       `,
       html: `
-<h2>New Contact Form Submission</h2>
-<p><strong>Name:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Message:</strong></p>
-<p>${message}</p>
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
       `,
     }
 
@@ -40,8 +40,8 @@ Message: ${message}
     await sgMail.send(msg)
 
     return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error("Error sending email:", error)
+  } catch (error: any) {
+    console.error("Error sending email:", error?.response?.body || error)
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }
