@@ -3,10 +3,10 @@ import { defineField, defineType, ValidationContext } from "sanity"
 interface FormSettings {
   minPeople: number
   maxPeople: number
-  availableDates: Array<{
-    date: string
-    availableSlots: number
-  }>
+  // availableDates: Array<{
+  //   date: string
+  //   availableSlots: number
+  // }>
 }
 
 export const dialogType = defineType({
@@ -138,30 +138,30 @@ export const dialogType = defineType({
           type: "number",
           validation: rule => rule.required().min(1),
         },
-        {
-          name: "availableDates",
-          title: "Available Dates",
-          type: "array",
-          of: [
-            {
-              type: "object",
-              fields: [
-                {
-                  name: "date",
-                  title: "Date",
-                  type: "datetime",
-                  validation: rule => rule.required(),
-                },
-                {
-                  name: "availableSlots",
-                  title: "Available Slots",
-                  type: "number",
-                  validation: rule => rule.required().min(0),
-                },
-              ],
-            },
-          ],
-        },
+        // {
+        //   name: "availableDates",
+        //   title: "Available Dates",
+        //   type: "array",
+        //   of: [
+        //     {
+        //       type: "object",
+        //       fields: [
+        //         {
+        //           name: "date",
+        //           title: "Date",
+        //           type: "datetime",
+        //           validation: rule => rule.required(),
+        //         },
+        //         {
+        //           name: "availableSlots",
+        //           title: "Available Slots",
+        //           type: "number",
+        //           validation: rule => rule.required().min(0),
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
       ],
     }),
   ],
