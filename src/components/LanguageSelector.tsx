@@ -41,7 +41,7 @@ export default function LanguageSelector() {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 py-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
       >
-        <span className="text-3xl">{currentLanguage?.flag}</span>
+        <span className={`text-xl ${currentLanguage?.flag}`} />
         <span className="hidden md:block">{currentLanguage?.title}</span>
       </button>
 
@@ -60,7 +60,7 @@ export default function LanguageSelector() {
               className={`${currentLanguage?.id === locale.id ? "text-gray-400 cursor-default" : "text-gray-900 cursor-pointer"} flex items-center gap-1 w-full p-1 text-sm  hover:text-gray-400`}
               role="menuitem"
             >
-              <span>{locale.flag}</span>
+              <span className={locale.flag} />
               <span>{locale.title}</span>
             </button>
           ))}
