@@ -26,15 +26,15 @@ export default async function GalleryPage({
 
   return (
     <PagesLayout params={params}>
-        <section
-          className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center items-center py-2 md:py-4 flex-1`}
-        >
-          {!gallery ? (
-            <div>No gallery found</div>
-          ) : (
-            <GalleryClient gallery={gallery} />
-          )}
-        </section>
+      <section
+        className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center items-center py-2 md:py-4 flex-1`}
+      >
+        {!gallery ? (
+          <div>No gallery found</div>
+        ) : (
+          <GalleryClient gallery={gallery} />
+        )}
+      </section>
     </PagesLayout>
   )
 }
