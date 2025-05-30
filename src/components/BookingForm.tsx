@@ -16,6 +16,7 @@ import Input from "./ui/input"
 
 type BookingFormProps = {
   data: TFormData
+  orderData: Record<string, any>
 }
 
 const generateDateRange = (startDate: Date = new Date(), days: number = 30) => {
@@ -31,7 +32,11 @@ const generateDateRange = (startDate: Date = new Date(), days: number = 30) => {
   return dates
 }
 
-const BookingForm = ({ data }: BookingFormProps) => {
+const convertPriceToNumber = (price: string): number => {
+  return Number(price.replace(/[^0-9.]/g, ""))
+}
+
+const BookingForm = ({ data, orderData }: BookingFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -118,11 +123,15 @@ const BookingForm = ({ data }: BookingFormProps) => {
 
   // Generate available dates if none are provided
   const availableDates = generateDateRange(new Date(), 30)
+  console.log({
+    people: formData.people,
+    price: convertPriceToNumber(orderData.price),
+  })
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-100 p-4"
+      className=""
       data-netlify="true"
       name="booking-form"
     >
@@ -214,10 +223,13 @@ const BookingForm = ({ data }: BookingFormProps) => {
           )}
         </div>
       </div>
-      <footer className="flex">
+      <footer className="flex items-center mt-2">
+        <output className="font-bold text-lg">
+          {`$ ${convertPriceToNumber(orderData.price) * formData.people}`}
+        </output>
         <Button
           type="submit"
-          className="bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg py-1 px-2 ml-auto mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg py-1 px-2 ml-auto disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={!isFormValid || isSubmitting}
         >
           {isSubmitting ? "Sending..." : data.formLabels.submitButton}
