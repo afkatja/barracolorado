@@ -33,7 +33,7 @@ export const SUB_PAGES_QUERY = groq`*[(_type == "page" || _type == 'package') &&
   language,
   mainImage,
   description,
-  "content": body
+  "content": body,
   ${TRANSLATION_QUERY}
 }`
 
@@ -143,7 +143,7 @@ export const CONTACT_QUERY = groq`
   }
 `
 export const PACKAGES_QUERY = groq`
-  *[_type == 'package' && language == $language][] {
+  *[_type == 'package' && language == $language] {
     _id,
     _type,
     title,
