@@ -107,7 +107,7 @@ const MoreInfoButton = () => {
     <Dialog
       button={{
         className:
-          "bg-transparent hover:bg-transparent text-gray-50 hover:text-gray-300 p-0! transition-colors duration-300 cursor-pointer",
+          "bg-transparent hover:bg-transparent text-teal-700 hover:text-teal-800 p-0! transition-colors duration-300 cursor-pointer",
         buttonChildren: <FaInfoCircle size={10} className="w-1 h-1" />,
       }}
     >

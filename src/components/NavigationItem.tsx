@@ -27,7 +27,7 @@ const NavigationItem = ({
         </Link>
       </NavigationMenu.Trigger>
       {!!item.subItems?.length && (
-        <NavigationMenu.Content className="absolute top-full left-0 w-15 bg-gray-50 shadow-lg rounded-md p-1">
+        <NavigationMenu.Content className="absolute top-full left-0 w-15 bg-gray-50 shadow-lg rounded-md p-1 z-50">
           {item.subItems?.map(subItem => (
             <Link
               key={subItem._id}
