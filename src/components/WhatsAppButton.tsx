@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-2 right-2 z-50 bg-green-500 text-white p-1 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 flex items-center justify-center"
+      className="bg-green-500 text-white p-1 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300 flex items-center justify-center"
       aria-label="Contact us on WhatsApp"
     >
       <FaWhatsapp className="w-2 h-2" />

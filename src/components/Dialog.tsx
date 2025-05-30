@@ -5,10 +5,10 @@ import { Button } from "./ui/button"
 
 interface DialogProps {
   children: React.ReactNode
-  buttonText?: string
+  button?: { className?: string; buttonChildren?: React.ReactNode }
 }
 
-const Dialog = ({ children, buttonText }: DialogProps) => {
+const Dialog = ({ children, button }: DialogProps) => {
   const popoverRef = useRef<HTMLDivElement>(null)
 
   const [isOpen, setIsOpen] = useState(false)
@@ -61,18 +61,20 @@ const Dialog = ({ children, buttonText }: DialogProps) => {
 
   return (
     <>
-      <Button
-        variant="default"
-        size="sm"
-        onClick={() => setIsOpen(true)}
-        className="bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg ml-auto"
-      >
-        {buttonText}
-      </Button>
+      {
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setIsOpen(true)}
+          className={`bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg ml-auto ${button?.className}`}
+        >
+          {button?.buttonChildren}
+        </Button>
+      }
       <div
         ref={popoverRef}
         style={{ opacity: 0 }}
-        className={`${!isOpen ? "pointer-events-none" : ""} fixed top-0 w-screen h-screen inset-0 bg-gray-900/90 bg-opacity-75 z-50`}
+        className={`${!isOpen ? "pointer-events-none" : ""} fixed top-0 w-screen h-screen inset-0 bg-gray-900/90 bg-opacity-75 z-50 flex flex-col items-center justify-center`}
       >
         <button
           className="absolute top-4 right-4 text-gray-50 text-2xl hover:text-gray-300 transition-colors cursor-pointer z-10"
@@ -80,7 +82,7 @@ const Dialog = ({ children, buttonText }: DialogProps) => {
         >
           ×
         </button>
-        <div className="w-full h-full flex flex-col items-center relative p-4 overflow-y-scroll">
+        <div className="w-11/12 min-h-11/12 md:w-1/2 md:min-h-1/2 flex flex-col items-center relative p-4 overflow-y-scroll bg-gray-50 rounded-lg">
           {children}
         </div>
       </div>
