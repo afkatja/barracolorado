@@ -43,7 +43,7 @@ const Page = async ({ params }: PageProps) => {
         />
       )}
       {!pages.length ? null : (
-        <div className="main flex-1 md:fullscreen bg-linear-to-br from-teal-800 to-cyan-900 py-2">
+        <div className="main flex-1 md:fullscreen min-h-[calc(100vh-var(--header-height))] bg-linear-to-br from-teal-800 to-cyan-900 py-2">
           <section className="md:py-4 w-11/12 mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-2">
               {pages.map((page, i) => (
