@@ -8,6 +8,7 @@ import { TFormData } from "../../../../types"
 
 type PackageType = {
   _id: string
+  slug: { current: string }
   title: string
   subtitle?: string
   description?: string
@@ -28,7 +29,11 @@ const Package = async ({
   })
 
   return (
-    <PackageComponent formData={packageData.dialog} packageData={packageData} />
+    <PackageComponent
+      formData={packageData.dialog}
+      packageData={packageData}
+      lang={lang}
+    />
   )
 }
 

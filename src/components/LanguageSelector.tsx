@@ -39,7 +39,7 @@ export default function LanguageSelector() {
     <div className="relative ml-2 order-3" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 py-2 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
+        className="flex items-center gap-1 rounded-md text-gray-100 hover:text-gray-400 transition-colors text-lg font-medium cursor-pointer"
       >
         <span className={`text-xl ${currentLanguage?.flag}`} />
         <span className="hidden md:block">{currentLanguage?.title}</span>

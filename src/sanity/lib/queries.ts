@@ -24,7 +24,7 @@ export const PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   ${TRANSLATION_QUERY}
 }`
 
-export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && parent->slug.current == $slug] {
+export const SUB_PAGES_QUERY = groq`*[(_type == "page" || _type == 'package') && language == $locale && parent->slug.current == $slug] {
   _id,
   _type,
   title,
@@ -33,7 +33,7 @@ export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && 
   language,
   mainImage,
   description,
-  "content": body,
+  "content": body
   ${TRANSLATION_QUERY}
 }`
 
@@ -108,7 +108,7 @@ export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
     slug,
     'pages': *[_type == 'page' && language == $language && slug.current == ^.slug.current][0] {
     _id, title, displayTitle, slug,
-      "subItems": *[_type == 'page' && parent -> slug.current == ^.slug.current && language == $language] | order(menuOrder asc, title asc) {
+      "subItems": *[(_type == 'page' || _type == 'package') && parent -> slug.current == ^.slug.current && language == $language] | order(menuOrder asc, title asc) {
         _id,
         title,
         displayTitle,
@@ -142,7 +142,18 @@ export const CONTACT_QUERY = groq`
     }
   }
 `
-
+export const PACKAGES_QUERY = groq`
+  *[_type == 'package' && language == $language][] {
+    _id,
+    _type,
+    title,
+    subtitle,
+    description,
+    slug,
+    mainImage,
+    price,
+  }
+  `
 export const PACKAGE_QUERY = groq`
   *[_type == 'package' && language == $language && slug.current == $slug][0] {
     _id,
@@ -154,6 +165,7 @@ export const PACKAGE_QUERY = groq`
     language,
     'content': body,
     mainImage,
+    price,
     parent->,
     'dialog': packageDialog {
       'title': dialogTitle,
@@ -175,16 +187,16 @@ export const PACKAGE_QUERY = groq`
       formSettings {
         minPeople,
         maxPeople,
-        'availableDates': coalesce(
-          availableDates[] {
-            date,
-            availableSlots
-          },
-          [{
-            'date': dateTime(now()),
-            'availableSlots': 1
-          }]
-        )
+        // 'availableDates': coalesce(
+        //   availableDates[] {
+        //     date,
+        //     availableSlots
+        //   },
+        //   [{
+        //     'date': dateTime(now()),
+        //     'availableSlots': 1
+        //   }]
+        // )
       }
     },
     ${TRANSLATION_QUERY}

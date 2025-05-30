@@ -47,7 +47,13 @@ const Page = async ({ params }: PageProps) => {
           <section className="md:py-4 w-11/12 mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 md:gap-2">
               {pages.map((page, i) => (
-                <PageCard key={page._id} page={page} slug={slug} index={i} />
+                <PageCard
+                  key={page._id}
+                  page={page}
+                  slug={slug}
+                  index={i}
+                  lang={lang}
+                />
               ))}
             </div>
           </section>

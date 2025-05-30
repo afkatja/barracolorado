@@ -20,7 +20,7 @@ export type Document = {
   translations?: SanityDocument[]
 }
 
-export type Page = Omit<Document, "language" | "_type"> & {
+export type Page = Omit<Document, "language"> & {
   slug: {
     current: string
   }

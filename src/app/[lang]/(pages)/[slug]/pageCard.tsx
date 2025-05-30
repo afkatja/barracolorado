@@ -8,22 +8,24 @@ import Image from "next/image"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 import { Page as PageType } from "../../../../types"
 import { SanityDocument } from "@sanity/client"
-import CardAnimation from "../../../../components/CardAnimation"
+import CardAnimation from "@/components/CardAnimation"
 
-const pageCard = ({
+const pageCard = async ({
   page,
   slug,
   index,
+  lang,
 }: {
   page: PageType
   slug: string
   index: number
+  lang: string
 }) => {
   return (
     <CardAnimation key={page._id} index={index}>
       <Link
         key={page._id}
-        href={`/${slug}/${page.slug.current}`}
+        href={`/${lang}/${page._type === "package" ? "packages" : slug}/${page.slug.current}`}
         className="group bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-1 flex flex-col gap-3 h-full"
       >
         {page?.mainImage && (
