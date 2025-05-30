@@ -28,6 +28,7 @@ export const SUB_PAGES_QUERY = groq`*[_type == "page" && language == $locale && 
   _id,
   _type,
   title,
+  displayTitle,
   slug,
   language,
   mainImage,
@@ -103,23 +104,20 @@ export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
   title,
   'navSlug': navId,
   'items': menuPages[]-> {
-    _id,
-    _type,
-    title,
-    displayTitle,
+    _id, 
     slug,
-    language,
+    'pages': *[_type == 'page' && language == $language && slug.current == ^.slug.current][0] {
+    _id, title, displayTitle, slug,
+      "subItems": *[_type == 'page' && parent -> slug.current == ^.slug.current && language == $language] | order(menuOrder asc, title asc) {
+        _id,
+        title,
+        displayTitle,
+        slug,
+        ${TRANSLATION_QUERY}
+      }
+    },
     ${TRANSLATION_QUERY},
-    "subItems": *[_type == 'page' && parent._ref == ^._id] | order(menuOrder asc, title asc) {
-      _id,
-      _type,
-      title,
-      displayTitle,
-      slug,
-      language,
-      menuOrder,
-      ${TRANSLATION_QUERY}
-    }
+    
   }
 }`
 

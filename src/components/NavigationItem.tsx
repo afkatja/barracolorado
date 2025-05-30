@@ -31,14 +31,16 @@ const NavigationItem = ({
           {item.subItems?.map(subItem => (
             <Link
               key={subItem._id}
-              href={`${lang}/${item.slug.current}/${subItem.slug.current}`}
+              href={`/${lang}/${item.slug.current}/${subItem.slug.current}`}
               className={`block p-1 hover:text-gray-400 transition-colors ${
                 pathname === `/${item.slug.current}/${subItem.slug.current}`
                   ? "bg-gray-100"
                   : ""
               }`}
             >
-              <div className="font-medium">{subItem.title}</div>
+              <div className="font-medium">
+                {subItem.displayTitle ?? subItem.title}
+              </div>
             </Link>
           ))}
         </NavigationMenu.Content>
