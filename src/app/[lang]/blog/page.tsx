@@ -34,7 +34,7 @@ export default async function BlogPage({
       >
         <section className="w-11/12 mx-auto">
           <h1 className="text-3xl font-bold text-gray-50 mb-8">Blog Posts</h1>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
             {posts.map((post, index) => (
               <PostCard key={post._id} post={post} index={index} />
             ))}

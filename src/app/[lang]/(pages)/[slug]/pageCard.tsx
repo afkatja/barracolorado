@@ -24,7 +24,7 @@ const pageCard = ({
       <Link
         key={page._id}
         href={`/${slug}/${page.slug.current}`}
-        className="group bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-1 flex flex-col gap-3"
+        className="group bg-gray-50 p-2 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-1 flex flex-col gap-3 h-full"
       >
         {page?.mainImage && (
           <div className="relative w-full aspect-video overflow-hidden rounded-md">

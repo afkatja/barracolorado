@@ -79,7 +79,7 @@ export const BLOG_POSTS_QUERY = groq`*[_type == "post" && language == $locale] |
   slug,
   publishedAt,
   excerpt,
-  coverImage,
+  mainImage,
   language,
   ${TRANSLATION_QUERY}
 }`
