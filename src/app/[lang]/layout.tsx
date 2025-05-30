@@ -7,6 +7,7 @@ import { client } from "@/sanity/lib/client"
 import { seoSettingsQuery } from "@/sanity/lib/queries"
 import WhatsAppButton from "@/components/WhatsAppButton"
 import "react-day-picker/style.css"
+import "flag-icons/css/flag-icons.min.css"
 import "../styles/globals.css"
 import "../styles/main.css"
 
