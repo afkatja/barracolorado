@@ -38,6 +38,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
   --sidebar-border: oklch(0.928 0.006 264.531);
   --sidebar-ring: oklch(0.707 0.022 261.325);
+  --header-height: 96px;
+  --header-height-scrolled: 3rem;
 }
 
 @theme inline {
@@ -132,6 +134,15 @@
   /* Transition properties */
   --transition-transform: transform;
   --transition-opacity: opacity;
+}
+
+@keyframes header-shrink {
+  from {
+    height: var(--header-height);
+  }
+  to {
+    height: var(--header-height-scrolled);
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
