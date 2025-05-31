@@ -1,37 +1,61 @@
-import React from "react"
-import { sanityFetch } from "../../../../sanity/lib/client"
-import { SanityDocument } from "next-sanity"
-import Image from "next/image"
-import { urlFor } from "../../../../sanity/lib/image"
-import { SanityImageObject } from "@sanity/image-url/lib/types/types"
-import { BLOG_POST_QUERY } from "../../../../sanity/lib/queries"
-import RichText from "../../../../components/RichText"
-import PagesLayout from "../../pagesLayout"
-import Breadcrumbs from "@/components/Breadcrumbs"
-import { notFound } from "next/navigation"
+import { SanityImageObject } from "@sanity/image-url/lib/types/types";
+import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { SanityDocument } from "next-sanity";
+import React from "react";
+
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RichText from "@/components/RichText";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import { sanityFetch } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/image";
+import { BLOG_POST_QUERY } from "../../../../sanity/lib/queries";
+import { PageParams } from "../../../../types";
+import PagesLayout from "../../pagesLayout";
+
+type TPOST = {
+  _id: string;
+  _type: string;
+  title: string;
+  subtitle?: string;
+  slug: { current: string };
+  mainImage?: SanityImageObject;
+  content?: SanityDocument;
+  description?: string;
+  keywords?: string[];
+  _createdAt: string;
+};
+
+type PageProps = {
+  params: PageParams;
+};
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug, lang } = await params;
+  const page = await sanityFetch<TPOST>({
+    query: BLOG_POST_QUERY,
+    params: { slug, locale: lang },
+  });
+  return generatePageMetadata(page);
+}
 
 export default async function BlogPost({
   params,
 }: {
-  params: Promise<{ slug: string; lang: string }>
+  params: Promise<{ slug: string; lang: string }>;
 }) {
-  const { slug, lang } = await params
+  const { slug, lang } = await params;
 
-  const post = await sanityFetch<{
-    _id: string
-    title: string
-    subtitle?: string
-    slug: { current: string }
-    mainImage?: SanityImageObject
-    content?: SanityDocument
-    description?: string
-    _createdAt: string
-  }>({
+  const post = await sanityFetch<TPOST>({
     query: BLOG_POST_QUERY,
     params: { slug, locale: lang },
-  })
+  });
 
-  if (!post) return notFound()
+  if (!post) return notFound();
 
   return (
     <PagesLayout params={params}>
@@ -87,5 +111,5 @@ export default async function BlogPost({
         </article>
       </div>
     </PagesLayout>
-  )
+  );
 }

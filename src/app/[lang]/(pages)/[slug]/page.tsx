@@ -1,34 +1,51 @@
-import React from "react"
-import Section from "@/components/Section"
-import { sanityFetch } from "../../../../sanity/lib/client"
-import { PAGE_QUERY, SUB_PAGES_QUERY } from "../../../../sanity/lib/queries"
-import PageCard from "./pageCard"
-import { Page as PageType } from "../../../../types"
-import { notFound } from "next/navigation"
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import React from "react";
+
+import Section from "@/components/Section";
+import { generatePageMetadata } from "@/lib/metadata";
+
+import { sanityFetch } from "../../../../sanity/lib/client";
+import { PAGE_QUERY, SUB_PAGES_QUERY } from "../../../../sanity/lib/queries";
+import { Page as PageType } from "../../../../types";
+
+import PageCard from "./pageCard";
 
 type PageParams = Promise<{
-  slug: string
-  lang: string
-}>
+  slug: string;
+  lang: string;
+}>;
 
 type PageProps = {
-  params: PageParams
+  params: PageParams;
+};
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug, lang } = await params;
+  const page = await sanityFetch<PageType>({
+    query: PAGE_QUERY,
+    params: { slug, locale: lang },
+  });
+
+  return generatePageMetadata(page);
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { slug, lang } = await params
+  const { slug, lang } = await params;
 
   const page = await sanityFetch<PageType>({
     query: PAGE_QUERY,
     params: { slug, locale: lang },
-  })
+  });
 
   const pages = await sanityFetch<PageType[]>({
     query: SUB_PAGES_QUERY,
     params: { slug, locale: lang },
-  })
+  });
 
-  if (!page) return notFound()
+  if (!page) return notFound();
 
   return (
     <>
@@ -60,7 +77,7 @@ const Page = async ({ params }: PageProps) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

@@ -1,14 +1,15 @@
-import { defineField, defineType, StringRule } from "sanity"
-import { isUniqueOtherThanLanguage } from "../../lib/utils"
+import { defineField, defineType, StringRule } from "sanity";
+
+import { isUniqueOtherThanLanguage } from "../../lib/utils";
 
 const titleValidation = (rule: StringRule) =>
   rule.custom((value, context) => {
-    const parent = context.document?.parent
+    const parent = context.document?.parent;
     if (parent && !value) {
-      return "Title is required when there is a parent page"
+      return "Title is required when there is a parent page";
     }
-    return true
-  })
+    return true;
+  });
 
 export const pageType = defineType({
   name: "page",
@@ -27,9 +28,9 @@ export const pageType = defineType({
       validation: (rule: StringRule) =>
         rule.custom((value, context) => {
           if (!context.document?.title && !value) {
-            return "Required"
+            return "Required";
           }
-          return true
+          return true;
         }),
     }),
     defineField({
@@ -50,7 +51,7 @@ export const pageType = defineType({
     defineField({
       name: "slug",
       type: "slug",
-      validation: rule =>
+      validation: (rule) =>
         rule
           .required()
           .error("A slug is required to generate a page on the website"),
@@ -117,6 +118,7 @@ export const pageType = defineType({
       title: "Menu Order",
       description: "Order of the page in the menu",
     }),
+    defineField({ name: "keywords", type: "array", of: [{ type: "string" }] }),
   ],
   initialValue: {
     isPublished: true,
@@ -131,11 +133,11 @@ export const pageType = defineType({
       language: "language",
     },
     prepare(selection) {
-      const { title, name, language, ...rest } = selection
+      const { title, name, language, ...rest } = selection;
       return {
         ...rest,
         title: `${title || name} ${language ? `(${language})` : ""}`,
-      }
+      };
     },
   },
-})
+});

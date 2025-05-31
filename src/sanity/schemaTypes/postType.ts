@@ -1,5 +1,6 @@
-import { defineField, defineType } from "sanity"
-import { isUniqueOtherThanLanguage } from "../../lib/utils"
+import { defineField, defineType } from "sanity";
+
+import { isUniqueOtherThanLanguage } from "../../lib/utils";
 
 export const postType = defineType({
   name: "post",
@@ -15,7 +16,7 @@ export const postType = defineType({
     defineField({
       name: "title",
       type: "string",
-      validation: rule => rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "subtitle",
@@ -33,7 +34,7 @@ export const postType = defineType({
         maxLength: 96,
         isUnique: isUniqueOtherThanLanguage,
       },
-      validation: rule =>
+      validation: (rule) =>
         rule
           .required()
           .error("A slug is required to generate a page on the website"),
@@ -66,6 +67,7 @@ export const postType = defineType({
       type: "boolean",
       initialValue: true,
     }),
+    defineField({ name: "keywords", type: "array", of: [{ type: "string" }] }),
   ],
   initialValue: {
     isPublished: true,
@@ -78,7 +80,7 @@ export const postType = defineType({
       media: "mainImage",
     },
     prepare(selection) {
-      return { ...selection }
+      return { ...selection };
     },
   },
-})
+});
