@@ -1,6 +1,10 @@
+import { ArrowRightIcon } from "@radix-ui/react-icons"
+import Link from "next/link"
+
+import Contact from "../../components/Contact"
 import Intro from "../../components/Intro"
 import Section from "../../components/Section"
-import Contact from "../../components/Contact"
+import { defaultLocale } from "../../i18n"
 import { sanityFetch } from "../../sanity/lib/client"
 import {
   ALL_PAGES_QUERY,
@@ -8,17 +12,15 @@ import {
   HOME_QUERY,
   CONTACT_QUERY,
 } from "../../sanity/lib/queries"
-import PagesLayout from "./(pages)/layout"
-import GalleryClient from "./gallery/GalleryClient"
-import { defaultLocale } from "../../i18n"
 import {
   Home as HomeType,
   Gallery as GalleryType,
   Page as PageType,
   TContact,
 } from "../../types"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
-import Link from "next/link"
+
+import PagesLayout from "./(pages)/layout"
+import GalleryClient from "./gallery/GalleryClient"
 
 const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params

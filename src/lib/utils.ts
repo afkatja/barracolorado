@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
+import type { SlugValidationContext } from "sanity"
 import { twMerge } from "tailwind-merge"
 
-import type { SlugValidationContext } from "sanity"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

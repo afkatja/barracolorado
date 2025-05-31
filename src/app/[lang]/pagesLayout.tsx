@@ -1,7 +1,8 @@
 import React from "react"
+
 // import RootLayout from "./layout"
-import Header from "../../components/Header"
 import Footer from "../../components/Footer"
+import Header from "../../components/Header"
 
 const PagesLayout = async ({
   children,

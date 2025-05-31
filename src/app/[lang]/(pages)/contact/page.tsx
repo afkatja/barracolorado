@@ -1,4 +1,5 @@
 import React from "react"
+
 import Contact from "../../../../components/Contact"
 import { sanityFetch } from "../../../../sanity/lib/client"
 import { CONTACT_QUERY } from "../../../../sanity/lib/queries"

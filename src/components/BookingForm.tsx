@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 
+import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
@@ -10,8 +10,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import Datepicker from "./Datepicker"
+
 import { TFormData } from "../types"
+
+import Datepicker from "./Datepicker"
 import Input from "./ui/input"
 
 type BookingFormProps = {

@@ -1,9 +1,12 @@
 "use client"
-import React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import NavLink from "./NavLink"
+import React from "react"
+
 import { navItem } from "../lib/navigation"
+
+import NavLink from "./NavLink"
+
 
 const NavItem = ({
   item,

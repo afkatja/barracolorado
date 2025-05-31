@@ -1,6 +1,7 @@
 import { defineField, defineType } from "sanity"
-import { pageType } from "./pageType"
+
 import { dialogType } from "./dialogType"
+import { pageType } from "./pageType"
 
 export const packageType = defineType({
   name: "package",

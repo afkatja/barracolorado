@@ -1,8 +1,10 @@
 import Image from "next/image"
 import React from "react"
+
 import { urlFor } from "../sanity/lib/image"
-import Carousel from "./Carousel"
 import { Media } from "../types"
+
+import Carousel from "./Carousel"
 
 const MediaComponent = ({ media }: { media: Media }) => {
   const determineMediaType = () => {

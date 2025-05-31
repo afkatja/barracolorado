@@ -6,6 +6,7 @@ import {
   Divider,
   StructureBuilder,
 } from "sanity/structure"
+
 import { locales } from "../i18n"
 
 const languagesMap: ({

@@ -1,9 +1,11 @@
-import React from "react"
-import { sanityFetch } from "../../../sanity/lib/client"
-import { SanityDocument } from "next-sanity"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import { SanityDocument } from "next-sanity"
+import React from "react"
+
+import { sanityFetch } from "../../../sanity/lib/client"
 import { BLOG_POSTS_QUERY } from "../../../sanity/lib/queries"
 import PagesLayout from "../pagesLayout"
+
 import PostCard from "./PostCard"
 export default async function BlogPage({
   params,

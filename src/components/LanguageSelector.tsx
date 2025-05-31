@@ -1,7 +1,8 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation"
-import { locales } from "@/i18n"
 import { useState, useRef, useEffect } from "react"
+
+import { locales } from "@/i18n"
 import { getLocaleFromPath, getPathWithLocale } from "@/lib/i18n"
 
 export default function LanguageSelector() {

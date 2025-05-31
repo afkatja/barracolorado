@@ -1,10 +1,12 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
 import Image from "next/image"
+import React, { useState, useMemo } from "react"
+
 import Dialog from "@/components/Dialog"
 import GalleryAnimation from "@/components/GalleryAnimation"
 import { urlFor } from "@/sanity/lib/image"
+
 import Carousel from "../../../components/Carousel"
 
 interface GalleryClientProps {

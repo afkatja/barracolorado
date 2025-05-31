@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+
 import ErrorLayout from "./errorLayout"
 
 export default function Error({ reset }: { reset: () => void }) {

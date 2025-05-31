@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
+import { FaInfoCircle } from "react-icons/fa"
+
+import Dialog from "./Dialog"
 import { Button } from "./ui/button"
 import Input from "./ui/input"
-import { FaInfoCircle } from "react-icons/fa"
-import Dialog from "./Dialog"
 
 const MoreInfoForm = () => {
   const [formData, setFormData] = useState({

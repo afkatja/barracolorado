@@ -1,14 +1,17 @@
+import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { SanityDocument } from "@sanity/client"
+import Image from "next/image"
+import Link from "next/link"
 import React from "react"
+
+import CardAnimation from "@/components/CardAnimation"
 
 import { truncateString } from "../../../../lib/string"
 import blockToText from "../../../../sanity/lib/blockToText"
 import { urlFor } from "../../../../sanity/lib/image"
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
 import { Page as PageType } from "../../../../types"
-import { SanityDocument } from "@sanity/client"
-import CardAnimation from "@/components/CardAnimation"
+
+
 
 const pageCard = async ({
   page,

@@ -1,11 +1,12 @@
 "use client"
-import React from "react"
-import { usePathname } from "next/navigation"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
 import * as Collapsible from "@radix-ui/react-collapsible"
-import { INavigationItem } from "./Navigation"
+import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import React from "react"
+
 import { ChevronDown, Close } from "./icons"
+import { INavigationItem } from "./Navigation"
 
 const MobileNavigation = ({ items }: { items: INavigationItem[] }) => {
   const [isOpen, setIsOpen] = React.useState(false)
