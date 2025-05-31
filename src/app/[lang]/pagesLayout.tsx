@@ -16,7 +16,7 @@ const PagesLayout = async ({
     <>
       <Header lang={lang} id="pages" />
       {children}
-      <Footer id="pages" />
+      <Footer id="pages" lang={lang} />
     </>
   )
 }
