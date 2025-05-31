@@ -25,7 +25,7 @@ const PagesLayout = async ({
         >
           {children}
         </main>
-        <Footer />
+        <Footer id="pageslayout" lang={lang} />
       </PageTransition>
     </RootLayout>
   )

@@ -25,7 +25,7 @@ const PackagesLayout = async ({
         >
           {children}
         </main>
-        <Footer id="packages" />
+        <Footer id="packages" lang={lang} />
       </PageTransition>
     </RootLayout>
   )

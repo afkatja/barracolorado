@@ -51,6 +51,10 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug && lan
   ${TRANSLATION_QUERY}
 }`
 
+export const FOOTER_PAGE_QUERY = groq`*[_type == 'page' && language == $language && $category in categories[] -> title] {
+  title, name, slug
+}`
+
 export const HOME_QUERY = groq`*[_type == 'home' && language == $locale][0] {
   _id,
   title,

@@ -45,7 +45,7 @@ const errorLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer id="error" lang="en" />
     </>
     //   </body>
     // </html>
