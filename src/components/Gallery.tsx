@@ -1,7 +1,7 @@
 "use client"
-import { Element } from "react-scroll"
 import Image from "next/image"
 import Link from "next/link"
+import { Element } from "react-scroll"
 
 const Gallery = () => (
   <Element name="gallery" className="main fullscreen">

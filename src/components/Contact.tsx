@@ -1,9 +1,11 @@
 "use client"
-import { Element } from "react-scroll"
-import { TContact } from "../types"
-import Input from "./ui/input"
-import { Button } from "./ui/button"
 import { useState } from "react"
+import { Element } from "react-scroll"
+
+import { TContact } from "../types"
+
+import { Button } from "./ui/button"
+import Input from "./ui/input"
 
 const Contact = ({ contact }: { contact: TContact }) => {
   const [formData, setFormData] = useState({

@@ -1,13 +1,13 @@
 "use client"
-import React from "react"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import { SanityDocument } from "next-sanity"
+import React from "react"
 
-import Section from "@/components/Section"
-import Dialog from "@/components/Dialog"
 import BookingForm from "@/components/BookingForm"
+import Breadcrumbs from "@/components/Breadcrumbs"
+import Dialog from "@/components/Dialog"
+import Section from "@/components/Section"
 import { TFormData } from "@/types"
-import Breadcrumbs from "../../../../components/Breadcrumbs"
 
 const Package = ({
   packageData,

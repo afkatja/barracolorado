@@ -1,10 +1,13 @@
-import React from "react"
-import CardAnimation from "../../../components/CardAnimation"
-import { urlFor } from "../../../sanity/lib/image"
+import { ArrowRightIcon } from "@radix-ui/react-icons"
 import Image from "next/image"
 import Link from "next/link"
+import React from "react"
+
+import CardAnimation from "../../../components/CardAnimation"
 import { truncateString } from "../../../lib/string"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { urlFor } from "../../../sanity/lib/image"
+
+
 
 const PostCard = ({ post, index }: { post: any; index: number }) => {
   console.log({ post })

@@ -1,10 +1,12 @@
-import * as React from "react"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
+import { SanityDocument } from "next-sanity"
+import * as React from "react"
+
 import { sanityFetch } from "../sanity/lib/client"
 import { NAV_QUERY } from "../sanity/lib/queries"
-import NavigationItem from "./NavigationItem"
+
 import MobileNavigation from "./MobileNavigation"
-import { SanityDocument } from "next-sanity"
+import NavigationItem from "./NavigationItem"
 export interface INavigationItem extends SanityDocument {
   _id: string
   title: string

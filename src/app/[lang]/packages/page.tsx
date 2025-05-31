@@ -1,7 +1,8 @@
 import React from "react"
+
+import PageCard from "../(pages)/[slug]/pageCard"
 import { sanityFetch } from "../../../sanity/lib/client"
 import { PACKAGES_QUERY } from "../../../sanity/lib/queries"
-import PageCard from "../(pages)/[slug]/pageCard"
 import { Page } from "../../../types"
 
 const page = async ({ params }: { params: Promise<{ lang: string }> }) => {

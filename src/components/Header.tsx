@@ -1,7 +1,8 @@
 import Link from "next/link"
-import Navigation from "./Navigation"
+
 import { Logo } from "./icons"
 import LanguageSelector from "./LanguageSelector"
+import Navigation from "./Navigation"
 
 const Header = ({ lang, id }: { lang: string; id?: string }) => {
   return (

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+
 import { locales } from "@/i18n"
 
 // Get the preferred locale from the request headers

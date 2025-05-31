@@ -1,7 +1,9 @@
 "use client"
 import { Link } from "react-scroll"
-import MediaComponent from "./MediaComponent"
+
 import { Media } from "../types"
+
+import MediaComponent from "./MediaComponent"
 
 interface IntroProps {
   title: string

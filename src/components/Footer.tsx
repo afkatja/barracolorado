@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
   faFacebookF,
@@ -8,9 +7,12 @@ import {
   // faDribbble,
   // faPinterest,
 } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
+
 import { sanityFetch } from "../sanity/lib/client"
 import { FOOTER_PAGE_QUERY } from "../sanity/lib/queries"
-import Link from "next/link"
+
 // import Link from "next/link"
 
 const Footer = async ({ id, lang }: { id?: string; lang: string }) => {

@@ -1,8 +1,10 @@
+import { notFound } from "next/navigation"
+
 import { sanityFetch } from "../../../sanity/lib/client"
 import { GALLERY_QUERY } from "../../../sanity/lib/queries"
 import PagesLayout from "../pagesLayout"
+
 import GalleryClient from "./GalleryClient"
-import { notFound } from "next/navigation"
 
 export default async function GalleryPage({
   params,

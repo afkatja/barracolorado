@@ -1,10 +1,11 @@
+import Image from "next/image"
+import Link from "next/link"
 import { PortableText, PortableTextReactComponents } from "next-sanity"
 
-import Image from "next/image"
+
+import { urlFor } from "../sanity/lib/image"
 
 import Title from "./Title"
-import { urlFor } from "../sanity/lib/image"
-import Link from "next/link"
 
 const RichText = ({ body }: { body: any }) => {
   if (!body) return

@@ -1,12 +1,15 @@
 "use client"
-import { Link, Element } from "react-scroll"
-import RichText from "./RichText"
-import { SanityDocument } from "sanity"
-import ScrollAnimation from "./ScrollAnimation"
-import { urlFor } from "../sanity/lib/image"
-import Image from "next/image"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import Image from "next/image"
 import { useEffect, useState } from "react"
+import { Link, Element } from "react-scroll"
+import { SanityDocument } from "sanity"
+
+import { urlFor } from "../sanity/lib/image"
+
+import RichText from "./RichText"
+import ScrollAnimation from "./ScrollAnimation"
+
 
 interface SectionProps {
   id: string

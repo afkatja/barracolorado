@@ -1,5 +1,6 @@
-import React from "react"
 import Link from "next/link"
+import React from "react"
+
 import ErrorLayout from "./errorLayout"
 
 export default function NotFound() {

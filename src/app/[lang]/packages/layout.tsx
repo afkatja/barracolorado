@@ -1,8 +1,9 @@
 import React from "react"
-import RootLayout from "../layout"
-import Header from "../../../components/Header"
+
 import Footer from "../../../components/Footer"
+import Header from "../../../components/Header"
 import PageTransition from "../../../components/PageTransition"
+import RootLayout from "../layout"
 
 const PackagesLayout = async ({
   children,

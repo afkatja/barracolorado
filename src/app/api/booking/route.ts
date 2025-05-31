@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server"
 import sgMail from "@sendgrid/mail"
+import { NextResponse } from "next/server"
+
 import { appendToSheet } from "@/lib/googleSheets"
 
 // Initialize SendGrid with API key

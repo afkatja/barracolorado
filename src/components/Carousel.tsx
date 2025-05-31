@@ -1,11 +1,13 @@
 "use client"
-import React, { useEffect, useState, useCallback } from "react"
-import Image from "next/image"
+import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import Fade from "embla-carousel-fade"
 import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import Image from "next/image"
+import React, { useEffect, useState, useCallback } from "react"
+
 import { urlFor } from "../sanity/lib/image"
-import Fade from "embla-carousel-fade"
+
 
 type TransitionStyle = "scroll" | "fade"
 
