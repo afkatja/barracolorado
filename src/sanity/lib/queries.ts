@@ -15,6 +15,7 @@ export const ALL_PAGES_QUERY = groq`*[_type == "page" && language == $locale && 
   homeSection,
   ${TRANSLATION_QUERY}
 }`
+
 export const PAGES_QUERY = groq`*[_type == "page" && language == $locale] {
   _id,
   title,
@@ -52,7 +53,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug && lan
   ${TRANSLATION_QUERY}
 }`
 
-export const FOOTER_PAGE_QUERY = groq`*[_type == 'page' && language == $language && $category in categories[] -> title] {
+export const FOOTER_PAGE_QUERY = groq`*[_type == 'page' && language == $locale && $category in categories[] -> title] {
   title, name, slug
 }`
 
@@ -71,7 +72,7 @@ export const HOME_QUERY = groq`*[_type == 'home' && language == $locale][0] {
   ${TRANSLATION_QUERY}
 }`
 
-export const GALLERY_QUERY = groq`*[_type == 'gallery'][0] {
+export const GALLERY_QUERY = groq`*[_type == 'gallery' && language == $locale][0] {
   _id,
   title,
   description,
@@ -112,9 +113,9 @@ export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
   'items': menuPages[]-> {
     _id, 
     slug,
-    'pages': *[_type == 'page' && language == $language && slug.current == ^.slug.current][0] {
+    'pages': *[_type == 'page' && language == $locale && slug.current == ^.slug.current][0] {
     _id, title, displayTitle, slug,
-      "subItems": *[(_type == 'page' || _type == 'package') && parent -> slug.current == ^.slug.current && language == $language] | order(menuOrder asc, title asc) {
+      "subItems": *[(_type == 'page' || _type == 'package') && parent -> slug.current == ^.slug.current && language == $locale] | order(menuOrder asc, title asc) {
         _id,
         title,
         displayTitle,
@@ -137,7 +138,7 @@ export const seoSettingsQuery = `*[_type == "seoSettings"][0] {
 }`
 
 export const CONTACT_QUERY = groq`
-  *[_type == "contact" && language == $language][0] {
+  *[_type == "contact" && language == $locale][0] {
     title,
     subtitle,
     formLabels {
@@ -148,8 +149,9 @@ export const CONTACT_QUERY = groq`
     }
   }
 `
+
 export const PACKAGES_QUERY = groq`
-  *[_type == 'package' && language == $language] {
+  *[_type == 'package' && language == $locale] {
     _id,
     _type,
     title,
@@ -159,9 +161,10 @@ export const PACKAGES_QUERY = groq`
     mainImage,
     price,
   }
-  `
+`
+
 export const PACKAGE_QUERY = groq`
-  *[_type == 'package' && language == $language && slug.current == $slug][0] {
+  *[_type == 'package' && language == $locale && slug.current == $slug][0] {
     _id,
     _type,
     title,
@@ -192,24 +195,14 @@ export const PACKAGE_QUERY = groq`
       },
       formSettings {
         minPeople,
-        maxPeople,
-        // 'availableDates': coalesce(
-        //   availableDates[] {
-        //     date,
-        //     availableSlots
-        //   },
-        //   [{
-        //     'date': dateTime(now()),
-        //     'availableSlots': 1
-        //   }]
-        // )
+        maxPeople
       }
     },
     ${TRANSLATION_QUERY}
   }
 `
 
-export const DIALOG_QUERY = groq`*[_type == "dialog" && language == $language && slug == $slug][0] {
+export const DIALOG_QUERY = groq`*[_type == "dialog" && language == $locale && slug == $slug][0] {
   title,
   subtitle,
   description,

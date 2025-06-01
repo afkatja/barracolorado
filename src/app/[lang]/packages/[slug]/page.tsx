@@ -1,62 +1,82 @@
-import { SanityImageObject } from "@sanity/image-url/lib/types/types";
-import { Metadata } from "next";
-import { SanityDocument } from "next-sanity";
-import React from "react";
+import { SanityImageObject } from "@sanity/image-url/lib/types/types"
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { SanityDocument } from "next-sanity"
 
-import { generatePageMetadata } from "@/lib/metadata";
+import { getFallbackLocale, availableLocaleIds } from "@/i18n"
+import { sanityFetch } from "@/sanity/lib/client"
+import { PACKAGE_QUERY, DIALOG_QUERY } from "@/sanity/lib/queries"
+import { TFormData } from "@/types"
 
-import { sanityFetch } from "../../../../sanity/lib/client";
-import { PACKAGE_QUERY, PAGE_QUERY } from "../../../../sanity/lib/queries";
-import { PageParams, TFormData } from "../../../../types";
-
-import PackageComponent from "./Package";
+import Package from "./Package"
 
 type PackageType = {
-  _id: string;
-  _type: string;
-  slug: { current: string };
-  title: string;
-  subtitle?: string;
-  description?: string;
-  content?: SanityDocument | string;
-  mainImage: SanityImageObject;
-  dialog?: TFormData;
-};
+  _id: string
+  _type: string
+  title: string
+  subtitle?: string
+  description?: string
+  content?: SanityDocument | string
+  mainImage?: SanityImageObject
+  price?: string
+  slug: { current: string }
+  dialog: TFormData
+}
 
-type PageProps = {
-  params: PageParams;
-};
+export async function generateStaticParams() {
+  return availableLocaleIds.map(lang => ({
+    lang,
+  }))
+}
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const { slug, lang } = await params;
-  const page = await sanityFetch<PackageType>({
-    query: PAGE_QUERY,
-    params: { slug, locale: lang },
-  });
-
-  return generatePageMetadata(page);
-}
-
-const Package = async ({
-  params,
 }: {
-  params: Promise<{ lang: string; slug: string }>;
-}) => {
-  const { lang, slug } = await params;
+  params: Promise<{ lang: string; slug: string }>
+}): Promise<Metadata> {
+  const { slug, lang } = await params
+  const fallbackLang = getFallbackLocale(lang)
+
   const packageData = await sanityFetch<PackageType>({
     query: PACKAGE_QUERY,
-    params: { language: lang, slug },
-  });
+    params: { locale: fallbackLang, slug },
+  })
 
-  return (
-    <PackageComponent
-      formData={packageData.dialog}
-      packageData={packageData}
-      lang={lang}
-    />
-  );
-};
+  if (!packageData) {
+    return {
+      title: "Package Not Found",
+    }
+  }
 
-export default Package;
+  return {
+    title: packageData.title,
+    description: packageData.description,
+  }
+}
+
+const PackagePage = async ({
+  params,
+}: {
+  params: Promise<{ lang: string; slug: string }>
+}) => {
+  const { lang, slug } = await params
+  const fallbackLang = getFallbackLocale(lang)
+
+  const packageData = await sanityFetch<PackageType>({
+    query: PACKAGE_QUERY,
+    params: { locale: fallbackLang, slug },
+  })
+
+  if (!packageData) {
+    return notFound()
+  }
+
+  const dialog = await sanityFetch<TFormData>({
+    query: DIALOG_QUERY,
+    params: { locale: fallbackLang, slug },
+  })
+
+  return <Package formData={dialog} packageData={packageData} lang={lang} />
+}
+
+export default PackagePage

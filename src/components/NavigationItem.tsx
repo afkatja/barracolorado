@@ -4,13 +4,13 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from "react"
 
-import { INavigationItem } from "./Navigation"
+import { NavigationPage } from "../types"
 
 const NavigationItem = ({
   item,
   lang,
 }: {
-  item: INavigationItem
+  item: NavigationPage
   lang: string
 }) => {
   const pathname = usePathname()

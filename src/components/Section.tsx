@@ -10,14 +10,13 @@ import { urlFor } from "../sanity/lib/image"
 import RichText from "./RichText"
 import ScrollAnimation from "./ScrollAnimation"
 
-
 interface SectionProps {
   id: string
   title: string
   subtitle?: string
   description?: string
   image?: SanityImageObject
-  content: SanityDocument | string
+  content?: SanityDocument | string
   nextSection?: string
   children?: React.ReactNode
   className?: string

@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 
-import { locales } from "@/i18n"
+import { availableLocales } from "@/i18n"
 import { getLocaleFromPath, getPathWithLocale } from "@/lib/i18n"
 
 export default function LanguageSelector() {
@@ -12,7 +12,9 @@ export default function LanguageSelector() {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const currentLocale = getLocaleFromPath(pathname)
-  const currentLanguage = locales.find(locale => locale.id === currentLocale)
+  const currentLanguage = availableLocales.find(
+    locale => locale.id === currentLocale
+  )
 
   const handleLanguageChange = (locale: string) => {
     const newPathname = getPathWithLocale(pathname, locale)
@@ -54,7 +56,7 @@ export default function LanguageSelector() {
         }`}
       >
         <div className="py-1" role="menu" aria-orientation="vertical">
-          {locales.map(locale => (
+          {availableLocales.map(locale => (
             <button
               key={locale.id}
               onClick={() => handleLanguageChange(locale.id)}

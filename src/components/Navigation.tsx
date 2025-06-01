@@ -1,32 +1,39 @@
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import { SanityDocument } from "next-sanity"
 import * as React from "react"
 
-import { sanityFetch } from "../sanity/lib/client"
-import { NAV_QUERY } from "../sanity/lib/queries"
+import { sanityFetch } from "@/sanity/lib/client"
+import { NAV_QUERY } from "@/sanity/lib/queries"
+import { Document, NavigationPage } from "@/types"
 
 import MobileNavigation from "./MobileNavigation"
 import NavigationItem from "./NavigationItem"
-export interface INavigationItem extends SanityDocument {
+
+export interface INavigationItem extends Document {
   _id: string
   title: string
-  displayTitle: string
-  slug: { current: string }
-  language: string
-  menuOrder: number
-  subItems?: INavigationItem[]
+  navSlug: string
+  pages?: NavigationPage
 }
 
 const Navigation = async ({ lang }: { lang: string }) => {
-  const menu = await sanityFetch<{
+  const nav = await sanityFetch<{
     items: INavigationItem[]
   }>({
     query: NAV_QUERY,
-    params: { language: lang },
+    params: { locale: lang },
   })
-  const items = menu?.items || []
+  const items = nav?.items || []
 
-  const pages = items.map(item => item.pages)
+  const pages = items
+    .map(item => item.pages)
+    .filter(
+      (page): page is NavigationPage =>
+        page !== undefined &&
+        page !== null &&
+        typeof page._id === "string" &&
+        typeof page.title === "string" &&
+        typeof page.slug?.current === "string"
+    )
 
   if (!pages.length)
     return <div className="hidden lg:block ml-auto order-2">Nothing yet</div>
@@ -35,12 +42,12 @@ const Navigation = async ({ lang }: { lang: string }) => {
     <>
       <NavigationMenu.Root className="hidden lg:block ml-auto order-2">
         <NavigationMenu.List className="flex items-center gap-1.5 m-0">
-          {pages.map(item => (
-            <NavigationItem key={item._id} item={item} lang={lang} />
+          {pages.map(page => (
+            <NavigationItem key={page._id} item={page} lang={lang} />
           ))}
         </NavigationMenu.List>
       </NavigationMenu.Root>
-      <MobileNavigation items={items} />
+      <MobileNavigation items={pages} />
     </>
   )
 }

@@ -5,10 +5,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React from "react"
 
-import { ChevronDown, Close } from "./icons"
-import { INavigationItem } from "./Navigation"
+import { NavigationPage } from "../types"
 
-const MobileNavigation = ({ items }: { items: INavigationItem[] }) => {
+import { ChevronDown, Close } from "./icons"
+
+const MobileNavigation = ({ items }: { items: NavigationPage[] }) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
   return (

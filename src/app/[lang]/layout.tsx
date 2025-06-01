@@ -5,7 +5,7 @@ import Head from "next/head"
 
 import MoreInfoButton from "@/components/MoreInfoButton"
 import WhatsAppButton from "@/components/WhatsAppButton"
-import { locales } from "@/i18n"
+import { availableLocaleIds } from "@/i18n"
 import { client } from "@/sanity/lib/client"
 import { seoSettingsQuery } from "@/sanity/lib/queries"
 import "react-day-picker/style.css"
@@ -120,8 +120,8 @@ export const viewport: Viewport = {
 }
 
 export async function generateStaticParams() {
-  return locales.map(locale => ({
-    lang: locale.id,
+  return availableLocaleIds.map(lang => ({
+    lang,
   }))
 }
 

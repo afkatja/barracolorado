@@ -12,11 +12,26 @@ export const allLocales = [
 ]
 
 // Filter locales based on environment
-export const locales =
-  process.env.NEXT_PUBLIC_ENVIRONMENT === "production"
-    ? allLocales.filter(locale => ["en", "es"].includes(locale.id))
-    : allLocales
+const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production"
+export const locales = isProduction
+  ? allLocales.filter(locale => ["en", "es"].includes(locale.id))
+  : allLocales
 
-export const defaultLocale = locales.find(item => item.isDefault)?.id
+export const defaultLocale = locales.find(item => item.isDefault)?.id || "en"
+
+// Get available locale IDs for static generation
+export const availableLocales = locales.map(locale => ({
+  id: locale.id,
+  title: locale.title,
+  flag: locale.flag,
+}))
+
+export const availableLocaleIds = locales.map(locale => locale.id)
+
+// Get fallback language for content
+export const getFallbackLocale = (requestedLocale: string) => {
+  const isAvailable = availableLocaleIds.includes(requestedLocale)
+  return isAvailable ? requestedLocale : defaultLocale
+}
 
 export const localePrefix = "as-needed"
