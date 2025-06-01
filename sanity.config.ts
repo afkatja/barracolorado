@@ -11,7 +11,7 @@ import { structureTool } from "sanity/structure"
 import { media } from "sanity-plugin-media"
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { locales } from "./src/i18n"
+import { availableLocales, locales } from "./src/i18n"
 import { apiVersion, dataset, projectId } from "./src/sanity/env"
 import { schema } from "./src/sanity/schema"
 import { structure } from "./src/sanity/structure"
@@ -29,7 +29,7 @@ export default defineConfig({
     visionTool({ defaultApiVersion: apiVersion }),
     media(),
     documentInternationalization({
-      supportedLanguages: locales,
+      supportedLanguages: availableLocales,
       weakReferences: true,
       // base: defaultLocale,
       apiVersion: apiVersion,

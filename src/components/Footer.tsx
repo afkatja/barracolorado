@@ -20,7 +20,7 @@ const Footer = async ({ id, lang }: { id?: string; lang: string }) => {
     { title: string; slug: { current: string }; name?: string }[]
   >({
     query: FOOTER_PAGE_QUERY,
-    params: { language: lang, category: "footer" },
+    params: { locale: lang, category: "footer" },
   })
 
   return (

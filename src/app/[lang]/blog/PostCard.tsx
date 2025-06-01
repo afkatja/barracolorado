@@ -10,7 +10,6 @@ import { urlFor } from "../../../sanity/lib/image"
 
 
 const PostCard = ({ post, index }: { post: any; index: number }) => {
-  console.log({ post })
 
   return (
     <CardAnimation key={post._id} index={index}>

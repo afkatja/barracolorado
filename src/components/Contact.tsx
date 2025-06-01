@@ -7,7 +7,7 @@ import { TContact } from "../types"
 import { Button } from "./ui/button"
 import Input from "./ui/input"
 
-const Contact = ({ contact }: { contact: TContact }) => {
+const Contact = ({ contact }: { contact: TContact | null }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -1,4 +1,4 @@
-import { locales, defaultLocale } from "@/i18n"
+import { availableLocales as locales, defaultLocale } from "@/i18n"
 
 export type InternationalizedField = {
   _key: string

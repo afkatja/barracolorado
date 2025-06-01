@@ -7,7 +7,7 @@ import {
   StructureBuilder,
 } from "sanity/structure"
 
-import { locales } from "../i18n"
+import { availableLocales } from "../i18n"
 
 const languagesMap: ({
   S,
@@ -23,7 +23,7 @@ const languagesMap: ({
   schemaType,
 }) => {
   return [
-    ...locales.map(locale =>
+    ...availableLocales.map(locale =>
       S.listItem()
         .id(`${locale.id}-${schemaType}`)
         .title(`${locale.title} ${title}`)

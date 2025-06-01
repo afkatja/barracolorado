@@ -125,10 +125,6 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
 
   // Generate available dates if none are provided
   const availableDates = generateDateRange(new Date(), 30)
-  console.log({
-    people: formData.people,
-    price: convertPriceToNumber(orderData.price),
-  })
 
   return (
     <form
