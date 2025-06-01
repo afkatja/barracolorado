@@ -5,8 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
-
 ## Version 0.1.0
 
 Date: 2025-05-10
@@ -129,7 +127,6 @@ Date: 2025-05-10
 ### Remove
 
 - remove unused (2025-04-18)
-
 
 ## Version 0.1.0
 
@@ -259,7 +256,6 @@ Date: 2025-05-10
 
 - remove unused (2025-04-18)
 
-
 ## Version 0.1.0
 
 Date: 2025-05-13
@@ -268,7 +264,6 @@ Date: 2025-05-13
 
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
-
 
 ## Version 0.1.0
 
@@ -285,7 +280,6 @@ Date: 2025-05-13
 - add unit and integration tests (2025-05-12)
 - fix build errors (2025-05-12)
 - update changelog (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -308,7 +302,6 @@ Date: 2025-05-13
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
-
 
 ## Version 0.1.0
 
@@ -334,7 +327,6 @@ Date: 2025-05-14
 - add unit and integration tests (2025-05-12)
 - fix build errors (2025-05-12)
 - update changelog (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -363,7 +355,6 @@ Date: 2025-05-14
 
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -398,7 +389,6 @@ Date: 2025-05-14
 
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -438,7 +428,6 @@ Date: 2025-05-14
 ### Added
 
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -481,7 +470,6 @@ Date: 2025-05-16
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
-
 
 ## Version 0.1.0
 
@@ -526,7 +514,6 @@ Date: 2025-05-17
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
 - checks for browser-specific APIs for server rendering (2025-05-12)
-
 
 ## Version 0.1.0
 
@@ -574,7 +561,6 @@ Date: 2025-05-17
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -625,7 +611,6 @@ Date: 2025-05-18
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -679,7 +664,6 @@ Date: 2025-05-18
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -739,7 +723,6 @@ Date: 2025-05-18
 - remove scroll animation for mobile (2025-05-13)
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -804,7 +787,6 @@ Date: 2025-05-19
 - add unit and integration tests (2025-05-12)
 - fix build errors (2025-05-12)
 - update changelog (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -873,7 +855,6 @@ Date: 2025-05-19
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -946,7 +927,6 @@ Date: 2025-05-19
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1036,7 +1016,6 @@ Date: 2025-05-24
 - remove scroll animation for mobile (2025-05-13)
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1128,7 +1107,6 @@ Date: 2025-05-24
 - remove scroll animation for mobile (2025-05-13)
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1224,7 +1202,6 @@ Date: 2025-05-25
 - add unit and integration tests (2025-05-12)
 - fix build errors (2025-05-12)
 - update changelog (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1324,7 +1301,6 @@ Date: 2025-05-26
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1429,7 +1405,6 @@ Date: 2025-05-30
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1537,7 +1512,6 @@ Date: 2025-05-30
 - remove scroll animation for mobile (2025-05-13)
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1656,7 +1630,6 @@ Date: 2025-05-30
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1777,7 +1750,6 @@ Date: 2025-05-31
 - fetch translated pages based on nav items (2025-05-16)
 - refactor navigation to include pages and subpages with auto translated title (2025-05-15)
 - add seo data from cms (2025-05-13)
-
 
 ## Version 0.1.0
 
@@ -1887,6 +1859,136 @@ Date: 2025-05-31
 - remove scroll animation for mobile (2025-05-13)
 - only allow one home page per language (2025-05-13)
 - display content of the page (2025-05-13)
+
+### Added
+
+- add more info button to send email request (2025-05-30)
+- create sheet for booking and share with user (2025-05-24)
+- add api routes for form submission and use netlify (2025-05-24)
+- add floating whatsapp button (2025-05-23)
+- add packages doc type and page (2025-05-20)
+- add form component with ui elements (2025-05-20)
+- add prose and center page content (2025-05-18)
+- add media component and options for media in home (2025-05-18)
+- fetch translated pages based on nav items (2025-05-16)
+- refactor navigation to include pages and subpages with auto translated title (2025-05-15)
+- add seo data from cms (2025-05-13)
+
+## Version 0.1.0
+
+Date: 2025-06-01
+
+### Fixed
+
+- fix build errors by adding null checks for available locales (2025-05-31)
+- error layout (2025-05-31)
+- do not display title for subpages container page (2025-05-30)
+- nav item subitems are in correct language (2025-05-30)
+- disallow submitting contact form if not valid (2025-05-25)
+- close dialog button clickable (2025-05-24)
+- validate form and set available days to 30 from today (2025-05-24)
+- fix build error (2025-05-21)
+- remove date-fns, use native date format (2025-05-21)
+- fix build error (2025-05-21)
+- add package doc type for translations (2025-05-20)
+- dialog maintains its own state instead of gallery (2025-05-20)
+- parent field to subpage (2025-05-18)
+- correct display of breadcrumbs title and link (2025-05-18)
+- nav item active pathname (2025-05-18)
+- fix nav item link (2025-05-18)
+- single image styling (2025-05-18)
+- include locale in the nav (2025-05-17)
+- only display top level pages for nav (2025-05-17)
+- fix build errors (2025-05-17)
+- type fix (2025-05-15)
+- remove scroll animation for mobile (2025-05-13)
+- only allow one home page per language (2025-05-13)
+- display content of the page (2025-05-13)
+
+### Changed
+
+- for production, only use en & es for now (2025-05-31)
+- apply eslint fix import (2025-05-31)
+- install eslint-import-plugin and add a preommit hook (2025-05-31)
+- add keywords to packages and blog posts (2025-05-31)
+- update changelog (2025-05-31)
+- add terms & conditions to footer (2025-05-31)
+- update changelog (2025-05-31)
+- update changelog (2025-05-30)
+- make content wider (2025-05-30)
+- styling fixes (2025-05-30)
+- display price in booking form (2025-05-30)
+- remove availabledates from booking form type (2025-05-30)
+- animate shrink header on scroll (2025-05-30)
+- add packages page (2025-05-30)
+- display packages on packages page, in the navigation (2025-05-30)
+- update changelog (2025-05-30)
+- update changelog (2025-05-30)
+- use flag-icons for flags instead of emoji (2025-05-29)
+- page cards and post cards equal height and images (2025-05-29)
+- add page transition (2025-05-29)
+- update changelog (2025-05-26)
+- update changelog (2025-05-25)
+- update changelog (2025-05-24)
+- update changelog (2025-05-24)
+- contact form styling (2025-05-23)
+- gallery on home styling (2025-05-23)
+- minor fixes (2025-05-20)
+- add booking form data type (2025-05-20)
+- styling changes (2025-05-20)
+- add aliases (2025-05-20)
+- update changelog (2025-05-19)
+- page card uses card animation (2025-05-18)
+- update changelog (2025-05-19)
+- update changelog (2025-05-19)
+- update changelog (2025-05-18)
+- cleanup logs (2025-05-18)
+- rename comp to Dialog (2025-05-18)
+- add reference to media in intro (2025-05-18)
+- update changelog (2025-05-18)
+- update changelog (2025-05-18)
+- update changelog (2025-05-17)
+- update changelog (2025-05-17)
+- update changelog (2025-05-16)
+- update changelog (2025-05-14)
+- contact form from sanity (2025-05-13)
+- minimize lang in lang selector for mobile (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-14)
+- add read more to home sections (2025-05-13)
+- update changelog (2025-05-14)
+- update changelog (2025-05-13)
+- adjust mobile styling (2025-05-13)
+- update changelog (2025-05-13)
+- add unit and integration tests (2025-05-12)
+- fix build errors (2025-05-12)
+- update changelog (2025-05-13)
+
+### Change
+
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-31)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-31)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-30)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-30)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-29)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-25)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-24)
+- import day picker style for customizing (2025-05-22)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-20)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-18)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-17)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-13)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- Merge branch 'main' of https://github.com/afkatja/barracolorado (2025-05-12)
+- checks for browser-specific APIs for server rendering (2025-05-12)
 
 ### Added
 
