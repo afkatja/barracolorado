@@ -7,11 +7,11 @@ import Section from "../../components/Section"
 import { getFallbackLocale } from "../../i18n"
 import { sanityFetch } from "../../sanity/lib/client"
 import {
-  // ALL_PAGES_QUERY,
+  ALL_PAGES_QUERY,
   GALLERY_QUERY,
   HOME_QUERY,
   CONTACT_QUERY,
-  PAGES_QUERY,
+  // PAGES_QUERY,
 } from "../../sanity/lib/queries"
 import {
   Home as HomeType,
@@ -22,7 +22,7 @@ import {
 } from "../../types"
 
 import PagesLayout from "./(pages)/layout"
-import GalleryClient from "./gallery/GalleryClient"
+import HomeGallery from "./HomeGallery"
 
 const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params
@@ -34,13 +34,12 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   })
 
   const pages = await sanityFetch<Page[]>({
-    query: PAGES_QUERY,
+    query: ALL_PAGES_QUERY,
     params: { locale: fallbackLang },
   })
 
   const gallery = await sanityFetch<GalleryType>({
     query: GALLERY_QUERY,
-    params: { locale: fallbackLang },
   })
 
   const contact = await sanityFetch<TContact>({
@@ -72,8 +71,8 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           <Section
             key={item._id}
             id={item._id}
+            index={index + 1}
             title={item.title}
-            subtitle={item.subtitle}
             description={item.description}
             image={item.mainImage}
             content={item.content}
@@ -88,15 +87,8 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
             </Link>
           </Section>
         ))}
-      <div className={`main min-h-[calc(100vh-var(--header-height))]`}>
-        <section
-          id="gallery"
-          className={`style2 dark bg-linear-to-br from-teal-800 to-cyan-900 text-gray-50 flex justify-center py-2 md:py-4 flex-1`}
-        >
-          {gallery && <GalleryClient gallery={gallery} />}
-        </section>
-      </div>
-      {contact && <Contact contact={contact} />}
+      {gallery && <HomeGallery gallery={gallery} contact={!!contact} />}
+      {contact && <Contact id="contact" contact={contact} />}
     </PagesLayout>
   )
 }
