@@ -7,7 +7,13 @@ import { TContact } from "../types"
 import { Button } from "./ui/button"
 import Input from "./ui/input"
 
-const Contact = ({ contact }: { contact: TContact | null }) => {
+const Contact = ({
+  contact,
+  id,
+}: {
+  contact: TContact | null
+  id?: string
+}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,15 +59,15 @@ const Contact = ({ contact }: { contact: TContact | null }) => {
   }
 
   return (
-    <Element name="contact" className="main fullscreen">
+    <Element name={id ?? "contact"} className="main fullscreen">
       <section
         id="contact"
         className="bg-linear-to-bl from-teal-800 to-cyan-900 text-gray-50 p-8 flex-1"
       >
         <div className="content w-full">
           <header className="text-center">
-            <h2 className="text-3xl mb-4">{contact.title}</h2>
-            <p className="mb-4">{contact.subtitle}</p>
+            <h2 className="text-3xl mb-2 font-black">{contact.title}</h2>
+            <h3 className="mb-4 font-bold text-lg">{contact.subtitle}</h3>
           </header>
           <div className="bg-gray-50 p-4 rounded-lg text-gray-700">
             {success ? (

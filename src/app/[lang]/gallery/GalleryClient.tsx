@@ -9,7 +9,7 @@ import { urlFor } from "@/sanity/lib/image"
 
 import Carousel from "../../../components/Carousel"
 
-interface GalleryClientProps {
+export interface GalleryClientProps {
   gallery: {
     title: string
     description?: string
