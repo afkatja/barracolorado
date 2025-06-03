@@ -15,8 +15,6 @@ const NavigationItem = ({
 }) => {
   const pathname = usePathname()
 
-  console.log({ item })
-
   return (
     <NavigationMenu.Item key={item._id} className="relative">
       <NavigationMenu.Trigger className="group" asChild>
