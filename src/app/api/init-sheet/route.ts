@@ -5,7 +5,7 @@ import { create } from "@/lib/googleSheets"
 export async function POST() {
   try {
     const spreadsheetId = await create("Booking Requests")
-    console.log("Spreadsheet created successfully with ID:", spreadsheetId)
+    console.info("Spreadsheet created successfully with ID:", spreadsheetId)
 
     return NextResponse.json({
       success: true,
