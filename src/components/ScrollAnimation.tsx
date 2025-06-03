@@ -21,7 +21,10 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   asSection,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
-  const [supportsScrollTimeline, setSupportsScrollTimeline] = useState(false)
+  const supportsScrollTimeline = useRef(
+    typeof window !== "undefined" &&
+      CSS.supports("animation-timeline: scroll()")
+  )
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -31,9 +34,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
 
     if (!asSection) return
 
-    // Check for scroll-timeline support
-    setSupportsScrollTimeline(CSS.supports("animation-timeline: scroll()"))
-    if (!supportsScrollTimeline && ref.current) {
+    if (!supportsScrollTimeline.current && ref.current) {
       // Dynamically import GSAP only if needed
       import("gsap").then(({ default: gsap }) => {
         import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
@@ -60,7 +61,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
         })
       })
     }
-  }, [direction, supportsScrollTimeline, asSection])
+  }, [direction, asSection])
 
   const animationClass = () => {
     if (!asSection) return ""
@@ -74,7 +75,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
       data-testid={dataTestId}
       className={cn(className, animationClass())}
       style={{
-        ...(supportsScrollTimeline
+        ...(supportsScrollTimeline.current
           ? {
               viewTimelineName: "--scroll-timeline",
               animationTimeline: "--scroll-timeline",
