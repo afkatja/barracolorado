@@ -72,7 +72,7 @@ export const HOME_QUERY = groq`*[_type == 'home' && language == $locale][0] {
   ${TRANSLATION_QUERY}
 }`
 
-export const GALLERY_QUERY = groq`*[_type == 'gallery' && language == $locale][0] {
+export const GALLERY_QUERY = groq`*[_type == 'gallery'][0] {
   _id,
   title,
   description,
@@ -117,6 +117,7 @@ export const NAV_QUERY = groq`*[_type == 'navigation'][0] {
     _id, title, displayTitle, slug,
       "subItems": *[(_type == 'page' || _type == 'package') && parent -> slug.current == ^.slug.current && language == $locale] | order(menuOrder asc, title asc) {
         _id,
+        _type,
         title,
         displayTitle,
         slug,
