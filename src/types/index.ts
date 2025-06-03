@@ -34,6 +34,7 @@ export type Page = Omit<Document, "language"> & {
 
 export interface NavigationPage {
   _id: string
+  _type: string
   title: string
   displayTitle?: string
   slug: {
@@ -41,6 +42,7 @@ export interface NavigationPage {
   }
   subItems?: Array<{
     _id: string
+    _type: string
     title: string
     displayTitle?: string
     slug: {
