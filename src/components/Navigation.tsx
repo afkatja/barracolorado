@@ -10,6 +10,7 @@ import NavigationItem from "./NavigationItem"
 
 export interface INavigationItem extends Document {
   _id: string
+  _type: string
   title: string
   navSlug: string
   pages?: NavigationPage

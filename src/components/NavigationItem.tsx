@@ -15,6 +15,8 @@ const NavigationItem = ({
 }) => {
   const pathname = usePathname()
 
+  console.log({ item })
+
   return (
     <NavigationMenu.Item key={item._id} className="relative">
       <NavigationMenu.Trigger className="group" asChild>
@@ -32,7 +34,7 @@ const NavigationItem = ({
           {item.subItems?.map(subItem => (
             <Link
               key={subItem._id}
-              href={`/${lang}/${item.slug.current}/${subItem.slug.current}`}
+              href={`/${lang}/${subItem._type === "package" ? "packages" : item.slug.current}/${subItem.slug.current}`}
               className={`block p-1 hover:text-gray-400 transition-colors ${
                 pathname === `/${item.slug.current}/${subItem.slug.current}`
                   ? "bg-gray-100"
