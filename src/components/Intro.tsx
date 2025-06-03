@@ -31,10 +31,16 @@ export default function Intro({
         <MediaComponent media={media} />
         <div className="content text-center">
           <header>
-            <h2 className="text-4xl mb-4 font-black">{title}</h2>
+            <h2 className="text-4xl mb-4 font-black text-shadow-gray-900/70 text-shadow-sm">
+              {title}
+            </h2>
           </header>
-          <h3 className="mb-4 font-bold text-xl">{subtitle}</h3>
-          <p className="mb-4">{description}</p>
+          <h3 className="mb-4 font-bold text-xl text-shadow-gray-900/70 text-shadow-sm">
+            {subtitle}
+          </h3>
+          <p className="mb-4 text-shadow-gray-900/70 text-shadow-sm">
+            {description}
+          </p>
           <footer className="relative py-4">
             <Link
               to={nextSection}
