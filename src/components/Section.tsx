@@ -12,6 +12,7 @@ import ScrollAnimation from "./ScrollAnimation"
 
 interface SectionProps {
   id: string
+  index?: number
   title: string
   subtitle?: string
   description?: string
@@ -25,6 +26,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({
   id,
+  index,
   title,
   subtitle,
   description,
@@ -35,7 +37,8 @@ const Section: React.FC<SectionProps> = ({
   className,
   asSection = true,
 }) => {
-  const isEven = parseInt(id.replace(/\D/g, "")) % 2 === 0
+  const isEven = !!index ? index % 2 === 0 : false
+
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
@@ -47,6 +50,13 @@ const Section: React.FC<SectionProps> = ({
     setOffset(-headerHeight)
   }, [])
 
+  const directionClassName = () => {
+    if (asSection) {
+      return isEven ? "justify-end" : "justify-start"
+    }
+    return "justify-center"
+  }
+
   return (
     <Element
       name={id}
@@ -54,14 +64,14 @@ const Section: React.FC<SectionProps> = ({
     >
       <section
         id={id}
-        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex items-center py-4 md:py-8 flex-1 ${asSection && isEven ? "justify-end" : "justify-center"}`}
+        className={`style2 dark ${image ? "bg-fixed bg-cover bg-center bg-no-repeat" : "bg-linear-to-br from-teal-800 to-cyan-900"} text-gray-50 flex items-center py-4 md:py-8 flex-1 ${directionClassName()}`}
         style={{
           backgroundImage: image ? `url(${urlFor(image).url()})` : "",
         }}
       >
         <ScrollAnimation
           direction={isEven ? "right" : "left"}
-          className={`content flex flex-col box p-2.5 ${!asSection && "prose min-w-[80ch] max-w-11/12 mx-auto text-justify"}`}
+          className={`content flex flex-col box p-2.5 ${!asSection ? "prose min-w-[80ch] max-w-11/12 mx-auto text-justify" : "max-w-2/3"}`}
           asSection={asSection}
         >
           <header className="flex items-start mb-0">
@@ -69,8 +79,9 @@ const Section: React.FC<SectionProps> = ({
               <Image
                 src={urlFor(image).url()}
                 alt={title}
-                width={100}
-                height={100}
+                width={490}
+                height={360}
+                sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 2016px"
                 className="rounded-lg w-1/2 h-1/2 mr-1 my-2"
               />
             )}
