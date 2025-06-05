@@ -15,10 +15,9 @@ const Header = ({ lang, id }: { lang: string; id?: string }) => {
           <Logo
             className="fill-gray-50 w-[var(--header-height)] h-[var(--header-height)]"
             style={{
-              height: "var(--header-height)",
               animationName: "header-shrink",
               animationTimeline: "scroll()",
-              animationRange: "0 100px",
+              animationRange: "entry 150px exit",
             }}
           />
         </Link>
