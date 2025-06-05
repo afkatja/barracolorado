@@ -21,14 +21,24 @@ const Package = ({
     subtitle?: string
     description?: string
     mainImage?: SanityImageObject
-    price?: string
+    priceSingle?: string
+    priceTriple?: string
     slug: { current: string }
   }
   formData?: TFormData
   lang: string
 }) => {
-  const { _id, title, content, subtitle, description, mainImage, price, slug } =
-    packageData
+  const {
+    _id,
+    title,
+    content,
+    subtitle,
+    description,
+    mainImage,
+    priceSingle,
+    priceTriple,
+    slug,
+  } = packageData
 
   return (
     <>
@@ -45,7 +55,6 @@ const Package = ({
           key={_id}
           id={_id}
           title={title}
-          subtitle={subtitle}
           description={description}
           content={content}
           image={mainImage}
@@ -53,8 +62,10 @@ const Package = ({
         >
           <footer className="flex items-center border-t-1 border-gray-600 pt-2 mt-2">
             <dl className="flex items-center">
-              <dt className="m-0! text-lg font-bold">Price per person</dt>
-              <dd className="m-0!">{price}</dd>
+              <dt className="m-0! text-lg font-bold">Rate per person</dt>
+              <dd className="m-0! flex items-center">
+                from only <strong className="ml-[3px]">${priceTriple}!</strong>
+              </dd>
             </dl>
             {formData && (
               <Dialog button={{ buttonChildren: "Book now" }}>
