@@ -9,7 +9,16 @@ export const packageType = defineType({
   type: "document",
   fields: [
     ...pageType.fields,
-    defineField({ name: "price", title: "Price", type: "string" }),
+    defineField({
+      name: "priceSingle",
+      title: "Rate for single/double",
+      type: "string",
+    }),
+    defineField({
+      name: "priceTriple",
+      title: "Rate for triple",
+      type: "string",
+    }),
     defineField({
       name: "packageDialog",
       title: "Package Dialog",
