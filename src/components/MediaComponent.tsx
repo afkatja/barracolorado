@@ -33,6 +33,7 @@ const MediaComponent = ({ media }: { media: Media }) => {
       case "imageGallery":
         return (
           <Carousel
+            id="intro-carousel"
             images={media.imageGallery}
             autoPlay
             loop

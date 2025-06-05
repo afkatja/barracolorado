@@ -67,6 +67,12 @@ export type Home = Document & {
   media: Media
 }
 
+export type CarouselImage = SanityImageObject & {
+  caption?: string
+  alt: string
+  _key: string
+}
+
 export type Gallery = {
   title: string
   description?: string
