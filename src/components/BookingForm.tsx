@@ -38,11 +38,31 @@ const convertPriceToNumber = (price: string): number => {
   return Number(price.replace(/[^0-9.]/g, ""))
 }
 
+const calculatePrice = (
+  priceSingle: string,
+  priceTriple: string,
+  people: number
+): { total: number; breakdown: string } => {
+  if (people <= 2) {
+    return {
+      total: people * parseInt(priceSingle),
+      breakdown: `${people} × $${parseInt(priceSingle)}`,
+    }
+  } else {
+    return {
+      total: people * parseInt(priceTriple),
+      breakdown: `${people} × $${priceTriple}`,
+    }
+  }
+}
+
 const BookingForm = ({ data, orderData }: BookingFormProps) => {
+  const minPeople = data.formSettings?.minPeople ?? 1
+  const maxPeople = data.formSettings?.maxPeople ?? 4
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    people: data.formSettings.minPeople,
+    people: minPeople,
     date: new Date(),
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -63,9 +83,9 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
       newErrors.email = data.formValidation.invalidEmail
     }
 
-    if (formData.people < data.formSettings.minPeople) {
+    if (formData.people < minPeople) {
       newErrors.people = data.formValidation.minPeople
-    } else if (formData.people > data.formSettings.maxPeople) {
+    } else if (formData.people > maxPeople) {
       newErrors.people = data.formValidation.maxPeople
     }
 
@@ -104,7 +124,7 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
       setFormData({
         name: "",
         email: "",
-        people: data.formSettings.minPeople,
+        people: minPeople,
         date: new Date(),
       })
       setErrors({})
@@ -126,6 +146,11 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
   // Generate available dates if none are provided
   const availableDates = generateDateRange(new Date(), 30)
 
+  const { total, breakdown } = calculatePrice(
+    orderData.priceSingle,
+    orderData.priceTriple,
+    formData.people
+  )
   return (
     <form
       onSubmit={handleSubmit}
@@ -185,12 +210,9 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
             <SelectContent>
               {Array.from(
                 {
-                  length:
-                    data.formSettings.maxPeople -
-                    data.formSettings.minPeople +
-                    1,
+                  length: maxPeople - minPeople + 1,
                 },
-                (_, i) => data.formSettings.minPeople + i
+                (_, i) => minPeople + i
               ).map(num => (
                 <SelectItem key={num} value={num.toString()}>
                   {num}
@@ -222,9 +244,10 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
         </div>
       </div>
       <footer className="flex items-center mt-2">
-        <output className="font-bold text-lg">
-          {`$ ${convertPriceToNumber(orderData.price) * formData.people}`}
-        </output>
+        <div className="flex flex-col">
+          <output className="font-bold text-lg">{`$ ${total}`}</output>
+          <small className="text-gray-600">{breakdown}</small>
+        </div>
         <Button
           type="submit"
           className="bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg py-1 px-2 ml-auto disabled:opacity-50 disabled:cursor-not-allowed"

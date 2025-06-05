@@ -5,7 +5,7 @@ import { SanityDocument } from "next-sanity"
 
 import { getFallbackLocale, availableLocaleIds } from "@/i18n"
 import { sanityFetch } from "@/sanity/lib/client"
-import { PACKAGE_QUERY, DIALOG_QUERY } from "@/sanity/lib/queries"
+import { PACKAGE_QUERY } from "@/sanity/lib/queries"
 import { TFormData } from "@/types"
 
 import Package from "./Package"
@@ -71,12 +71,13 @@ const PackagePage = async ({
     return notFound()
   }
 
-  const dialog = await sanityFetch<TFormData>({
-    query: DIALOG_QUERY,
-    params: { locale: fallbackLang, slug },
-  })
-
-  return <Package formData={dialog} packageData={packageData} lang={lang} />
+  return (
+    <Package
+      formData={packageData.dialog}
+      packageData={packageData}
+      lang={lang}
+    />
+  )
 }
 
 export default PackagePage

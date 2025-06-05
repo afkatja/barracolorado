@@ -175,7 +175,8 @@ export const PACKAGE_QUERY = groq`
     language,
     'content': body,
     mainImage,
-    price,
+    priceSingle,
+    priceTriple,
     parent->,
     'dialog': packageDialog {
       'title': dialogTitle,
@@ -202,30 +203,3 @@ export const PACKAGE_QUERY = groq`
     ${TRANSLATION_QUERY}
   }
 `
-
-export const DIALOG_QUERY = groq`*[_type == "dialog" && language == $locale && slug == $slug][0] {
-  title,
-  subtitle,
-  description,
-  formLabels {
-    nameLabel,
-    emailLabel,
-    peopleLabel,
-    dateLabel,
-    submitButton
-  },
-  formValidation {
-    required,
-    invalidEmail,
-    minPeople,
-    maxPeople
-  },
-  formSettings {
-    minPeople,
-    maxPeople,
-    availableDates[] {
-      date,
-      availableSlots
-    }
-  }
-}`
