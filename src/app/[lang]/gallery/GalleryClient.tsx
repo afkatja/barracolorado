@@ -8,6 +8,7 @@ import GalleryAnimation from "@/components/GalleryAnimation"
 import { urlFor } from "@/sanity/lib/image"
 
 import Carousel from "../../../components/Carousel"
+import { CarouselImage } from "../../../types"
 
 export interface GalleryClientProps {
   gallery: {
@@ -25,11 +26,33 @@ export interface GalleryClientProps {
 }
 
 const GalleryClient = ({ gallery }: GalleryClientProps) => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const [shuffleSeed] = useState(() => Math.random())
+  const [selectedImage, setSelectedImage] = useState<CarouselImage | null>(null)
+
+  // const imageDimensions = () => {
+  //   const dimensions: {
+  //     [key: string]: { rowSpan: number /*colSpan: number*/ }
+  //   } = {}
+  //   let prevRowSpan = 1
+  //   // let prevColSpan = 0
+
+  //   gallery.images.forEach(image => {
+  //     let rowSpan //, colSpan
+  //     do {
+  //       rowSpan = Math.floor(Math.random() * 3) + 1
+  //       // colSpan = Math.random() > 0.7 ? 2 : 1
+  //     } while (rowSpan === prevRowSpan /*&& colSpan === prevColSpan*/)
+
+  //     dimensions[image._key] = { rowSpan /*colSpan*/ }
+  //     prevRowSpan = rowSpan
+  //     // prevColSpan = colSpan
+  //   })
+
+  //   return dimensions
+  // }
 
   // Memoize the shuffled images to prevent re-shuffling on re-renders
   const shuffledImages = useMemo(() => {
+    const shuffleSeed = Math.random()
     return [...gallery.images].sort((a, b) => {
       const hashA = (a._key + shuffleSeed)
         .split("")
@@ -39,27 +62,37 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
         .reduce((acc, char) => acc + char.charCodeAt(0), 0)
       return hashA - hashB
     })
-  }, [gallery.images, shuffleSeed])
+  }, [gallery.images])
+
+  const handleImageClick = (image: CarouselImage) => setSelectedImage(image)
+
+  const handleDialogClose = () => setSelectedImage(null)
 
   return (
     <div className="mx-auto w-11/12">
-      <h1 className="text-4xl font-bold text-gray-50 mb-2">{gallery.title}</h1>
+      <h1 className="text-4xl font-bold text-gray-50 mb-2 text-center">
+        {gallery.title}
+      </h1>
       {gallery.description && (
-        <p className="text-xl text-gray-200 mb-1">{gallery.description}</p>
+        <p className="text-xl text-gray-200 mb-2 text-center">
+          {gallery.description}
+        </p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 auto-rows-[50px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 auto-rows-[100px]">
         {shuffledImages.map((image, index) => {
-          // Generate random height spans between 2 and 4
-          const span = Math.floor(Math.random() * (index + 1)) + 2
+          // const { rowSpan, colSpan } = imageDimensions()[image._key]
           return (
-            <GalleryAnimation
+            <div
               key={image._key}
               className="cursor-pointer group transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl"
-              style={{ gridRowEnd: `span ${span}` }}
+              style={{
+                gridRowEnd: `span ${Math.floor(Math.random() * 2) + 1}`,
+                // gridColumnEnd: `span ${colSpan}`,
+              }}
             >
               <div
-                onClick={() => setSelectedImage(index)}
+                onClick={() => handleImageClick(image)}
                 className="relative h-full w-full overflow-hidden rounded-lg"
               >
                 <Image
@@ -70,16 +103,20 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
                 />
                 <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover:opacity-20 transition-all duration-300" />
               </div>
-            </GalleryAnimation>
+            </div>
           )
         })}
       </div>
 
       {selectedImage !== null && (
-        <Dialog>
+        <Dialog isOpen={!!selectedImage} onClose={handleDialogClose}>
           <Carousel
-            selectedImage={shuffledImages[selectedImage]}
-            images={shuffledImages}
+            id="gallery"
+            selectedImage={selectedImage}
+            images={gallery.images}
+            transitionStyle="fade"
+            className="flex-1 w-full"
+            autoPlay={false}
           />
         </Dialog>
       )}
