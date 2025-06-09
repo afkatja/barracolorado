@@ -1,8 +1,10 @@
-import sgMail from "@sendgrid/mail"
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend"
 import { NextResponse } from "next/server"
 
-// Initialize SendGrid with API key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!)
+// Initialize MailerSend with API key
+const mailerSend = new MailerSend({
+  apiKey: process.env.MAILERSEND_API_KEY!,
+})
 
 export async function POST(request: Request) {
   try {
@@ -17,31 +19,32 @@ export async function POST(request: Request) {
       )
     }
 
-    // Create email message
-    const msg = {
-      to: process.env.CONTACT_EMAIL!, // Your business email
-      from: process.env.SENDGRID_FROM_EMAIL!, // Verified sender email
-      subject: `New Contact Form Submission from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    }
+    // Create sender and recipient
+    const sender = new Sender(process.env.FROM_EMAIL!, "Contact Form")
+    const recipient = new Recipient(process.env.CONTACT_EMAIL!)
+
+    // Create email parameters with template
+    const emailParams = new EmailParams()
+      .setFrom(sender)
+      .setTo([recipient])
+      .setTemplateId(process.env.MAILERSEND_TEMPLATE_ID!)
+      .setPersonalization([
+        {
+          email: process.env.CONTACT_EMAIL!,
+          data: {
+            name: name,
+            email: email,
+            message: message,
+          },
+        },
+      ])
 
     // Send email
-    await sgMail.send(msg)
+    await mailerSend.email.send(emailParams)
 
     return NextResponse.json({ success: true })
   } catch (error: any) {
-    console.error("Error sending email:", error?.response?.body || error)
+    console.error("Error sending email:", error)
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }
