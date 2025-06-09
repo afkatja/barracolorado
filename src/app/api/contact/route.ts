@@ -9,7 +9,7 @@ const mailerSend = new MailerSend({
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, message } = body
+    const { name, email, message, subject } = body
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -26,15 +26,17 @@ export async function POST(request: Request) {
     // Create email parameters with template
     const emailParams = new EmailParams()
       .setFrom(sender)
+      .setSubject(subject)
       .setTo([recipient])
-      .setTemplateId(process.env.MAILERSEND_TEMPLATE_ID!)
+      .setTemplateId(process.env.MAILERSEND_CONTACT_TEMPLATE_ID!)
       .setPersonalization([
         {
           email: process.env.CONTACT_EMAIL!,
           data: {
-            name: name,
-            email: email,
-            message: message,
+            name,
+            email,
+            subject,
+            message,
           },
         },
       ])
