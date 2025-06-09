@@ -19,6 +19,7 @@ import Input from "./ui/input"
 type BookingFormProps = {
   data: TFormData
   orderData: Record<string, any>
+  onClose: () => void
 }
 
 const generateDateRange = (startDate: Date = new Date(), days: number = 30) => {
@@ -56,7 +57,7 @@ const calculatePrice = (
   }
 }
 
-const BookingForm = ({ data, orderData }: BookingFormProps) => {
+const BookingForm = ({ data, orderData, onClose }: BookingFormProps) => {
   const minPeople = data.formSettings?.minPeople ?? 1
   const maxPeople = data.formSettings?.maxPeople ?? 4
   const [formData, setFormData] = useState({
@@ -111,7 +112,11 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          packageTitle: data.title,
+          subject: `Booking request for ${data.title}`,
+        }),
       })
 
       const responseData = await response.json()
@@ -128,6 +133,9 @@ const BookingForm = ({ data, orderData }: BookingFormProps) => {
         date: new Date(),
       })
       setErrors({})
+      setTimeout(() => {
+        onClose()
+      }, 1500)
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Failed to send booking request"
