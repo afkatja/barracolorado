@@ -46,6 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Wildlife",
       "Nature Tours",
     ],
+    robots: "index, follow",
     openGraph: {
       title: seoSettings?.ogTitle || "Barra del Colorado Wildlife Refuge",
       description:
@@ -115,8 +116,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  // maximumScale: 1,
+  // userScalable: false,
 }
 
 export async function generateStaticParams() {
