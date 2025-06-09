@@ -114,8 +114,8 @@ const BookingForm = ({ data, orderData, onClose }: BookingFormProps) => {
         },
         body: JSON.stringify({
           ...formData,
-          packageTitle: data.title,
-          subject: `Booking request for ${data.title}`,
+          packageTitle: orderData.title,
+          subject: `Booking request for ${orderData.title}`,
         }),
       })
 
