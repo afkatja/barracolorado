@@ -1,7 +1,7 @@
 "use client"
 import { SanityImageObject } from "@sanity/image-url/lib/types/types"
 import { SanityDocument } from "next-sanity"
-import React from "react"
+import React, { useState } from "react"
 
 import BookingForm from "@/components/BookingForm"
 import Breadcrumbs from "@/components/Breadcrumbs"
@@ -40,6 +40,8 @@ const Package = ({
     slug,
   } = packageData
 
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <>
       <div className="w-11/12 mx-auto py-1">
@@ -68,8 +70,19 @@ const Package = ({
               </dd>
             </dl>
             {formData && (
-              <Dialog button={{ buttonChildren: "Book now" }}>
-                <BookingForm data={formData} orderData={packageData} />
+              <Dialog
+                isOpen={isOpen}
+                className="min-h-11/12 md:min-h-2/3 w-11/12 md:w-1/2"
+                button={{
+                  buttonChildren: "Book now",
+                  onButtonClick: () => setIsOpen(true),
+                }}
+              >
+                <BookingForm
+                  data={formData}
+                  orderData={packageData}
+                  onClose={() => setIsOpen(false)}
+                />
               </Dialog>
             )}
           </footer>

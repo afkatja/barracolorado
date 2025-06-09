@@ -7,7 +7,7 @@ import Dialog from "./Dialog"
 import { Button } from "./ui/button"
 import Input from "./ui/input"
 
-const MoreInfoForm = () => {
+const MoreInfoForm = ({ onClose }: { onClose: () => void }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,6 +32,7 @@ const MoreInfoForm = () => {
         },
         body: JSON.stringify({
           ...formData,
+          subject: "More information request",
           message: "Request for more information",
         }),
       })
@@ -44,6 +45,9 @@ const MoreInfoForm = () => {
 
       setSuccess(true)
       setFormData({ name: "", email: "" })
+      setTimeout(() => {
+        onClose()
+      }, 1500)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to send message")
     } finally {
@@ -104,15 +108,22 @@ const MoreInfoForm = () => {
 }
 
 const MoreInfoButton = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <Dialog
+      key="more-info"
+      className="max-w-1/3"
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
       button={{
+        onButtonClick: () => setIsOpen(true),
         className:
           "bg-transparent hover:bg-transparent text-teal-700 hover:text-teal-800 p-0! transition-colors duration-300 cursor-pointer",
         buttonChildren: <FaInfoCircle size={10} className="w-1 h-1" />,
       }}
     >
-      <MoreInfoForm />
+      <MoreInfoForm onClose={() => setIsOpen(false)} />
     </Dialog>
   )
 }

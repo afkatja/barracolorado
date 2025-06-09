@@ -6,9 +6,14 @@ import { Button } from "./ui/button"
 
 interface DialogProps {
   children: React.ReactNode
-  button?: { className?: string; buttonChildren?: React.ReactNode }
+  button?: {
+    className?: string
+    buttonChildren?: React.ReactNode
+    onButtonClick?: () => void
+  }
   isOpen?: boolean
   onClose?: () => void
+  className?: string
 }
 
 const Dialog = ({
@@ -16,10 +21,15 @@ const Dialog = ({
   button,
   isOpen: isOpenProp,
   onClose,
+  className,
 }: DialogProps) => {
   const popoverRef = useRef<HTMLDivElement>(null)
 
   const [isOpen, setIsOpen] = useState(isOpenProp)
+
+  useEffect(() => {
+    setIsOpen(isOpenProp)
+  }, [isOpenProp])
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -73,7 +83,10 @@ const Dialog = ({
         <Button
           variant="default"
           size="sm"
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            button?.onButtonClick?.()
+            setIsOpen(true)
+          }}
           className={`bg-teal-500 hover:bg-teal-700 text-gray-50 cursor-pointer text-lg ml-auto ${button?.className}`}
         >
           {button?.buttonChildren}
@@ -93,7 +106,9 @@ const Dialog = ({
         >
           ×
         </button>
-        <div className="w-11/12 min-h-11/12 md:w-2/3 md:min-h-2/3 flex flex-col items-center relative p-2 overflow-y-scroll bg-gray-50 rounded-lg">
+        <div
+          className={`flex flex-col items-center relative p-2 overflow-y-scroll bg-gray-50 rounded-lg ${className}`}
+        >
           {children}
         </div>
       </div>
