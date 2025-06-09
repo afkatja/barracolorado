@@ -1,0 +1,11 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://barradelcolorado.com/api/sitemap
+
+# Disallow admin and API routes except sitemap
+Disallow: /api/*
+Allow: /api/sitemap
+Disallow: /studio/ 
