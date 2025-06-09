@@ -109,7 +109,11 @@ const GalleryClient = ({ gallery }: GalleryClientProps) => {
       </div>
 
       {selectedImage !== null && (
-        <Dialog isOpen={!!selectedImage} onClose={handleDialogClose}>
+        <Dialog
+          className="min-h-11/12 md:min-h-2/3 w-11/12 md:w-2/3"
+          isOpen={!!selectedImage}
+          onClose={handleDialogClose}
+        >
           <Carousel
             id="gallery"
             selectedImage={selectedImage}
