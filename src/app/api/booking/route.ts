@@ -11,7 +11,7 @@ const mailerSend = new MailerSend({
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, people, date, packageTitle } = body
+    const { name, email, subject, people, date, packageTitle } = body
 
     // Validate required fields
     if (!name || !email || !people || !date || !packageTitle) {
@@ -37,6 +37,7 @@ export async function POST(request: Request) {
     const emailParams = new EmailParams()
       .setFrom(sender)
       .setTo([recipient])
+      .setSubject(subject)
       .setTemplateId(process.env.MAILERSEND_BOOKING_TEMPLATE_ID!)
       .setPersonalization([
         {
