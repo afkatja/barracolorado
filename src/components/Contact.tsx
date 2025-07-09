@@ -62,7 +62,7 @@ const Contact = ({
     <Element name={id ?? "contact"} className="main fullscreen">
       <section
         id="contact"
-        className="bg-linear-to-bl from-teal-800 to-cyan-900 text-gray-50 p-8 flex-1"
+        className="bg-linear-to-bl from-teal-800 to-cyan-900 text-gray-50 py-4 lg:p-8 flex-1"
       >
         <div className="content w-full">
           <header className="text-center">
@@ -79,37 +79,34 @@ const Contact = ({
               <div className="text-center text-red-600 mb-4">{error}</div>
             ) : null}
             <form onSubmit={handleSubmit}>
-              <div className="fields grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="field half">
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder={contact.formLabels.nameLabel}
-                    id="name"
-                    label={contact.formLabels.nameLabel}
-                    initialValue={formData.name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="field half">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder={contact.formLabels.emailLabel}
-                    id="email"
-                    label={contact.formLabels.emailLabel}
-                    initialValue={formData.email}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                  />
-                </div>
-                <div className="field col-span-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-1 lg:gap-4 mb-4">
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder={contact.formLabels.nameLabel}
+                  id="name"
+                  label={contact.formLabels.nameLabel}
+                  initialValue={formData.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="col-span-2 md:col-span-1"
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder={contact.formLabels.emailLabel}
+                  id="email"
+                  label={contact.formLabels.emailLabel}
+                  initialValue={formData.email}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+                <div className="col-span-2">
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium mb-1 text-gray-700"
+                    className="block text-sm font-medium md:mb-1 text-gray-700"
                   >
                     {contact.formLabels.messageLabel}
                   </label>
