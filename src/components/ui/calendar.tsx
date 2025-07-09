@@ -29,9 +29,9 @@ function Calendar({
         nav: "flex items-center gap-1",
         chevron: "fill-teal-700",
         button_previous:
-          "size-3 bg-transparent px-0 opacity-50 hover:opacity-100 outline-none shadow-none has-[>svg]:px-1 cursor-pointer absolute left-0 top-0",
+          "size-3 bg-transparent px-0 opacity-50 hover:opacity-100 outline-none shadow-none has-[>svg]:px-1 cursor-pointer absolute left-0 top-0 m-0",
         button_next:
-          "size-3 bg-transparent px-0 opacity-50 hover:opacity-100 outline-none shadow-none has-[>svg]:px-1 cursor-pointer absolute right-0 top-0",
+          "size-3 bg-transparent px-0 opacity-50 hover:opacity-100 outline-none shadow-none has-[>svg]:px-1 cursor-pointer absolute right-0 top-0 m-0",
         table: "w-full border-collapse space-x-1",
         weekdays: "flex mb-1",
         weekday:

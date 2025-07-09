@@ -13,8 +13,6 @@ import Link from "next/link"
 import { sanityFetch } from "../sanity/lib/client"
 import { FOOTER_PAGE_QUERY } from "../sanity/lib/queries"
 
-// import Link from "next/link"
-
 const Footer = async ({ id, lang }: { id?: string; lang: string }) => {
   const footerPages = await sanityFetch<
     { title: string; slug: { current: string }; name?: string }[]
@@ -24,8 +22,11 @@ const Footer = async ({ id, lang }: { id?: string; lang: string }) => {
   })
 
   return (
-    <footer id={id || "footer"} className="bg-gray-900 text-gray-50 p-4">
-      <ul className="icons flex justify-center space-x-4 mb-4">
+    <footer
+      id={id || "footer"}
+      className="bg-gray-900 text-gray-50 py-4 px-2 md:p-4"
+    >
+      <ul className="icons grid auto-cols-auto grid-flow-col justify-center space-x-4 mb-2 md:mb-4">
         <li>
           <a href="#" className="icon brands">
             <FontAwesomeIcon icon={faTwitter} />
@@ -62,7 +63,7 @@ const Footer = async ({ id, lang }: { id?: string; lang: string }) => {
         </a>
       </li> */}
       </ul>
-      <ul className="menu flex justify-center space-x-4">
+      <ul className="grid grid-cols-1 md:auto-cols-auto md:grid-flow-col justify-center md:space-x-4 space-y-1">
         <li>&copy; Barra Colorado</li>
         {footerPages.map(page => (
           <li key={crypto.randomUUID()}>

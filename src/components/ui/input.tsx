@@ -11,6 +11,7 @@ const Input = ({
   onChange,
   error,
   placeholder,
+  ...props
 }: {
   id: string
   label: string
@@ -20,9 +21,11 @@ const Input = ({
   onChange: ChangeEventHandler
   error?: string
   placeholder?: string
+  className?: string
+  [prop: string]: any
 }) => {
   return (
-    <div>
+    <div className={cn(props.className)}>
       <label
         htmlFor={id}
         className="block text-sm font-medium mb-1 text-gray-700"
