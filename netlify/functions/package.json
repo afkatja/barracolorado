@@ -1,0 +1,9 @@
+{
+  "name": "netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify serverless functions for error monitoring",
+  "main": "index.js",
+  "dependencies": {
+    "mailersend": "^2.6.0"
+  }
+}
